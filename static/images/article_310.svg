@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="finale" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f1c40f"/>
+      <stop offset="50%" style="stop-color:#e91e63"/>
+      <stop offset="100%" style="stop-color:#9b59b6"/>
+    </linearGradient>
+  </defs>
+  <rect fill="#1a1a2e" width="800" height="450"/>
+  <!-- Friends Arena silhouette -->
+  <path d="M50,350 L100,150 Q400,80 700,150 L750,350 Z" fill="#2c3e50"/>
+  <!-- Arena roof structure -->
+  <path d="M100,150 Q400,60 700,150" stroke="#34495e" stroke-width="10" fill="none"/>
+  <!-- Glowing interior -->
+  <ellipse cx="400" cy="280" rx="280" ry="100" fill="url(#finale)" opacity="0.4"/>
+  <!-- Stage lights -->
+  <g fill="#f1c40f">
+    <circle cx="200" cy="180" r="8"/>
+    <circle cx="300" cy="150" r="8"/>
+    <circle cx="400" cy="140" r="10"/>
+    <circle cx="500" cy="150" r="8"/>
+    <circle cx="600" cy="180" r="8"/>
+  </g>
+  <!-- Light beams -->
+  <g stroke="#f1c40f" stroke-width="2" opacity="0.5">
+    <line x1="200" y1="180" x2="400" y2="300"/>
+    <line x1="300" y1="150" x2="400" y2="300"/>
+    <line x1="500" y1="150" x2="400" y2="300"/>
+    <line x1="600" y1="180" x2="400" y2="300"/>
+  </g>
+  <!-- Swedish flag colors at base -->
+  <rect x="350" y="320" width="100" height="30" fill="#004b93"/>
+  <rect x="385" y="320" width="30" height="30" fill="#f1c40f"/>
+  <!-- FINAL banner -->
+  <rect x="250" y="60" width="300" height="50" fill="#e91e63" rx="10"/>
+  <text x="400" y="93" text-anchor="middle" fill="#fff" font-family="Arial" font-size="24" font-weight="bold">FINAL</text>
+  <!-- Location and date -->
+  <text x="400" y="380" text-anchor="middle" fill="#f1c40f" font-family="Arial" font-size="22" font-weight="bold">FRIENDS ARENA</text>
+  <text x="400" y="410" text-anchor="middle" fill="#fff" font-family="Arial" font-size="18">STOCKHOLM - 14 MARS</text>
+  <text x="400" y="435" text-anchor="middle" fill="#7f8c8d" font-family="Arial" font-size="14">MELODIFESTIVALEN 2026</text>
+  <!-- Confetti -->
+  <rect x="150" y="200" width="6" height="12" fill="#f1c40f" transform="rotate(30)"/>
+  <rect x="650" y="220" width="6" height="12" fill="#e91e63" transform="rotate(-20)"/>
+  <rect x="200" y="250" width="5" height="10" fill="#3498db" transform="rotate(45)"/>
+  <rect x="600" y="260" width="5" height="10" fill="#27ae60" transform="rotate(-35)"/>
+</svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <rect fill="#f5f5dc" width="800" height="450"/>
+  <!-- Church interior -->
+  <rect x="100" y="80" width="600" height="320" fill="#fff"/>
+  <!-- Arched windows -->
+  <path d="M200,100 L200,250 Q250,280 300,250 L300,100 Q250,70 200,100" fill="#87ceeb" stroke="#8b4513" stroke-width="3"/>
+  <path d="M500,100 L500,250 Q550,280 600,250 L600,100 Q550,70 500,100" fill="#87ceeb" stroke="#8b4513" stroke-width="3"/>
+  <!-- Altar -->
+  <rect x="320" y="200" width="160" height="100" fill="#8b4513"/>
+  <rect x="340" y="180" width="120" height="30" fill="#fff"/>
+  <!-- Cross -->
+  <rect x="390" y="120" width="20" height="80" fill="#f1c40f"/>
+  <rect x="370" y="140" width="60" height="15" fill="#f1c40f"/>
+  <!-- Candles -->
+  <rect x="350" y="160" width="8" height="25" fill="#ecf0f1"/>
+  <ellipse cx="354" cy="155" rx="5" ry="8" fill="#f39c12"/>
+  <rect x="442" y="160" width="8" height="25" fill="#ecf0f1"/>
+  <ellipse cx="446" cy="155" rx="5" ry="8" fill="#f39c12"/>
+  <!-- Confirmands in white -->
+  <g>
+    <ellipse cx="250" cy="340" rx="15" ry="15" fill="#f5cba7"/>
+    <rect x="240" y="355" width="20" height="40" fill="#fff"/>
+    <ellipse cx="320" cy="340" rx="15" ry="15" fill="#f5cba7"/>
+    <rect x="310" y="355" width="20" height="40" fill="#fff"/>
+    <ellipse cx="400" cy="335" rx="15" ry="15" fill="#f5cba7"/>
+    <rect x="390" y="350" width="20" height="40" fill="#fff"/>
+    <ellipse cx="480" cy="340" rx="15" ry="15" fill="#f5cba7"/>
+    <rect x="470" y="355" width="20" height="40" fill="#fff"/>
+    <ellipse cx="550" cy="340" rx="15" ry="15" fill="#f5cba7"/>
+    <rect x="540" y="355" width="20" height="40" fill="#fff"/>
+  </g>
+  <!-- Text -->
+  <text x="400" y="50" text-anchor="middle" fill="#5d3a1a" font-family="Arial" font-size="22" font-weight="bold">KONFIRMATION</text>
+  <text x="400" y="420" text-anchor="middle" fill="#2c3e50" font-family="Arial" font-size="16">ASARUMS KYRKA - 11 APRIL</text>
+  <text x="400" y="440" text-anchor="middle" fill="#7f8c8d" font-family="Arial" font-size="14">Äventyrsgruppen 2025-2026</text>
+</svg>

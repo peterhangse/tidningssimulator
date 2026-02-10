@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>BLT Framsida - {{ group_name }}</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 10mm;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background: #ffffff;
+            color: #000000;
+        }
+        
+        .newspaper {
+            width: 100%;
+            border: 6px solid #000000;
+        }
+        
+        /* Header */
+        .newspaper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 15px;
+            border-bottom: 6px solid #000000;
+        }
+        
+        .header-left, .header-right {
+            flex: 1;
+        }
+        
+        .header-left {
+            text-align: left;
+        }
+        
+        .header-right {
+            text-align: right;
+        }
+        
+        .header-text {
+            font-size: 8pt;
+            letter-spacing: 1px;
+        }
+        
+        .header-center {
+            flex: 0 0 auto;
+        }
+        
+        .logo {
+            font-family: 'Times New Roman', serif;
+            font-size: 48pt;
+            font-weight: bold;
+            letter-spacing: -2px;
+        }
+        
+        .header-date {
+            display: block;
+            font-size: 8pt;
+        }
+        
+        .header-week {
+            display: block;
+            font-size: 7pt;
+            color: #3c3c3c;
+        }
+        
+        /* Sections */
+        .top-section {
+            display: flex;
+            border-bottom: 6px solid #000000;
+        }
+        
+        .puffar-column {
+            width: 33%;
+            border-right: 6px solid #000000;
+        }
+        
+        .puff {
+            padding: 10px;
+            border-bottom: 6px solid #000000;
+            background: #d4a017;
+            min-height: 80px;
+        }
+        
+        .puff:last-child {
+            border-bottom: none;
+        }
+        
+        .huvudnyhet {
+            width: 67%;
+            padding: 15px;
+            min-height: 240px;
+        }
+        
+        .bottom-section {
+            display: flex;
+        }
+        
+        .mellan {
+            width: 33.33%;
+            padding: 10px;
+            border-right: 6px solid #000000;
+            min-height: 120px;
+        }
+        
+        .liten {
+            width: 16.66%;
+            padding: 8px;
+            border-right: 1px solid #ccc;
+            min-height: 120px;
+        }
+        
+        .liten:last-child {
+            border-right: none;
+        }
+        
+        /* Article styling */
+        .article h3 {
+            font-size: 12pt;
+            line-height: 1.2;
+            margin-bottom: 5px;
+        }
+        
+        .article .subheadline {
+            font-size: 9pt;
+            color: #3c3c3c;
+            line-height: 1.3;
+        }
+        
+        .article .body-text {
+            font-size: 8pt;
+            color: #3c3c3c;
+            line-height: 1.4;
+            margin-top: 5px;
+        }
+        
+        /* Huvudnyhet larger text */
+        .huvudnyhet .article h3 {
+            font-size: 24pt;
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+        
+        .huvudnyhet .article .subheadline {
+            font-size: 12pt;
+        }
+        
+        .huvudnyhet .article .body-text {
+            font-size: 10pt;
+            margin-top: 10px;
+        }
+        
+        /* Puff smaller */
+        .puff .article h3 {
+            font-size: 10pt;
+        }
+        
+        .puff .article .subheadline {
+            font-size: 8pt;
+        }
+        
+        /* Liten smallest */
+        .liten .article h3 {
+            font-size: 9pt;
+        }
+        
+        .liten .article .subheadline {
+            font-size: 7pt;
+        }
+        
+        .empty-slot {
+            color: #3c3c3c;
+            font-style: italic;
+            font-size: 9pt;
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 5px 15px;
+            border-top: 6px solid #000000;
+            font-size: 7pt;
+            color: #3c3c3c;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="newspaper">
+        <!-- Header -->
+        <div class="newspaper-header">
+            <div class="header-left">
+                <span class="header-text">BLEKINGE LÄNS TIDNING SEDAN 1869</span>
+            </div>
+            <div class="header-center">
+                <span class="logo">BLT</span>
+            </div>
+            <div class="header-right">
+                <span class="header-date">{{ date_str }}</span>
+                <span class="header-week">VECKA {{ week_num }}</span>
+            </div>
+        </div>
+        
+        <!-- Top section -->
+        <div class="top-section">
+            <div class="puffar-column">
+                <div class="puff">
+                    {% if slots.puff1 %}
+                    <div class="article">
+                        <h3>{{ slots.puff1.headline }}</h3>
+                        <p class="subheadline">{{ slots.puff1.subheadline }}</p>
+                    </div>
+                    {% else %}
+                    <p class="empty-slot">Puff 1 - ingen artikel vald</p>
+                    {% endif %}
+                </div>
+                <div class="puff">
+                    {% if slots.puff2 %}
+                    <div class="article">
+                        <h3>{{ slots.puff2.headline }}</h3>
+                        <p class="subheadline">{{ slots.puff2.subheadline }}</p>
+                    </div>
+                    {% else %}
+                    <p class="empty-slot">Puff 2 - ingen artikel vald</p>
+                    {% endif %}
+                </div>
+                <div class="puff">
+                    {% if slots.puff3 %}
+                    <div class="article">
+                        <h3>{{ slots.puff3.headline }}</h3>
+                        <p class="subheadline">{{ slots.puff3.subheadline }}</p>
+                    </div>
+                    {% else %}
+                    <p class="empty-slot">Puff 3 - ingen artikel vald</p>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="huvudnyhet">
+                {% if slots.huvudnyhet %}
+                <div class="article">
+                    <h3>{{ slots.huvudnyhet.headline }}</h3>
+                    <p class="subheadline">{{ slots.huvudnyhet.subheadline }}</p>
+                    <p class="body-text">{{ slots.huvudnyhet.body }}</p>
+                </div>
+                {% else %}
+                <p class="empty-slot">Huvudnyhet - ingen artikel vald</p>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Bottom section -->
+        <div class="bottom-section">
+            <div class="mellan">
+                {% if slots.mellan1 %}
+                <div class="article">
+                    <h3>{{ slots.mellan1.headline }}</h3>
+                    <p class="subheadline">{{ slots.mellan1.subheadline }}</p>
+                    <p class="body-text">{{ slots.mellan1.body[:150] }}...</p>
+                </div>
+                {% else %}
+                <p class="empty-slot">Mellan 1 - ingen artikel vald</p>
+                {% endif %}
+            </div>
+            
+            <div class="mellan">
+                {% if slots.mellan2 %}
+                <div class="article">
+                    <h3>{{ slots.mellan2.headline }}</h3>
+                    <p class="subheadline">{{ slots.mellan2.subheadline }}</p>
+                    <p class="body-text">{{ slots.mellan2.body[:150] }}...</p>
+                </div>
+                {% else %}
+                <p class="empty-slot">Mellan 2 - ingen artikel vald</p>
+                {% endif %}
+            </div>
+            
+            <div class="liten">
+                {% if slots.liten1 %}
+                <div class="article">
+                    <h3>{{ slots.liten1.headline }}</h3>
+                    <p class="subheadline">{{ slots.liten1.subheadline }}</p>
+                </div>
+                {% else %}
+                <p class="empty-slot">Liten 1</p>
+                {% endif %}
+            </div>
+            
+            <div class="liten">
+                {% if slots.liten2 %}
+                <div class="article">
+                    <h3>{{ slots.liten2.headline }}</h3>
+                    <p class="subheadline">{{ slots.liten2.subheadline }}</p>
+                </div>
+                {% else %}
+                <p class="empty-slot">Liten 2</p>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            Skapad av: {{ group_name }} | Tidningssimulator - BLT Framsidebyggare
+        </div>
+    </div>
+</body>
+</html>

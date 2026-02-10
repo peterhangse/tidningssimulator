@@ -1,0 +1,15 @@
+{
+  "groupName": "Test3",
+  "slots": {
+    "puff1": null,
+    "puff2": null,
+    "puff3": "2",
+    "texttopp": "4",
+    "huvudnyhet": "4",
+    "mellan1": "3",
+    "citat": "6",
+    "liten1": null,
+    "liten2": "5"
+  },
+  "timestamp": "2026-02-09T23:33:03.585Z"
+}

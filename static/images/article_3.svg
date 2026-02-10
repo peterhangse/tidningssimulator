@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="grass" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#82e0aa"/>
+      <stop offset="100%" style="stop-color:#27ae60"/>
+    </linearGradient>
+  </defs>
+  <rect fill="#87ceeb" width="800" height="300"/>
+  <rect y="300" fill="url(#grass)" width="800" height="150"/>
+  <!-- Sun -->
+  <circle cx="700" cy="80" r="50" fill="#f1c40f"/>
+  <!-- Slide -->
+  <polygon points="200,180 280,350 320,350 240,180" fill="#e74c3c"/>
+  <rect x="195" y="160" width="50" height="25" fill="#c0392b"/>
+  <!-- Swings -->
+  <rect x="400" y="180" width="150" height="10" fill="#8b4513"/>
+  <rect x="395" y="180" width="10" height="170" fill="#8b4513"/>
+  <rect x="545" y="180" width="10" height="170" fill="#8b4513"/>
+  <line x1="430" y1="190" x2="430" y2="300" stroke="#333" stroke-width="3"/>
+  <rect x="415" y="300" width="30" height="10" fill="#3498db"/>
+  <line x1="520" y1="190" x2="520" y2="300" stroke="#333" stroke-width="3"/>
+  <rect x="505" y="300" width="30" height="10" fill="#e74c3c"/>
+  <!-- Kids -->
+  <circle cx="250" cy="250" r="15" fill="#fad7a0"/>
+  <rect x="242" y="265" width="16" height="30" fill="#3498db"/>
+  <circle cx="520" cy="290" r="12" fill="#fad7a0"/>
+  <rect x="514" y="302" width="12" height="20" fill="#9b59b6"/>
+  <text x="400" y="420" text-anchor="middle" fill="#fff" font-family="Arial" font-size="18" font-weight="bold">NY LEKPLATS I RONNEBY</text>
+</svg>

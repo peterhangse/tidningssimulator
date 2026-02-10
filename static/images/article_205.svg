@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <rect fill="#f5f5dc" width="800" height="450"/>
+  <!-- Classroom setting -->
+  <rect x="50" y="50" width="700" height="350" fill="#fff"/>
+  <!-- Whiteboard -->
+  <rect x="250" y="70" width="300" height="150" fill="#ecf0f1"/>
+  <rect x="250" y="70" width="300" height="20" fill="#bdc3c7"/>
+  <!-- Author at front -->
+  <ellipse cx="400" cy="270" rx="25" ry="25" fill="#f5cba7"/>
+  <rect x="380" y="295" width="40" height="70" fill="#3498db"/>
+  <!-- Book in hand -->
+  <rect x="430" y="310" width="30" height="40" fill="#e74c3c"/>
+  <!-- Students -->
+  <g>
+    <ellipse cx="200" cy="350" rx="18" ry="18" fill="#f5cba7"/>
+    <rect x="185" y="368" width="30" height="40" fill="#9b59b6"/>
+    <ellipse cx="300" cy="360" rx="18" ry="18" fill="#f5cba7"/>
+    <rect x="285" y="378" width="30" height="40" fill="#27ae60"/>
+    <ellipse cx="500" cy="355" rx="18" ry="18" fill="#f5cba7"/>
+    <rect x="485" y="373" width="30" height="40" fill="#f1c40f"/>
+    <ellipse cx="600" cy="350" rx="18" ry="18" fill="#f5cba7"/>
+    <rect x="585" y="368" width="30" height="40" fill="#e74c3c"/>
+  </g>
+  <!-- Book covers floating -->
+  <rect x="100" y="100" width="40" height="55" fill="#e74c3c" transform="rotate(-10 120 127)"/>
+  <rect x="650" y="120" width="40" height="55" fill="#3498db" transform="rotate(15 670 147)"/>
+  <!-- Text on whiteboard -->
+  <text x="400" y="150" text-anchor="middle" fill="#2c3e50" font-family="Arial" font-size="20" font-weight="bold">MÅRTEN MELIN</text>
+  <text x="400" y="180" text-anchor="middle" fill="#7f8c8d" font-family="Arial" font-size="14">Författarbesök</text>
+  <!-- Title -->
+  <text x="400" y="430" text-anchor="middle" fill="#2c3e50" font-family="Arial" font-size="18" font-weight="bold">INSPIRERAR ELEVER PÅ STENBACKASKOLAN</text>
+</svg>

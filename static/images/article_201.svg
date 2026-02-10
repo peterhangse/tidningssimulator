@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="sky201" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3498db"/>
+      <stop offset="100%" style="stop-color:#85c1e9"/>
+    </linearGradient>
+  </defs>
+  <rect fill="url(#sky201)" width="800" height="300"/>
+  <rect fill="#27ae60" y="300" width="800" height="150"/>
+  <!-- Festival tents -->
+  <polygon points="150,300 200,200 250,300" fill="#e74c3c"/>
+  <polygon points="350,300 420,180 490,300" fill="#f1c40f"/>
+  <polygon points="550,300 600,220 650,300" fill="#9b59b6"/>
+  <!-- Stage -->
+  <rect x="250" y="320" width="300" height="80" fill="#2c3e50"/>
+  <rect x="260" y="280" width="280" height="40" fill="#34495e"/>
+  <!-- Crowd -->
+  <g fill="#2c3e50" opacity="0.7">
+    <ellipse cx="200" cy="380" rx="15" ry="15"/>
+    <ellipse cx="250" cy="390" rx="15" ry="15"/>
+    <ellipse cx="300" cy="385" rx="15" ry="15"/>
+    <ellipse cx="400" cy="380" rx="15" ry="15"/>
+    <ellipse cx="450" cy="390" rx="15" ry="15"/>
+    <ellipse cx="500" cy="385" rx="15" ry="15"/>
+    <ellipse cx="600" cy="380" rx="15" ry="15"/>
+  </g>
+  <!-- Music notes -->
+  <text x="320" y="260" fill="#fff" font-size="30">♪</text>
+  <text x="420" y="240" fill="#fff" font-size="35">♫</text>
+  <text x="480" y="265" fill="#fff" font-size="28">♪</text>
+  <!-- Banner -->
+  <rect x="200" y="50" width="400" height="60" fill="#004b93" rx="10"/>
+  <text x="400" y="90" text-anchor="middle" fill="#f1c40f" font-family="Arial" font-size="24" font-weight="bold">ÖSTERSJÖFESTIVALEN</text>
+  <text x="400" y="430" text-anchor="middle" fill="#2c3e50" font-family="Arial" font-size="18" font-weight="bold">15-18 JULI I KARLSHAMN</text>
+</svg>

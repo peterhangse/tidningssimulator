@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <rect fill="#87ceeb" width="800" height="300"/>
+  <!-- Sea -->
+  <rect y="300" fill="#3498db" width="800" height="150"/>
+  <!-- Waves -->
+  <path d="M0,320 Q50,310 100,320 T200,320 T300,320 T400,320 T500,320 T600,320 T700,320 T800,320" fill="none" stroke="#2980b9" stroke-width="3"/>
+  <!-- Bike path -->
+  <path d="M0,380 Q200,360 400,370 T800,350" fill="none" stroke="#e74c3c" stroke-width="8"/>
+  <!-- Cyclist -->
+  <circle cx="400" cy="355" r="20" fill="#333"/>
+  <circle cx="450" cy="355" r="20" fill="#333"/>
+  <polygon points="400,355 425,320 450,355" fill="#e74c3c"/>
+  <circle cx="425" cy="310" r="12" fill="#fad7a0"/>
+  <!-- Trees -->
+  <rect x="100" y="250" width="15" height="50" fill="#8b4513"/>
+  <circle cx="107" cy="240" r="30" fill="#27ae60"/>
+  <rect x="600" y="240" width="15" height="60" fill="#8b4513"/>
+  <circle cx="607" cy="225" r="35" fill="#27ae60"/>
+  <!-- Sun -->
+  <circle cx="700" cy="80" r="45" fill="#f1c40f"/>
+  <!-- Distance marker -->
+  <rect x="200" y="370" width="40" height="25" fill="#fff"/>
+  <text x="220" y="388" text-anchor="middle" fill="#333" font-family="Arial" font-size="12" font-weight="bold">30 mil</text>
+  <text x="400" y="430" text-anchor="middle" fill="#fff" font-family="Arial" font-size="18" font-weight="bold">NY CYKELLED LÄNGS KUSTEN</text>
+</svg>

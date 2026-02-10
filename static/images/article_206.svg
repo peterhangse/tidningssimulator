@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <rect fill="#F5DEB3" width="800" height="450"/>
+  <rect x="100" y="200" width="600" height="150" fill="#8B4513"/>
+  <circle cx="200" cy="180" r="28" fill="#DEB887"/>
+  <rect x="178" y="208" width="44" height="55" fill="#E74C3C"/>
+  <circle cx="400" cy="175" r="28" fill="#DEB887"/>
+  <rect x="378" y="203" width="44" height="55" fill="#3498DB"/>
+  <circle cx="600" cy="180" r="28" fill="#DEB887"/>
+  <rect x="578" y="208" width="44" height="55" fill="#27AE60"/>
+  <rect x="150" y="230" width="65" height="18" fill="#D2B48C"/>
+  <rect x="350" y="235" width="55" height="15" fill="#D2B48C"/>
+  <circle cx="550" cy="245" r="22" fill="#FFD700"/>
+  <line x1="550" y1="223" x2="550" y2="267" stroke="#8B4513" stroke-width="4"/>
+  <rect x="250" y="280" width="45" height="10" fill="#C0C0C0"/>
+  <polygon points="295,280 308,285 295,290" fill="#808080"/>
+  <ellipse cx="480" cy="295" rx="28" ry="18" fill="#9B59B6"/>
+  <rect x="200" y="50" width="400" height="65" fill="#27AE60" rx="12"/>
+  <text x="400" y="92" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="24" font-weight="bold">SLOJDWORKSHOP</text>
+  <text x="400" y="400" text-anchor="middle" fill="#2F4F4F" font-family="Arial, sans-serif" font-size="18">TALJ OCH FLATA PA STENBACKA BIBLIOTEK</text>
+  <text x="400" y="428" text-anchor="middle" fill="#696969" font-family="Arial, sans-serif" font-size="15">For barn 7-10 ar</text>
+</svg>

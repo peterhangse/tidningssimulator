@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bg107" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2c3e50"/>
+      <stop offset="100%" style="stop-color:#1a252f"/>
+    </linearGradient>
+  </defs>
+  <rect fill="url(#bg107)" width="800" height="450"/>
+  <!-- Season ticket card design -->
+  <rect x="150" y="80" width="500" height="280" fill="#f1c40f" rx="20"/>
+  <!-- Diagonal stripe -->
+  <polygon points="150,200 150,80 350,80 650,360 650,360 450,360" fill="#2c3e50" opacity="0.3"/>
+  <!-- Club emblem area -->
+  <circle cx="280" cy="180" r="60" fill="#2c3e50"/>
+  <text x="280" y="170" text-anchor="middle" fill="#f1c40f" font-family="Arial" font-size="20" font-weight="bold">MJÄLLBY</text>
+  <text x="280" y="195" text-anchor="middle" fill="#f1c40f" font-family="Arial" font-size="16">AIF</text>
+  <!-- Text -->
+  <text x="480" y="150" text-anchor="middle" fill="#2c3e50" font-family="Arial" font-size="18">ÅRSKORT</text>
+  <text x="480" y="200" text-anchor="middle" fill="#2c3e50" font-family="Arial" font-size="48" font-weight="bold">2026</text>
+  <!-- Slogan -->
+  <rect x="200" y="280" width="400" height="50" fill="#2c3e50" rx="5"/>
+  <text x="400" y="312" text-anchor="middle" fill="#f1c40f" font-family="Arial" font-size="18" font-style="italic">"Vår historia fortsätter"</text>
+  <text x="400" y="400" text-anchor="middle" fill="#fff" font-family="Arial" font-size="16">NY DESIGN AV JOHANNA LINDQVIST</text>
+</svg>

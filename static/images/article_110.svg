@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <rect fill="#1a252f" width="800" height="450"/>
+  <!-- Meeting room -->
+  <rect x="100" y="150" width="600" height="250" fill="#34495e" rx="10"/>
+  <!-- People silhouettes around table -->
+  <rect x="200" y="250" width="400" height="100" fill="#7f8c8d" rx="5"/>
+  <!-- People -->
+  <g fill="#2c3e50">
+    <ellipse cx="180" cy="280" rx="20" ry="20"/>
+    <ellipse cx="280" cy="230" rx="20" ry="20"/>
+    <ellipse cx="400" cy="220" rx="20" ry="20"/>
+    <ellipse cx="520" cy="230" rx="20" ry="20"/>
+    <ellipse cx="620" cy="280" rx="20" ry="20"/>
+  </g>
+  <!-- Screen/presentation -->
+  <rect x="300" y="80" width="200" height="120" fill="#fff"/>
+  <rect x="310" y="90" width="180" height="80" fill="#f1c40f"/>
+  <text x="400" y="135" text-anchor="middle" fill="#2c3e50" font-family="Arial" font-size="16" font-weight="bold">MAIF</text>
+  <!-- Club colors decoration -->
+  <rect x="100" y="400" width="150" height="10" fill="#f1c40f"/>
+  <rect x="250" y="400" width="150" height="10" fill="#2c3e50"/>
+  <rect x="400" y="400" width="150" height="10" fill="#f1c40f"/>
+  <rect x="550" y="400" width="150" height="10" fill="#2c3e50"/>
+  <!-- Text -->
+  <text x="400" y="50" text-anchor="middle" fill="#f1c40f" font-family="Arial" font-size="24" font-weight="bold">MEDLEMSKVÄLL</text>
+  <text x="400" y="430" text-anchor="middle" fill="#fff" font-family="Arial" font-size="18">11 FEBRUARI - VÄLKOMMEN!</text>
+</svg>

@@ -1,0 +1,5027 @@
+/* === SANOMAT & SAHARA BODONI FONTS === */
+@font-face {
+    font-family: 'Sanomat';
+    src: url('/static/fonts/Sanomat-Regular.woff2') format('woff2'),
+             url('/static/fonts/Sanomat-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Sanomat';
+    src: url('/static/fonts/Sanomat-Bold.woff2') format('woff2'),
+             url('/static/fonts/Sanomat-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Sanomat';
+    src: url('/static/fonts/Sanomat-Italic.woff2') format('woff2'),
+             url('/static/fonts/Sanomat-Italic.woff') format('woff');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Sanomat';
+    src: url('/static/fonts/Sanomat-Medium.woff2') format('woff2'),
+             url('/static/fonts/Sanomat-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Sanomat Sans';
+    src: url('/static/fonts/SanomatSans-Bold.woff2') format('woff2'),
+             url('/static/fonts/SanomatSans-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Sahara Bodoni';
+    src: url('/static/fonts/SaharaBodoni.woff2') format('woff2'),
+             url('/static/fonts/SaharaBodoni.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* === TYPOGRAFI-STILAR === */
+.rubrik-vansterkryss {
+    font-family: 'Sanomat', sans-serif;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 51px;
+}
+.brodtext-huvudartikel {
+    font-family: 'Sanomat', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21.24px;
+}
+.texttopp {
+    font-family: 'Sanomat', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+}
+.sidreferens {
+    font-family: 'Sanomat Sans', sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+}
+.citat-text {
+    font-family: 'Sanomat', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 18px;
+}
+.citattecken {
+    width: 24px;
+    height: auto;
+    display: block;
+    margin: 4px 12px 4px 0; /* Half size, 12px right margin to keep same space */
+}
+.namn-citat {
+    font-family: 'Sanomat', sans-serif;
+    font-weight: 500;
+    font-size: 8.5px;
+}
+/* === SANOMAT FONT === */
+@font-face {
+    font-family: 'Sanomat';
+    src: url('/static/fonts/Sanomat.woff2') format('woff2'),
+             url('/static/fonts/Sanomat.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Sanomat';
+    src: url('/static/fonts/Sanomat-Bold.woff2') format('woff2'),
+             url('/static/fonts/Sanomat-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+html, body, .sidebar, .sidebar-header-box, .sidebar-info, .article-card, .slot, .slot-content, .article-display, .article-page, .citat-text, .placeholder-text, .btn, .btn-finish, .masthead, .puff-content, .panel-step, .right-panel, .finish-button-container, .headline, .subheadline, h1, h2, h3, h4, h5, h6, p, span, label, input, select, button, .sidebar-header, .sidebar-content, .sidebar-header-box, .sidebar-info {
+    font-family: 'Sanomat', sans-serif !important;
+}
+/* Vänsterställ citatet i citat-slot */
+/* Maximal specifitet för vänsterställning av citat */
+ .slot[data-slot="citat"] .slot-content .citat-text,
+ .slot[data-slot="citat"] .article-display .citat-text,
+ .slot[data-slot="citat"] .citat-text {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    text-align: left !important;
+    border-left: none !important;
+}
+/* Bottom row slots: relative for absolute page ref positioning */
+.slot[data-slot="mellan1"],
+.slot[data-slot="citat"],
+.slot[data-slot="liten1"],
+.slot[data-slot="liten2"] {
+    position: relative !important;
+    height: 160px !important;
+    min-height: 160px !important;
+    max-height: 160px !important;
+    box-sizing: border-box;
+    border: none !important;
+    box-shadow: none !important;
+    background: var(--white) !important;
+    padding-bottom: 0 !important;
+}
+
+.slot[data-slot="mellan1"] .slot-content,
+.slot[data-slot="citat"] .slot-content,
+.slot[data-slot="liten1"] .slot-content,
+.slot[data-slot="liten2"] .slot-content {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    overflow: visible !important;
+}
+
+.slot[data-slot="mellan1"] .article-display,
+.slot[data-slot="citat"] .article-display,
+.slot[data-slot="liten1"] .article-display,
+.slot[data-slot="liten2"] .article-display {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+}
+
+/* Page refs: absolute at bottom-left, same position for all */
+.slot[data-slot="mellan1"] .article-page,
+.slot[data-slot="citat"] .article-page,
+.slot[data-slot="liten1"] .article-page,
+.slot[data-slot="liten2"] .article-page {
+    position: absolute !important;
+    left: 8px !important;
+    bottom: 6px !important;
+    margin: 0 !important;
+    font-family: var(--font-sans) !important;
+    font-size: 0.5rem !important;
+    font-weight: 600 !important;
+    color: var(--blt-blue) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.2px !important;
+    background: none !important;
+    pointer-events: none;
+}
+
+/* Liten1/liten2 content area */
+.slot[data-slot="liten1"] .article-display,
+.slot[data-slot="liten2"] .article-display {
+    overflow: visible !important;
+}
+.slot[data-slot="liten1"] .article-display h3,
+.slot[data-slot="liten2"] .article-display h3,
+.slot[data-slot="liten1"] .article-display .subheadline,
+.slot[data-slot="liten2"] .article-display .subheadline {
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    word-break: normal;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    margin-bottom: 2px;
+}
+
+/* Smaller headline for liten1/liten2 (one click smaller) */
+.slot[data-slot="liten1"] .notis-large-headline h3,
+.slot[data-slot="liten2"] .notis-large-headline h3 {
+    font-size: 0.7rem;
+}
+.slot[data-slot="liten1"] .font-size-controls,
+.slot[data-slot="liten2"] .font-size-controls {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    z-index: 2;
+}
+/* TEST: Ge varje variant en tydlig bakgrundsfärg på sidreferensen */
+
+.sidref-absbotten .slot[data-slot="mellan1"] .article-display > .article-page,
+.sidref-absbotten .slot[data-slot="liten1"] .article-display > .article-page,
+.sidref-absbotten .slot[data-slot="liten2"] .article-display > .article-page {
+    background: #ffe0e0 !important; /* ljusröd för test */
+    border: 1px solid #c00 !important;
+}
+.sidref-flexbotten .slot[data-slot="mellan1"] .article-display > .article-page,
+.sidref-flexbotten .slot[data-slot="liten1"] .article-display > .article-page,
+.sidref-flexbotten .slot[data-slot="liten2"] .article-display > .article-page {
+    background: #e0e0ff !important; /* ljusblå för test */
+    border: 1px solid #00c !important;
+}
+.sidref-gridbotten .slot[data-slot="mellan1"] .article-display > .article-page,
+.sidref-gridbotten .slot[data-slot="liten1"] .article-display > .article-page,
+.sidref-gridbotten .slot[data-slot="liten2"] .article-display > .article-page {
+    background: #fffbe0 !important; /* ljusgul för test */
+    border: 1px solid #cc0 !important;
+}
+.sidref-offset .slot[data-slot="mellan1"] .article-display > .article-page,
+.sidref-offset .slot[data-slot="liten1"] .article-display > .article-page,
+.sidref-offset .slot[data-slot="liten2"] .article-display > .article-page {
+    background: #e0fff8 !important; /* ljuscyan för test */
+    border: 1px solid #0cc !important;
+}
+.sidref-dold .slot[data-slot="mellan1"] .article-display > .article-page,
+.sidref-dold .slot[data-slot="liten1"] .article-display > .article-page,
+.sidref-dold .slot[data-slot="liten2"] .article-display > .article-page {
+    background: #fff !important;
+    border: none !important;
+}
+/* === SIDREFERENS-VARIANTER === */
+/* 1. Inline/flöde (citat-style) */
+.sidref-inline .slot[data-slot="mellan1"] .article-display > .article-page,
+.sidref-inline .slot[data-slot="liten1"] .article-display > .article-page,
+.sidref-inline .slot[data-slot="liten2"] .article-display > .article-page {
+    position: static !important;
+    margin: 8px 0 0 12px !important;
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--secondary-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+    background: none;
+    pointer-events: none;
+}
+
+/* 2. Absolut botten */
+.sidref-absbotten .slot[data-slot="mellan1"] .article-display > .article-page,
+.sidref-absbotten .slot[data-slot="liten1"] .article-display > .article-page,
+.sidref-absbotten .slot[data-slot="liten2"] .article-display > .article-page {
+    position: absolute !important;
+    left: 12px !important;
+    bottom: 8px !important;
+    margin: 0 !important;
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--secondary-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+    background: none;
+    pointer-events: none;
+}
+.sidref-absbotten .slot[data-slot="mellan1"],
+.sidref-absbotten .slot[data-slot="liten1"],
+.sidref-absbotten .slot[data-slot="liten2"] {
+    position: relative !important;
+}
+
+/* 3. Flexbox-botten */
+.sidref-flexbotten .slot[data-slot="mellan1"] .article-display,
+.sidref-flexbotten .slot[data-slot="liten1"] .article-display,
+.sidref-flexbotten .slot[data-slot="liten2"] .article-display {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.sidref-flexbotten .slot[data-slot="mellan1"] .article-display > .article-page,
+.sidref-flexbotten .slot[data-slot="liten1"] .article-display > .article-page,
+.sidref-flexbotten .slot[data-slot="liten2"] .article-display > .article-page {
+    margin-top: auto !important;
+    margin-bottom: 0 !important;
+    margin-left: 12px !important;
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--secondary-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+    background: none;
+    pointer-events: none;
+}
+
+/* 4. Grid-botten */
+.sidref-gridbotten .slot[data-slot="mellan1"] .article-display,
+.sidref-gridbotten .slot[data-slot="liten1"] .article-display,
+.sidref-gridbotten .slot[data-slot="liten2"] .article-display {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    height: 100%;
+}
+.sidref-gridbotten .slot[data-slot="mellan1"] .article-display > .article-page,
+.sidref-gridbotten .slot[data-slot="liten1"] .article-display > .article-page,
+.sidref-gridbotten .slot[data-slot="liten2"] .article-display > .article-page {
+    align-self: start;
+    justify-self: start;
+    margin-left: 12px !important;
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--secondary-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+    background: none;
+    pointer-events: none;
+}
+
+/* 5. Manuell offset (20px från botten) */
+.sidref-offset .slot[data-slot="mellan1"] .article-display > .article-page,
+.sidref-offset .slot[data-slot="liten1"] .article-display > .article-page,
+.sidref-offset .slot[data-slot="liten2"] .article-display > .article-page {
+    position: absolute !important;
+    left: 12px !important;
+    bottom: 20px !important;
+    margin: 0 !important;
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--secondary-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+    background: none;
+    pointer-events: none;
+}
+.sidref-offset .slot[data-slot="mellan1"],
+.sidref-offset .slot[data-slot="liten1"],
+.sidref-offset .slot[data-slot="liten2"] {
+    position: relative !important;
+}
+
+/* 6. Dold */
+.sidref-dold .slot[data-slot="mellan1"] .article-display > .article-page,
+.sidref-dold .slot[data-slot="liten1"] .article-display > .article-page,
+.sidref-dold .slot[data-slot="liten2"] .article-display > .article-page {
+    display: none !important;
+}
+.slot[data-slot="mellan1"],
+.slot[data-slot="liten1"],
+.slot[data-slot="liten2"] {
+    height: 140px !important;
+    min-height: 140px !important;
+    max-height: 140px !important;
+    background: var(--white) !important;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+.slot[data-slot="mellan1"] .article-display > .article-page,
+.slot[data-slot="liten1"] .article-display > .article-page,
+.slot[data-slot="liten2"] .article-display > .article-page {
+    position: static !important;
+    margin: 8px 0 0 12px !important;
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--secondary-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+    background: none;
+    pointer-events: none;
+}
+.slot[data-slot="mellan1"],
+.slot[data-slot="liten1"],
+.slot[data-slot="liten2"] {
+    position: relative !important;
+    overflow: visible !important;
+}
+.slot[data-slot="mellan1"] .slot-content,
+.slot[data-slot="liten1"] .slot-content,
+.slot[data-slot="liten2"] .slot-content {
+    position: absolute !important;
+    inset: 0 !important;
+    min-height: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: none;
+    display: block !important;
+}
+.slot[data-slot="mellan1"] .slot-content > .article-page,
+.slot[data-slot="liten1"] .slot-content > .article-page,
+.slot[data-slot="liten2"] .slot-content > .article-page {
+    position: absolute !important;
+    left: 8px;
+    bottom: 0;
+    margin: 0;
+    z-index: 10;
+    background: none;
+    width: auto;
+    pointer-events: none;
+}
+/* --- Pin .article-page to bottom of slot-content for mellan1, liten1, liten2 --- */
+.slot[data-slot="mellan1"] .slot-content,
+.slot[data-slot="liten1"] .slot-content,
+.slot[data-slot="liten2"] .slot-content {
+    position: relative !important;
+    min-height: 90px;
+}
+.slot[data-slot="mellan1"] .slot-content > .article-page,
+.slot[data-slot="liten1"] .slot-content > .article-page,
+.slot[data-slot="liten2"] .slot-content > .article-page {
+    position: absolute !important;
+    left: 8px;
+    bottom: 0;
+    margin: 0;
+    z-index: 10;
+    background: none;
+    width: auto;
+    pointer-events: none;
+}
+/* --- Bottom section slots: use normal display with absolute page refs --- */
+
+.newspaper > .bottom-section .slot[data-slot="mellan1"] .slot-content,
+.newspaper > .bottom-section .slot[data-slot="citat"] .slot-content,
+.newspaper > .bottom-section .slot[data-slot="liten1"] .slot-content,
+.newspaper > .bottom-section .slot[data-slot="liten2"] .slot-content {
+    display: block !important;
+    position: static !important;
+    overflow: visible !important;
+    padding: 10px 8px 0 8px !important;
+}
+
+/* All bottom section slots: relative positioning, FIXED height for alignment */
+.newspaper > .bottom-section .slot[data-slot="mellan1"],
+.newspaper > .bottom-section .slot[data-slot="citat"],
+.newspaper > .bottom-section .slot[data-slot="liten1"],
+.newspaper > .bottom-section .slot[data-slot="liten2"] {
+    position: relative !important;
+    overflow: visible !important;
+    height: 160px !important;
+    min-height: 160px !important;
+    max-height: 160px !important;
+    padding-bottom: 0 !important;
+}
+
+/* Page refs: absolute at bottom for ALL bottom section slots */
+.newspaper > .bottom-section .slot[data-slot="mellan1"] .article-page,
+.newspaper > .bottom-section .slot[data-slot="liten1"] .article-page,
+.newspaper > .bottom-section .slot[data-slot="liten2"] .article-page {
+    position: absolute !important;
+    left: 8px !important;
+    right: auto !important;
+    bottom: 6px !important;
+    top: auto !important;
+    margin: 0 !important;
+    z-index: 9999 !important;
+    width: auto !important;
+    text-align: left !important;
+    display: inline-block !important;
+    background: none !important;
+    border: none !important;
+    pointer-events: none;
+    font-size: 0.5rem !important;
+    font-weight: 600 !important;
+    color: var(--blt-blue) !important;
+    text-transform: uppercase !important;
+}
+
+/* Citat page ref: larger */
+.newspaper > .bottom-section .slot[data-slot="citat"] .article-page {
+    position: absolute !important;
+    left: 8px !important;
+    right: auto !important;
+    bottom: 6px !important;
+    top: auto !important;
+    margin: 0 !important;
+    z-index: 9999 !important;
+    width: auto !important;
+    text-align: left !important;
+    display: inline-block !important;
+    background: none !important;
+    border: none !important;
+    pointer-events: none;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    color: var(--blt-blue) !important;
+    text-transform: uppercase !important;
+}
+.sidebar-header-box, .sidebar-header-box h2, .sidebar-header-box .sidebar-info {
+    text-align: center !important;
+}
+
+.sidebar-header-box {
+    background: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgb(0 0 0 / 4%);
+    padding: 16px 10px 10px;
+    margin-bottom: 12px;
+
+    /* center content horizontally */
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-header-box h2 {
+    margin-bottom: 6px;
+    font-size: 1.1rem;
+    color: #333;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+}
+
+.sidebar-header-box .sidebar-info {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    color: var(--secondary-gray);
+    line-height: 1.3;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+}
+
+/* Centered mock header box (visual verification) */
+.sidebar-header-mock {
+    display: none !important;
+}
+
+/* If the mock was removed from the template but still appears due to browser cache,
+   the rule above ensures it is hidden until clients fetch the updated HTML. */
+.sidebar-header-mock .mock-image {
+    width: 48px;
+    height: 48px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 8px;
+    background: #fff7e0;
+    border: 1px solid rgb(0 0 0 / 4%);
+}
+
+.sidebar-header-mock .mock-title {
+    margin: 0 0 6px;
+    font-size: 1.05rem;
+    color: #222;
+}
+
+.sidebar-header-mock .mock-info {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--secondary-gray);
+}
+
+/* ========================================
+   BLT Framsida - A4 Optimerad Layout
+   A4: 210mm × 297mm (vid 96 DPI = ~794 × 1123 px)
+   Skärmvy: Visar exakt A4-proportioner
+   ======================================== */
+
+:root {
+    /* === A4 MÅTT (200mm × 287mm med 5mm marginaler) === */
+
+    /* Vid 96 DPI: ~756px × 1085px användbar yta */
+
+    /* Skärmskala: 75% för bekväm redigering */
+    --a4-scale: 0.75;
+    
+    /* Tidningsbredd: 200mm → 756px → skalat 75% = 567px */
+    --content-width: 567px;
+    
+    /* A4-höjd för print: 287mm → 1085px → skalat 75% = 900px (ökad för alla sektioner) */
+    --content-height: 900px;
+    
+    /* Puffar: ~7% av höjden = 57px för 3 rader (19px var) */
+    --puff-container-height: 75px;
+    --puff-height: 25px;
+    
+    /* Texttopp: ~10% av höjden */
+    --texttopp-height: 100px;
+    
+    /* Rubrikruta: ~10% av höjden */
+    --headline-height: 65px;
+    --headline-border: 4px;
+    
+    /* Huvudbild: ~30% av höjden (ökad för att klara två rader text i overlay) */
+    --hero-height: 280px;
+    
+    /* Artikel och Citat: en tredjedel av bredden var */
+    --mellan-width: 189px;
+    --mellan-height: 146px;
+    
+    /* Notiser: dela på en tredjedel (1/6 var) */
+    --liten-width: 94px;
+    --liten-height: 146px;
+
+    /* === FÄRGER (EXAKT FRÅN SPEC) === */
+    --blt-blue: #025ECC;
+    --puff-yellow: #FBD644;
+
+    /* Accent between yellow and orange for puff labels/page refs */
+    --puff-accent: #F6BD2F;
+    --white: #FFF;
+
+    /* Headline sizing for top story */
+    --huvudnyhet-headline-size: 1.3rem;
+
+    /* Masthead image height (adjustable) */
+    --masthead-height: 160px;
+    --text-black: #020202;
+    --secondary-gray: #666;
+    --frame-dark: #494238;
+    --puff-bg: #393128;
+    --content-gutter: 12px; /* horizontal inner gutter for page content */
+
+    /* === TECKENGRÄNSER === */
+
+    /* Puff: 24 tecken (1 rad), 40 tecken (2 rader) */
+
+    /* Rubrik: 70 tecken max, varna vid >48 */
+
+    /* Ingress: 60 tecken (1 rad), 120 tecken (2 rader) */
+
+    /* Mellan rubrik: 45 tecken, ingress: 90 tecken */
+
+    /* Liten rubrik: 30 tecken, ingress: 60 tecken */
+
+    /* Typography */
+    --font-sans: "Helvetica Neue", arial, helvetica, sans-serif;
+    --font-serif: georgia, "Times New Roman", times, serif;
+}
+
+/* TEMP VISUAL VERIFY removed */
+
+/* ======= Test: Headlines typography tweaks =======
+   - Rubriker: Georgia/serif, heavier weight (900)
+   - Stora rubriker: negative letter-spacing and compact line-height
+*/
+.article-card h3,
+.texttopp .article-display h3,
+.huvudnyhet .headline-overlay h3,
+.artikel-large-headline h3,
+.notis-large-headline h3,
+.modal-headline,
+.newspaper .article-display h3 {
+    font-family: Georgia, serif;
+    font-weight: 900;
+    /* default spacing for regular headings */
+    letter-spacing: 0px;
+}
+
+/* Large/feature headlines: tighter spacing and compact line-height */
+.artikel-large-headline h3,
+.notis-large-headline h3,
+.huvudnyhet .headline-overlay h3,
+.texttopp .article-display h3 {
+    letter-spacing: -0.8px; /* test value between -0.5 and -2px */
+    line-height: 1.1;
+}
+
+
+/* ========================================
+   Design overrides - consolidated and harmonized
+   Keep rules simple and variable-driven so they are easy to edit.
+   ======================================== */
+
+/* Puffar (top strips) */
+.puffar-section {
+    /* puffar background will be painted inset via ::before so it aligns
+       with the page inner gutter and the texttopp frame */
+    background: transparent;
+    position: relative;
+    padding-left: var(--content-gutter);
+    padding-right: var(--content-gutter);
+}
+
+.puffar-section::before {
+    content: '';
+    position: absolute;
+    left: var(--content-gutter);
+    right: var(--content-gutter);
+    top: 0;
+    bottom: 0;
+    background: var(--puff-bg);
+    z-index: 0;
+}
+
+/* Small right-edge fill for puff area to cover any white strip at page edge */
+.puffar-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: var(--content-gutter); /* align to inner right edge of puff background */
+    width: 1px; /* slim 1px cover strip */
+    height: 100%;
+    background: var(--puff-bg);
+    z-index: 2; /* bring to front over ::before */
+    pointer-events: none;
+}
+
+.puffar-section .puff-strip {
+    background: transparent;
+}
+
+.puff-category,
+.article-category {
+    color: #fac01c;
+    background: none;
+    padding: 0;
+    font-weight: 700;
+    text-transform: none;
+    font-size: 0.65rem;
+}
+
+.puff-page,
+.puffar-section .puff-page {
+    color: #fac01c;
+    background: none;
+    padding-left: 8px;
+    font-size: 0.65rem;
+}
+
+.puff-headline {
+    color: #F3EAD0; /* ljusare beige */
+    font-size: 0.85rem;
+    line-height: 1.15;
+}
+
+/* Force equal text size for area, headline and page ref in toppnotiser
+   Use a very specific selector and !important to override other rules */
+.puff-strip.has-article .puff-category,
+.puff-strip.has-article .puff-headline,
+.puff-strip.has-article .puff-page {
+    font-size: 0.85rem !important; /* same as puff headline */
+    line-height: 1.15 !important;
+}
+
+/* Masthead and header meta */
+.masthead-title { color: var(--blt-blue); }
+
+/* header-meta removed — no header meta text should be displayed */
+
+/* Masthead image handling */
+.masthead {
+    position: relative;
+
+    /* allow the masthead to grow to image height so the full image is visible */
+    overflow: visible;
+    height: auto;
+}
+
+.masthead-image {
+    width: 100%;
+    height: auto; /* preserve aspect ratio so the whole image is visible */
+    display: block;
+    object-fit: contain;
+    object-position: left center;
+
+    /* keep the header reasonable on very small screens while scaling with viewport */
+    max-height: 28vh;
+}
+.masthead-text { display: block; }
+
+/* When JS detects header image loaded, hide textual masthead */
+body.has-header-image .masthead-text { display: none !important; }
+body.has-header-image .masthead-image { display: block; }
+
+/* Huvudnyhet overlay: full-width overlay, blue block on left */
+
+.huvudnyhet .headline-overlay {
+    position: absolute;
+    left: 0;
+    bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: transparent !important;
+    border-radius: 0;
+    z-index: 3;
+    box-sizing: border-box;
+    padding: 0;
+    box-shadow: none;
+}
+
+.huvudnyhet .headline-overlay h3,
+.huvudnyhet .headline-overlay .main-category,
+.huvudnyhet .headline-overlay .main-sidreferens {
+    display: inline;
+    background: #111;
+    color: #fff;
+    border-radius: 0;
+    margin: 0;
+    padding: 6px 8px;
+    box-shadow: none;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+.huvudnyhet .headline-overlay .main-category {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-top: 0;
+    opacity: 0.85;
+}
+.huvudnyhet .headline-overlay .main-sidreferens {
+    font-size: 1.05rem;
+    font-weight: 400;
+    margin-top: 0;
+    opacity: 0.85;
+}
+.huvudnyhet .headline-overlay h3 {
+    font-family: Georgia, serif; /* user requested serif */
+    font-size: 16pt;
+    font-weight: 700; /* bold */
+    letter-spacing: -0.5px; /* user requested */
+    line-height: 1.5;
+    color: var(--white);
+    margin: 0;
+    padding: 1px 8px;
+    background: #111;
+    border-radius: 0;
+    display: inline;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+.huvudnyhet .headline-overlay h3 span { background: transparent; padding: 0; }
+
+.huvudnyhet .headline-overlay .huvudnyhet-page {
+    display:inline;
+    font-family:var(--font-sans);
+    font-size: 6.5pt;
+    font-weight:500;
+    text-transform:none;
+    background: #111;
+    color: #fff;
+    padding: 1px 8px;
+    margin: 0;
+    border-radius: 0;
+    line-height: 1.5;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+
+/* Slot typography and spacing */
+.slot .slot-content h3 { font-weight:700; line-height:1.12; margin-bottom:0.18em; }
+.slot .slot-content .subheadline { color:var(--secondary-gray); font-size:0.92rem; }
+.slot .slot-content { padding:8px 10px; }
+
+/* End consolidated overrides */
+
+/* Page references: make all page markers blue */
+.article-page,
+.huvudnyhet-page,
+.texttopp-page,
+.puff-page {
+    /* puff page refs use accent between yellow and orange */
+    color: var(--puff-accent);
+}
+
+.article-page,
+.huvudnyhet-page,
+.texttopp-page {
+    color: var(--blt-blue);
+}
+
+/* Ensure page references in bottom-row slots match the texttopp page color */
+.mellan1 .article-page,
+.mellan1 .texttopp-page,
+.notis-slot .article-page,
+.liten .article-page,
+.liten .texttopp-page,
+.slot .article-page {
+    color: var(--blt-blue) !important;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+    height: 100%;
+    font-family: var(--font-sans);
+    background-color: #f4f4f4;
+    background-image: 
+        repeating-linear-gradient(45deg, rgb(220 220 220 / 12%) 0, rgb(220 220 220 / 12%) 20px, rgb(0 0 0 / 6%) 20px, rgb(0 0 0 / 6%) 40px),
+        repeating-linear-gradient(-45deg, rgb(210 210 210 / 8%) 0, rgb(210 210 210 / 8%) 20px, rgb(0 0 0 / 4%) 20px, rgb(0 0 0 / 4%) 40px);
+    color: var(--text-black);
+}
+
+/* ========================================
+   App Layout
+   ======================================== */
+
+.app-container {
+    display: flex;
+    height: 100vh;
+    min-height: 0;
+}
+
+/* ========================================
+   Sidebar
+   ======================================== */
+
+.sidebar {
+    width: 340px;
+    background: var(--white);
+    border-right: 1px solid #ddd;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.sidebar-header {
+    padding: 12px 12px 0;
+    background: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.sidebar-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 12px 12px;
+}
+
+.sidebar h2 {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+.sidebar-info {
+    font-size: 0.7rem;
+    color: var(--secondary-gray);
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.article-list {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+.article-card {
+    background: var(--white);
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 6px 8px;
+    margin-bottom: 6px;
+    cursor: grab;
+    transition: all 0.2s ease;
+}
+
+.article-card:hover {
+    border-color: var(--puff-yellow);
+    box-shadow: 0 2px 6px rgb(251 214 68 / 30%);
+}
+
+.article-card.dragging { opacity: 0.5; cursor: grabbing; }
+.article-card.used { opacity: 0.4; border-color: #ccc; background: #f9f9f9; }
+
+.article-category {
+    display: inline-block;
+
+    /* Use yellow themed text for category labels (no filled box) */
+    background: none;
+    font-size: 0.55rem;
+    font-weight: bold;
+    color: #E9D8B0;
+    border-radius: 0;
+    margin-bottom: 3px;
+    text-transform: uppercase;
+}
+
+.article-card h3 {
+    font-family: Georgia, serif;
+    font-size: 18px; /* user requested */
+    font-weight: 700; /* bold */
+    color: var(--text-black);
+    margin-bottom: 4px;
+    line-height: 1.2;
+}
+
+.article-card p {
+    font-size: 0.65rem;
+    color: var(--secondary-gray);
+    line-height: 1.2;
+}
+
+/* Sidebar Actions */
+.sidebar-actions {
+    padding-top: 12px;
+    border-top: 1px solid #ddd;
+    margin-top: 12px;
+}
+
+.group-name-input { margin-bottom: 8px; }
+
+.group-name-input label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.group-name-input input {
+    width: 100%;
+    padding: 6px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+.group-name-input input:focus {
+    outline: none;
+    border-color: var(--blt-blue);
+}
+
+.btn {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 6px;
+}
+
+.btn-save { background: #28a745; color: var(--white); }
+.btn-save:hover { background: #218838; }
+.btn-pdf { background: var(--blt-blue); color: var(--white); }
+.btn-pdf:hover { background: #014a9e; }
+
+/* ========================================
+   Newspaper Container
+   ======================================== */
+
+.newspaper-container {
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    padding: 20px 20px 20px 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    overflow: hidden;
+    background-color: #f4f4f4;
+    background-image: 
+        repeating-linear-gradient(45deg, rgb(220 220 220 / 12%) 0, rgb(220 220 220 / 12%) 20px, rgb(0 0 0 / 6%) 20px, rgb(0 0 0 / 6%) 40px),
+        repeating-linear-gradient(-45deg, rgb(210 210 210 / 8%) 0, rgb(210 210 210 / 8%) 20px, rgb(0 0 0 / 4%) 20px, rgb(0 0 0 / 4%) 40px);
+}
+
+/* Wrapper for scaling the newspaper */
+.newspaper-scale-wrapper {
+    transform-origin: top left;
+    transition: transform 0.2s ease;
+}
+
+.newspaper {
+    width: var(--content-width);
+    height: auto;
+    min-height: var(--content-height);
+    background: var(--white);
+    box-shadow: 0 4px 20px rgb(0 0 0 / 25%);
+    /* Use the same dark frame color so edges match the puffar band */
+    border: 1px solid var(--frame-dark);
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.newspaper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/static/images/blt_background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity 0.3s ease;
+}
+
+.newspaper.show-reference::before {
+    opacity: 0.35;
+}
+
+/* Ensure all newspaper content is above the reference image */
+.newspaper > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Make all top-level newspaper sections align to the same inner gutter
+   (except the finish button container which is handled separately) */
+.newspaper > *:not(#finishBtnContainer) {
+    padding-left: var(--content-gutter);
+    padding-right: var(--content-gutter);
+    box-sizing: border-box;
+}
+
+/* Graphic Elements */
+.graphic-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+}
+
+
+
+
+
+/* ========================================
+   Newspaper Header (Masthead)
+   ======================================== */
+
+.newspaper-header {
+    /* remove bottom spacing so masthead image touches the puffar directly */
+    padding: 12px 12px 0;
+    background: transparent;
+    border-bottom: none;
+}
+
+.masthead {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.masthead-title {
+    display: inline-block;
+    font-family: var(--font-serif);
+    font-style: normal;
+    font-size: 2.8rem;
+    font-weight: 700;
+
+    /* Blue masthead like the reference */
+    color: var(--blt-blue);
+    letter-spacing: -0.5px;
+    line-height: 1;
+    transform-origin: center;
+    transform: scaleY(1.12);
+}
+
+.masthead-sub {
+    display: block;
+    font-size: 0.6rem;
+    color: #000;
+    margin-top: 8px;
+    font-style: normal;
+    font-weight: 900;
+    margin-bottom: 0;
+}
+
+.newspaper-header {
+    position: relative;
+    display: flex;
+    align-items: center; /* vertically center masthead and meta */
+    justify-content: space-between;
+}
+
+.header-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: right; /* right-align lines */
+    font-size: 0.55rem; /* smaller meta text */
+    color: #333;
+    line-height: 1.05;
+}
+.header-meta > div { font-weight: 400; }
+.header-meta .meta-weekday { text-transform: uppercase; font-weight:700; }
+.header-meta .meta-site { font-weight: 900; }
+
+/* ========================================
+   Puffar Section (Thin Yellow Strips)
+   ======================================== */
+
+.puffar-section {
+    display: flex;
+    flex-direction: column;
+
+    /* brunsvart bakgrund som i referensframsidan */
+    background: var(--puff-bg);
+    border-bottom: 2px solid var(--blt-blue);
+    margin-top: 0;
+}
+
+.puff-strip {
+    width: 100%;
+    height: var(--puff-height);  /* 25px skalat */
+    padding: 5px 0; /* horizontal inset handled by parent */
+    border-bottom: none;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    /* inherit the section background (brunsvart) and allow headlines to wrap */
+    background: transparent;
+}
+
+.puff-strip:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: var(--content-gutter);
+    right: var(--content-gutter);
+    height: 1px;
+    background: #d4c5a0;  /* Beige linje */
+}
+
+.puff-strip:hover { background: #4a4a4a; }
+
+.puff-content {
+    display: flex;
+    align-items: center;
+    gap: 0px; /* tightened gap so headline sits immediately after category */
+    position: relative;
+    z-index: 2; /* ensure content is above the inset background */
+    /* make the content area span exactly between the inset gutters */
+    width: calc(100% - (var(--content-gutter) * 2));
+    margin-left: var(--content-gutter);
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.puff-category {
+    /* Toppnyheter titel: serif, italic, larger */
+    font-family: Georgia, serif;
+    font-size: 14px; /* user requested */
+    font-style: normal;
+    font-weight: 400;
+
+    /* Yellow themed text, no background box */
+    color: var(--puff-yellow);
+    background: none;
+    padding: 0; /* remove extra padding so only a single gap separates items */
+    border-radius: 0;
+    margin-right: 0; /* remove extra spacing — JS provides the '. ' separator */
+    /* ensure the category start lines up with separator (inset) */
+    padding-left: 0;
+    white-space: nowrap; /* keep category and its dot together */
+}
+
+.puff-headline {
+    font-family: var(--font-serif);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #F3EAD0;  /* ljusare beige (unifierad) */
+    line-height: 1.15;
+    flex: 1; /* allow headline to take remaining space between category and page */
+
+    /* Allow wrapping so we can auto-fit text instead of truncating */
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    margin-left: 0; /* ensure no extra left margin separates headline from category */
+}
+
+.puff-page {
+    font-size: 0.6rem;
+    font-weight: bold;
+
+    /* Page number as yellow text without a box */
+    color: var(--puff-yellow);
+    background: none;
+    padding: 0 0 0 6px;
+    border-radius: 0;
+    position: relative;
+    z-index: 2;
+    margin-left: auto; /* push page to the right edge of the content area */
+    /* no extra right padding so the element's right edge aligns to the inset */
+    padding-right: 0;
+    margin-right: 0;
+}
+
+/* Prevent double-padding: newspaper > * applies a global gutter, but the
+   puffar-section paints its own inset background and we want the content
+   to align with that inset. Remove the extra outer padding for this section. */
+.newspaper > .puffar-section {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Ensure huvudnyhet image area spans the full section width (no extra gutter)
+   so the hero image aligns flush with the page inner frame. */
+.newspaper > .huvudnyhet-section {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* ========================================
+   Texttopp Section (Framed headline box)
+   ======================================== */
+
+.texttopp-section {
+    padding: 8px 12px;
+    background: var(--white);
+    box-sizing: border-box;
+    width: 100%;
+    overflow: visible;
+    position: relative;
+    z-index: 5; /* Above huvudnyhet to prevent overlap */
+    flex-shrink: 0; /* Don't shrink */
+}
+
+.texttopp {
+    position: relative;
+    background: var(--white);
+    min-height: var(--texttopp-height);
+    height: auto;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+
+     /* Inre ram via box-shadow istället för border
+         Use pure black to ensure the frame is fully black. */
+     box-shadow: inset 0 0 0 6px #000 !important;
+}
+
+.texttopp .slot-content {
+    padding: 16px 20px;
+    width: 100%;
+}
+
+.texttopp .placeholder-text {
+    color: #666;
+    font-style: normal;
+    text-align: left;
+    font-size: 1.95rem;
+    font-weight: 900;
+    font-family: var(--font-serif);
+    margin: 0;
+    display: block;
+    line-height: 1.1;
+}
+
+.texttopp .article-display {
+    text-align: left;
+}
+
+.texttopp .article-display h3 {
+    font-family: var(--font-serif);
+    font-size: 24pt;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--text-black);
+    margin: 0 0 8px;
+}
+
+.texttopp .article-display .subheadline {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    line-height: 1.2;
+    font-weight: 500;
+    color: var(--text-black);
+    margin: 0;
+}
+
+.texttopp .article-display .texttopp-page {
+    font-family: var(--font-sans);
+    font-size: 0.6rem;
+    font-weight: 500;
+    color: var(--blt-blue);
+}
+
+/* Set font-weight inside texttopp: make body text and page ref bold,
+   keep overlay/category labels non-bold */
+.texttopp .article-display .subheadline,
+.texttopp .article-display .texttopp-page {
+    font-weight: 500 !important;
+}
+
+.texttopp .article-display .overlay-category,
+.texttopp .article-display .category {
+    font-weight: 400 !important;
+    font-size: 0.95rem !important;
+}
+
+/* Adjust texttopp body text and page reference size */
+.texttopp .article-display .subheadline {
+    font-size: 0.95rem !important; /* larger body text */
+    line-height: 1.2 !important;
+}
+.texttopp .article-display .texttopp-page {
+    font-size: 0.95rem !important;
+    line-height: 1.2 !important;
+}
+
+/* Force equal text size for area, headline and page ref in texttopp
+   Use a very specific selector and !important to override other rules */
+
+/* (Removed forced equal-size for texttopp) */
+
+/* ========================================
+   Huvudnyhet Section
+   ======================================== */
+
+.huvudnyhet-section {
+    border-bottom: 2px solid var(--blt-blue);
+    overflow: visible; /* Allow content to show fully */
+    flex-shrink: 0; /* Don't shrink */
+}
+
+.huvudnyhet {
+    position: relative;
+    padding: 0;
+    overflow: visible; /* Allow all content to show */
+}
+
+.huvudnyhet .slot-label {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    background: rgb(0 0 0 / 70%);
+    color: var(--white);
+    font-size: 0.45rem;
+    font-weight: bold;
+    padding: 1px 4px;
+    border-radius: 2px;
+    z-index: 10;
+}
+
+.huvudnyhet .slot-content {
+    min-height: 100px;
+    padding: 0;
+}
+
+/* Ensure article-display and hero container have no inner spacing so the
+   hero image can occupy the full slot area edge-to-edge. Use high-specificity
+   rules to override any earlier padding/margins. */
+.huvudnyhet .article-display {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    background: transparent !important;
+}
+
+.huvudnyhet .hero-image-container {
+    position: relative !important;
+    width: 100% !important;
+    height: var(--hero-height) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+}
+
+/* Raise the hero image slightly to reduce the gap beneath the texttopp.
+   Current layout adds ~24px from paddings; pulling up 8px yields ~16px gap. */
+.huvudnyhet .hero-image-container {
+    margin-top: 0 !important;
+}
+
+.huvudnyhet .hero-image-container .hero-image {
+    display: block !important;
+    position: absolute !important;
+    inset: 0 !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    z-index: 1 !important;
+}
+
+.huvudnyhet .image-placeholder {
+    width: 100%;
+    height: var(--hero-height);
+    background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 1rem;
+    gap: 8px;
+}
+
+.huvudnyhet .image-placeholder .placeholder-text {
+    font-size: 16pt;
+    font-weight: 700;
+    font-family: var(--font-serif);
+    height: auto;
+    color: #666;
+}
+
+.huvudnyhet .article-placeholder {
+    padding: 20px 10px;
+    text-align: left;
+}
+
+.huvudnyhet.has-article .image-placeholder:not(.keep),
+.huvudnyhet.has-article .article-placeholder {
+    display: none;
+}
+
+/* Huvudnyhet - Classic newspaper layout with headline on image */
+.huvudnyhet .huvudnyhet-display {
+    position: relative;
+}
+
+.huvudnyhet .hero-image-container {
+    position: relative;
+    width: 100%;
+    height: var(--hero-height);
+    overflow: hidden;
+}
+
+.huvudnyhet .hero-image-container .hero-image {
+    display: block;
+    position: absolute;
+    inset: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+}
+
+/* Make huvudnyhet image container bleed wider than the normal content
+   so the hero image appears broader. This expands the container by the
+   horizontal `--content-gutter` on each side and shifts it left/right.
+   Use high specificity and !important to ensure override. */
+.newspaper > .huvudnyhet-section .huvudnyhet .hero-image-container {
+    max-width: none !important;
+    /* bleed extra 3px each side for a slightly wider hero */
+    width: calc(100% + (var(--content-gutter) * 2) + 6px) !important;
+    margin-left: calc(-1 * var(--content-gutter) - 3px) !important;
+    margin-right: calc(-1 * var(--content-gutter) - 3px) !important;
+}
+
+/* Main article image caption: match texttopp caption style, and align
+   the caption's left edge with the hero image (outside the normal gutters). */
+.newspaper > .huvudnyhet-section .huvudnyhet .image-caption,
+.huvudnyhet .article-display .image-caption,
+.huvudnyhet .article-display figcaption,
+.huvudnyhet .article-display .caption {
+    font-family: var(--font-sans) !important;
+    font-size: 0.95rem !important;
+    line-height: 1.2 !important;
+    font-weight: 500 !important;
+    color: var(--text-black) !important;
+
+    /* Make the caption the same visual width as the hero (bleed outside gutters)
+       so its left edge lines up with the image start. */
+    width: calc(100% + (var(--content-gutter) * 2) + 6px) !important;
+    margin-left: calc(-1 * var(--content-gutter) - 3px) !important;
+    margin-right: calc(-1 * var(--content-gutter) - 3px) !important;
+
+    padding: 6px calc(var(--content-gutter) + 3px) !important;
+    box-sizing: border-box !important;
+}
+
+/* Override: prevent hero image from bleeding past page gutters.
+   Keep captions/ingress as-is; only constrain the image container. */
+.newspaper > .huvudnyhet-section .huvudnyhet .hero-image-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.newspaper > .huvudnyhet-section .huvudnyhet .hero-image-container .hero-image {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: var(--hero-height) !important;
+    object-fit: cover !important;
+}
+
+/* Photo credit placeholder (and any small inline credit) should align with bleeded hero */
+.newspaper > .huvudnyhet-section .huvudnyhet .photo-credit,
+.huvudnyhet .photo-credit {
+    font-family: var(--font-sans) !important;
+    font-size: 0.95rem !important;
+    line-height: 1.2 !important;
+    font-weight: 500 !important;
+    color: var(--text-black) !important;
+
+    width: calc(100% + (var(--content-gutter) * 2) + 6px) !important;
+    margin-left: calc(-1 * var(--content-gutter) - 3px) !important;
+    margin-right: calc(-1 * var(--content-gutter) - 3px) !important;
+    padding: 4px calc(var(--content-gutter) + 3px) !important;
+    box-sizing: border-box !important;
+}
+
+/* Make the ingress (text block under hero) align/bleed with the hero image
+   so its left edge starts flush with the hero's left edge outside gutters. */
+.newspaper > .huvudnyhet-section .huvudnyhet .huvudnyhet-ingress,
+.huvudnyhet .huvudnyhet-ingress {
+    width: calc(100% + (var(--content-gutter) * 2) + 6px) !important;
+    margin-left: calc(-1 * var(--content-gutter) - 3px) !important;
+    margin-right: calc(-1 * var(--content-gutter) - 3px) !important;
+    padding: 8px calc(var(--content-gutter) + 3px) !important;
+    box-sizing: border-box !important;
+    background: white !important;
+}
+
+/* Shift the whole article-display (huvudnyhet) left so ingress aligns exactly with hero image */
+.newspaper > .huvudnyhet-section .huvudnyhet .article-display,
+.huvudnyhet .article-display {
+    width: calc(100% + (var(--content-gutter) * 2) + 6px) !important;
+    margin-left: calc(-1 * var(--content-gutter) - 3px) !important;
+    margin-right: calc(-1 * var(--content-gutter) - 3px) !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+}
+
+/* Headline overlay - positioned on left side of image */
+.huvudnyhet .headline-overlay {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    width: auto !important;
+    max-width: 85%;
+    padding: 0 !important;
+    box-sizing: border-box;
+    background: transparent !important;
+    z-index: 3;
+}
+
+.huvudnyhet .headline-overlay .overlay-category {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0;
+    background: #111;
+    color: var(--white);
+    padding: 6px 14px;
+    border-radius: 6px;
+    box-decoration-break: clone;
+}
+
+.huvudnyhet .headline-overlay h3 {
+    display: inline;
+    font-family: Georgia, serif;
+    font-size: 16pt;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--white);
+    margin: 0;
+    padding: 1px 8px;
+    background: #111;
+    border-radius: 0;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+
+.huvudnyhet .headline-overlay h3 span {
+    /* remove extra padding so headline text aligns with overlay left edge */
+    background: transparent !important;
+    padding: 0 !important;
+    box-decoration-break: clone;
+}
+
+.huvudnyhet .headline-overlay .huvudnyhet-page {
+    display: inline;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0;
+    background: #111;
+    color: var(--white);
+    padding: 1px 8px;
+    margin: 0 !important;
+    border-radius: 0;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+
+/* Remove extra padding from huvudnyhet slot so image and overlay reach full width */
+.huvudnyhet .slot-content {
+    padding: 0 !important;
+}
+
+.huvudnyhet .headline-overlay .overlay-ingress {
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    line-height: 1.8;
+    color: var(--white);
+    margin: 0;
+}
+
+/* Huvudnyhet ingress under bild på vit bakgrund */
+.huvudnyhet-ingress {
+    background: white;
+    padding: 8px 12px;
+    min-height: 2.4em;
+    box-sizing: border-box;
+}
+
+.huvudnyhet-ingress p {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.2;
+    font-weight: 500;
+    color: var(--text-black);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.huvudnyhet .headline-overlay .overlay-ingress span {
+    background: var(--blt-blue);
+    padding: 0.1em 0.5em;
+    box-decoration-break: clone;
+}
+
+.huvudnyhet .huvudnyhet-footer {
+    background: var(--white);
+    padding: 4px 10px;
+    border-top: 1px solid #ddd;
+}
+
+.huvudnyhet .huvudnyhet-footer .article-page {
+    font-family: var(--font-sans);
+    font-size: 0.55rem;
+    font-weight: 600;
+    color: var(--secondary-gray);
+    text-transform: uppercase;
+}
+
+/* ========================================
+   Bottom Section (4 artiklar i rad)
+   ======================================== */
+
+.bottom-section {
+    display: flex;
+    border-top: none;
+    margin-top: 12px;
+    height: 160px;
+    min-height: 160px;
+    max-height: 160px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding-left: var(--content-gutter);
+    padding-right: var(--content-gutter);
+}
+
+/* Make bottom-row slots independent: prevent automatic equal-height stretching
+   so each slot can size vertically to its own content. */
+.newspaper > .bottom-section,
+.bottom-section {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch; /* stretch children to same height for aligned page refs */
+    align-content: stretch;
+}
+
+/* Ensure each slot is treated as an independent column */
+.slot,
+.bottom-section > * {
+    display: block;
+    position: relative;
+}
+
+/* Slot content must not force full-height — allow natural height */
+.slot .slot-content,
+.bottom-section > * .slot-content {
+    height: auto !important;
+    min-height: 0 !important;
+}
+
+/* Small slots should not stretch vertically when other slots are taller */
+.notis-slot,
+.liten {
+    /* Keep same height as siblings for aligned page refs */
+    display: block;
+}
+
+/* Ensure bottom section renders above the finish button area so extended
+   headlines can occupy the white area down to the black rule. */
+.bottom-section {
+    position: relative;
+    z-index: 10; /* render above other page chrome and overlays */
+}
+
+/* Remove the global newspaper gutter for the bottom row so slots sit inside the
+   page frame and don't cause horizontal overflow. Also make slots share space
+   evenly and allow them to shrink to avoid overflow (especially on narrow screens). */
+.newspaper > .bottom-section {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.bottom-section > .slot {
+    /* Let individual slot type rules determine sizing so notis remain smaller
+       than artikel/citat. Keep min-width to avoid overflow. */
+    flex: none;
+    min-width: 0; /* allow content to shrink rather than overflow */
+}
+
+/* Explicit per-slot sizing for bottom row: artikel/citat ~1/3 each, notis ~1/6 each */
+.newspaper > .bottom-section .slot[data-slot="mellan1"],
+.newspaper > .bottom-section .slot[data-slot="citat"] {
+    flex: 0 0 33.33%;
+    width: 33.33%;
+}
+
+.newspaper > .bottom-section .slot[data-slot="liten1"],
+.newspaper > .bottom-section .slot[data-slot="liten2"] {
+    flex: 0 0 calc((100% - 66.66%) / 2);
+    width: calc((100% - 66.66%) / 2);
+    box-sizing: border-box !important;
+}
+
+/* Move the text edge in the "mellan1" slot to the left so its text aligns
+   with the workspace inner edge (remove left padding inside the slot). */
+.newspaper > .bottom-section .slot[data-slot="mellan1"] .slot-content {
+    padding-left: 0;
+}
+
+.slot {
+    position: relative;
+    background: #fafafa;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    border-right: 1px solid #ddd;
+}
+
+.slot:last-child {
+    border-right: none;
+}
+.slot.drag-over { background: rgb(251 214 68 / 20%); }
+
+/* Drag-over highlight for bottom section slots (override !important white background) */
+.slot[data-slot="mellan1"].drag-over,
+.slot[data-slot="citat"].drag-over,
+.slot[data-slot="liten1"].drag-over,
+.slot[data-slot="liten2"].drag-over {
+    background: rgb(251 214 68 / 30%) !important;
+    box-shadow: inset 0 0 0 2px rgb(251 214 68 / 40%) !important;
+}
+
+/* Make puff strips visibly highlight when dragging over them (override darker background) */
+.puff-strip.drag-over {
+    background: rgb(251 214 68 / 22%) !important;
+    box-shadow: inset 0 0 0 2px rgb(251 214 68 / 12%);
+}
+.slot.has-article { background: var(--white); cursor: grab; }
+.slot.has-article:active { cursor: grabbing; }
+.slot.dragging { opacity: 0.5; }
+
+.slot-label {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    background: var(--puff-yellow);
+    color: var(--text-black);
+    font-size: 0.5rem;
+    font-weight: bold;
+    padding: 2px 4px;
+    border-radius: 2px;
+    z-index: 10;
+}
+
+.slot-content {
+    padding: 18px 8px 8px;
+    min-height: 100%;
+}
+
+/* Ensure huvudnyhet slot has no inner padding — override generic .slot-content */
+.newspaper > .huvudnyhet-section .huvudnyhet .slot-content,
+.huvudnyhet .slot-content {
+    padding: 0 !important;
+}
+
+.slot-content .placeholder-text {
+    color: #666;
+    text-align: left;
+    margin: 0;
+    padding-top: 8px;
+    font-family: var(--font-serif);
+    font-size: 0.9rem;
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+/* Huvudnyhet placeholder - match headline overlay style */
+.huvudnyhet .placeholder-text {
+    font-family: var(--font-serif);
+    font-size: 16pt;
+    font-weight: 700;
+    line-height: 1.5;
+    color: #666;
+    text-align: left;
+}
+
+/* Texttopp placeholder - match texttopp headline */
+.texttopp .placeholder-text {
+    font-family: var(--font-serif);
+    font-size: 1.95rem;
+    font-weight: 900;
+    line-height: 1.1;
+    color: #666;
+    text-align: left;
+}
+
+/* Artikel/mellan placeholder */
+.artikel-slot .placeholder-text,
+.mellan .placeholder-text {
+    font-family: var(--font-serif);
+    font-size: 2.0rem;
+    font-weight: 700;
+    line-height: 1.05;
+    color: #666;
+    text-align: left;
+}
+
+/* Citat placeholder */
+.citat-slot .placeholder-text,
+.citat .placeholder-text {
+    font-family: 'Sanomat', serif;
+    font-size: 0.85rem;
+    font-style: italic;
+    line-height: 1.2;
+    color: #666;
+    text-align: left;
+}
+
+/* Notis placeholder */
+.notis-slot .placeholder-text,
+.liten .placeholder-text {
+    font-family: var(--font-serif);
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1.05;
+    color: #666;
+    text-align: left;
+}
+
+/* Lock page references inside bottom-row slots to a fixed aligned position
+   so they don't move when headline sizes change. Positioned top-right. */
+.newspaper > .bottom-section .slot {
+    position: relative; /* ensure absolutely positioned refs align to slot */
+}
+.newspaper > .bottom-section .slot .article-page,
+.newspaper > .bottom-section .slot .texttopp-page {
+    position: absolute;
+    bottom: 16px; /* lock to bottom of slot (raised for visual baseline) */
+    left: 8px; /* align to left edge of slot */
+    transform: none;
+    margin: 0;
+    z-index: 1001; /* ensure refs sit above headline text */
+    font-size: 0.75rem;
+    text-align: left;
+}
+
+/* Explicitly ensure mellan1 and the two small slots use the same
+   locked bottom-left side reference as the citat slot. This more
+   specific selector prevents other rules from moving them. */
+.newspaper > .bottom-section .slot[data-slot="mellan1"] .article-page,
+.newspaper > .bottom-section .slot[data-slot="liten1"] .article-page,
+.newspaper > .bottom-section .slot[data-slot="liten2"] .article-page {
+    position: absolute !important;
+    bottom: 16px !important; /* raised to match citat baseline */
+    left: 8px !important;
+    transform: none !important;
+    margin: 0 !important;
+    z-index: 1001 !important;
+    font-size: 0.75rem !important;
+    text-align: left !important;
+}
+
+/* Prevent `.slot-content` from clipping absolutely-positioned page refs
+   for these slots — allow refs to sit above headline text like in `citat`. */
+.newspaper > .bottom-section .slot[data-slot="mellan1"] .slot-content,
+.newspaper > .bottom-section .slot[data-slot="liten1"] .slot-content,
+.newspaper > .bottom-section .slot[data-slot="liten2"] .slot-content {
+    overflow: visible !important;
+    /* ensure the slot-content doesn't create a stacking context that hides refs */
+    position: static !important;
+}
+
+/* Final override to ensure refs are visible at the bottom of the slot window
+   even where later rules try to clamp small slots. This is intentionally
+   low-specificity but placed late in the file so it wins. */
+.newspaper > .bottom-section .slot[data-slot="liten1"],
+.newspaper > .bottom-section .slot[data-slot="liten2"],
+.newspaper > .bottom-section .slot[data-slot="mellan1"] {
+    overflow: visible !important;
+}
+
+/* =========================
+   Strong final override
+   Ensure page references for mellan1 / liten1 / liten2 are pinned
+   to the bottom-left of their slot regardless of earlier rules.
+   This block is intentionally very specific and uses !important
+   so it wins against inline styles and other selectors.
+   ========================= */
+.newspaper > .bottom-section .slot[data-slot="mellan1"],
+.newspaper > .bottom-section .slot[data-slot="liten1"],
+.newspaper > .bottom-section .slot[data-slot="liten2"] {
+    position: relative !important; /* anchor for absolute children */
+    overflow: visible !important;
+}
+
+.newspaper > .bottom-section .slot[data-slot="mellan1"] .article-page,
+.newspaper > .bottom-section .slot[data-slot="mellan1"] .texttopp-page,
+.newspaper > .bottom-section .slot[data-slot="liten1"] .article-page,
+.newspaper > .bottom-section .slot[data-slot="liten1"] .texttopp-page,
+.newspaper > .bottom-section .slot[data-slot="liten2"] .article-page,
+.newspaper > .bottom-section .slot[data-slot="liten2"] .texttopp-page {
+    position: absolute !important;
+    bottom: 8px !important;   /* pin to bottom of slot */
+    left: 8px !important;     /* align to inner left edge */
+    right: auto !important;
+    top: auto !important;
+    transform: none !important;
+    margin: 0 !important;
+    z-index: 9999 !important; /* above most content */
+    display: inline-block !important;
+    width: auto !important;
+    text-align: left !important;
+}
+
+/* Also ensure the slot-content won't create a clipping/staking context */
+.newspaper > .bottom-section .slot[data-slot="mellan1"] .slot-content,
+.newspaper > .bottom-section .slot[data-slot="liten1"] .slot-content,
+.newspaper > .bottom-section .slot[data-slot="liten2"] .slot-content {
+    overflow: visible !important;
+    position: static !important;
+}
+
+/* Ensure notis (liten1 / liten2) use the same base size */
+.newspaper > .bottom-section .slot[data-slot="liten1"] .article-display h3,
+.newspaper > .bottom-section .slot[data-slot="liten2"] .article-display h3 {
+    font-size: 0.7rem; /* smaller headlines for notis slots */
+}
+
+/* Slightly reduce mellan1 headline size to be a bit smaller */
+.newspaper > .bottom-section .slot[data-slot="mellan1"] .article-display h3 {
+    font-size: 1.6rem;
+    line-height: 1.08;
+}
+
+/* Puff placeholder */
+.puff .placeholder-text,
+.puff-strip .puff-headline {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1.15;
+    color: #F3EAD0;
+}
+
+/* Artikel slot: 1/3 av bredden */
+.artikel-slot, .mellan {
+    width: 33.33%;
+    min-height: var(--mellan-height);
+    flex: none;
+    box-sizing: border-box;
+}
+
+.artikel-slot .slot-content .article-display,
+.mellan .slot-content .article-display {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.artikel-slot .slot-content .article-display .article-image,
+.mellan .slot-content .article-display .article-image {
+    width: 100%;
+    height: 70px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 2px;
+    margin-bottom: 6px;
+}
+
+.artikel-slot .slot-content .article-display .article-image img,
+.mellan .slot-content .article-display .article-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+/* Gamla regler - används inte längre för stora rubriker
+.artikel-slot .slot-content .article-display h3,
+.mellan .slot-content .article-display h3 {
+    font-family: var(--font-serif);
+    font-size: 0.7rem;
+    line-height: 1.2;
+    margin-bottom: 4px;
+    color: var(--text-black);
+}
+*/
+
+.artikel-slot .slot-content .article-display .subheadline,
+.mellan .slot-content .article-display .subheadline {
+    font-size: 0.55rem;
+    color: var(--secondary-gray);
+    line-height: 1.2;
+}
+
+/* Notis slots: 1/6 av bredden var */
+.notis-slot, .liten {
+    width: 16.67%;
+    min-height: var(--liten-height);
+    flex: 0 0 16.67%; /* fixed column width but allow vertical growth of content */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* prevent any child from painting outside the slot */
+}
+
+/* Allow the slot content to grow vertically to fill available white space
+   beneath the bottom row (so headlines can extend downward). Give extra
+   bottom padding so content isn't clipped near the finish button. */
+
+/* Remove inner padding so content is flush with slot edges
+   Applies to artikel, citat and the small notis slots */
+.notis-slot .slot-content,
+.liten .slot-content,
+.artikel .slot-content,
+.citat .slot-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    height: auto;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0 !important; /* remove all inner padding */
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow: hidden; /* ensure nothing paints outside the slot */
+}
+
+/* Final enforcement: make liten1/liten2 strictly bounded to the visual box
+   so no text can render outside the visible area. This sets explicit
+   height and hides overflow while keeping content hyphenation/wrapping. */
+.newspaper > .bottom-section .slot[data-slot="liten1"],
+.newspaper > .bottom-section .slot[data-slot="liten2"] {
+    height: var(--liten-height);
+    max-height: var(--liten-height);
+    overflow: hidden;
+}
+.newspaper > .bottom-section .slot[data-slot="liten1"] .slot-content,
+.newspaper > .bottom-section .slot[data-slot="liten2"] .slot-content {
+    height: 100%;
+    max-height: 100%;
+    overflow: hidden;
+}
+
+/* Enforce line-wrapping and prefer hyphenation for small slots */
+.notis-slot .slot-content .article-display h3,
+.liten .slot-content .article-display h3,
+.notis-slot .slot-content .article-display .subheadline,
+.liten .slot-content .article-display .subheadline {
+    white-space: normal;
+    /* prefer natural hyphenation instead of forced mid-word breaks */
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+}
+
+/* Ensure notis slots clip overflowing text and break long words consistently */
+.notis-slot .slot-content,
+.liten .slot-content {
+    /* keep layout flow natural; allow children to size the slot vertically */
+    overflow: visible;
+    padding-bottom: 12px; /* breathing room so text isn't clipped at bottom */
+}
+
+/* Let headlines and subheadlines wrap and hyphenate naturally without being
+   artificially constrained in height so they won't be clipped even if the
+   slot has extra vertical space. */
+.notis-slot .slot-content .article-display h3,
+.liten .slot-content .article-display h3,
+.notis-slot .slot-content .article-display .subheadline,
+.liten .slot-content .article-display .subheadline {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    white-space: normal;
+    max-height: none;
+    overflow: visible;
+}
+
+/* Small page refs and meta should never overflow horizontally */
+.notis-slot .slot-content .article-display .article-page,
+.liten .slot-content .article-display .article-page {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ========================================
+   Citat Slot (Quote Display)
+   ======================================== */
+
+.citat-slot, .citat {
+    width: 33.33%;
+    min-height: var(--mellan-height);
+    flex: none;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.citat-slot .slot-content,
+.citat .slot-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 100%;
+    padding: 18px 8px 8px;
+}
+
+.citat-slot.has-article,
+.citat.has-article {
+    align-items: flex-start;
+}
+
+.citat-slot.has-article .slot-content,
+.citat.has-article .slot-content {
+    align-items: flex-start;
+}
+
+.citat-slot .slot-content .citat-display,
+.citat .slot-content .citat-display {
+    position: relative;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0;
+    overflow: visible;
+    width: 100%;
+}
+
+/* Ensure font-size controls are visible and clickable in citat */
+.citat-slot .citat-display .font-size-controls,
+.citat .citat-display .font-size-controls {
+    position: absolute;
+    top: -12px;
+    right: 0;
+    opacity: 1;
+    z-index: 100;
+    pointer-events: auto;
+}
+
+.citat-slot .citat-display .font-size-btn,
+.citat .citat-display .font-size-btn {
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.citat-slot .slot-content .citat-text,
+.citat .slot-content .citat-text {
+    font-family: 'Sanomat', serif;
+    font-size: 0.85rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--text-black);
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+.citat-slot .slot-content .citattecken,
+.citat .slot-content .citattecken {
+    font-family: 'Sahara Bodoni', serif;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--text-black);
+    margin: 8px 0 4px 0;
+}
+
+.citat-slot .slot-content .citat-sender,
+.citat .slot-content .citat-sender {
+    font-family: var(--font-sans);
+    font-size: 0.5rem;
+    font-weight: 600;
+    color: var(--secondary-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.notis-slot .slot-content .article-display,
+.liten .slot-content .article-display {
+    display: flex;
+    flex-direction: column;
+    height: auto; /* size to content so slots are independent */
+}
+
+/* Gamla regler - används inte längre för stora rubriker
+.notis-slot .slot-content .article-display h3,
+.liten .slot-content .article-display h3 {
+    font-family: var(--font-serif);
+    font-size: 0.6rem;
+    line-height: 1.15;
+    margin-bottom: 4px;
+    color: var(--text-black);
+}
+*/
+
+/* Large headlines for artikel and notis - bara rubrik */
+.artikel-large-headline,
+.notis-large-headline {
+    display: block !important;
+    height: auto !important;
+    width: 100%;
+    padding: 6px;
+    position: static !important;
+}
+
+.artikel-large-headline h3 {
+    font-family: var(--font-serif);
+    font-size: 2.0rem;
+    line-height: 1.05;
+    font-weight: 700;
+    color: var(--text-black) !important;
+    margin: 0;
+    text-align: left;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    max-height: none; /* allow headline to occupy vertical space */
+    overflow: visible;
+}
+
+.notis-large-headline h3 {
+    font-family: var(--font-serif);
+    /* Reduce base size for notis (smaller than artikel) */
+    font-size: 0.8rem;
+    line-height: 1.05;
+    font-weight: 700;
+    color: var(--text-black) !important;
+    margin: 0;
+    text-align: left;
+    word-break: normal;
+    overflow-wrap: break-word;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    max-height: none;
+    overflow: visible;
+}
+
+/* Font size controls */
+.font-size-controls {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    display: flex;
+    gap: 4px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: 10;
+}
+
+.article-display:hover .font-size-controls {
+    opacity: 1;
+}
+
+.font-size-btn {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #999;
+    background: white;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    color: #333;
+    padding: 0;
+    line-height: 1;
+}
+
+.font-size-btn:hover {
+    background: #f0f0f0;
+    border-color: #666;
+    transform: scale(1.1);
+}
+
+.font-size-btn:active {
+    transform: scale(0.95);
+}
+
+/* Toggle ingress button */
+.toggle-ingress-btn {
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 4px 12px;
+    font-size: 0.7rem;
+    background: white;
+    border: 1px solid #999;
+    border-radius: 4px;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.article-display:hover .toggle-ingress-btn {
+    opacity: 1;
+}
+
+.toggle-ingress-btn:hover {
+    background: #f0f0f0;
+    border-color: #666;
+}
+
+.toggle-ingress-btn.active {
+    background: #28a745;
+    color: white;
+    border-color: #28a745;
+}
+
+/* Article ingress section */
+.article-ingress {
+    position: relative;
+    margin-top: 8px;
+    padding: 8px;
+    background: #f9f9f9;
+    border-radius: 4px;
+}
+
+.article-ingress p {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.2;
+    font-weight: 500;
+    color: var(--text-black);
+    margin: 0;
+    text-align: left;
+}
+
+.ingress-controls {
+    top: 2px;
+    right: 2px;
+}
+
+.notis-slot .slot-content .article-display .subheadline,
+.liten .slot-content .article-display .subheadline {
+    font-size: 0.5rem;
+    color: var(--secondary-gray);
+    line-height: 1.2;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.notis-slot .slot-content .article-display .article-page,
+.liten .slot-content .article-display .article-page {
+    font-size: 0.45rem;
+    margin-top: 2px;
+}
+
+/* Article page number in slots */
+.article-page {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.5rem;
+    font-weight: 600;
+    color: var(--secondary-gray);
+    margin-top: 4px;
+    text-transform: uppercase;
+}
+
+/* Main story page reference - black background like headline */
+.huvudnyhet .huvudnyhet-footer .article-page,
+.huvudnyhet .headline-overlay .huvudnyhet-page {
+    background: #111;
+    color: var(--white);
+    font-size: 6.5pt;
+    padding: 1px 8px;
+    border-radius: 0;
+    display: inline;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+
+.mellan .article-page {
+    font-size: 0.45rem;
+    margin-top: 6px;
+}
+
+/* ========================================
+   Character Warning
+   ======================================== */
+
+.char-warning { color: #c00 !important; }
+.char-counter { display: none; }
+
+/* ========================================
+   Finish Button (Färdig-knapp)
+   ======================================== */
+
+/* Side panel containing finish button and description box */
+.newspaper-side-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    align-self: flex-start;
+    flex-shrink: 0;
+    width: 220px;
+}
+
+.finish-button-container {
+    padding: 16px 24px;
+    background: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0;
+    border: none;
+    border-radius: 0 0 8px 8px;
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+    width: 100%;
+    height: fit-content;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
+}
+
+.btn-finish {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    border: none;
+    padding: 12px 40px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgb(40 167 69 / 40%);
+    transition: all 0.3s ease;
+}
+
+.btn-finish:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgb(40 167 69 / 50%);
+}
+
+.btn-finish:active {
+    transform: translateY(0);
+}
+
+/* ========================================
+   Steps Section (Under buildern)
+   ======================================== */
+
+.steps-section {
+    margin-top: 40px;
+    padding: 24px 20px;
+    background: #2a2a2a;
+    border-radius: 12px;
+    max-width: var(--content-width);
+    box-shadow: 0 4px 15px rgb(0 0 0 / 30%);
+}
+
+.steps-divider {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.steps-divider span {
+    color: #aaa;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.footer-steps {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 12px;
+}
+
+.footer-step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.footer-step.active {
+    opacity: 1;
+}
+
+.footer-step.completed {
+    opacity: 0.7;
+}
+
+.footer-step.step-gruppnamn {
+    background: #3a3a3a;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #555;
+}
+
+.footer-step.step-gruppnamn.active {
+    background: #28a745;
+    border-color: #28a745;
+}
+
+.footer-step.step-gruppnamn.completed {
+    background: #000;
+    border-color: #000;
+}
+
+.footer-step:nth-child(2) {
+    background: transparent;
+}
+
+.footer-step:nth-child(2).active {
+    background: #28a745;
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+.footer-step:nth-child(2).completed {
+    background: #000;
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+.step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    background: #666;
+    color: white;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.footer-step.active .step-number {
+    background: #28a745;
+}
+
+.footer-step.completed .step-number {
+    background: #000;
+}
+
+/* Next level step styling */
+.footer-step.step-next-level {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.footer-step.step-next-level .step-number {
+    background: #666;
+    font-size: 0.75rem;
+}
+
+.footer-step.step-next-level .step-text {
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.footer-step label {
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.footer-step input[type="text"] {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    width: 100px;
+}
+
+.newspaper-footer .btn-save,
+.newspaper-footer .btn-pdf {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    background: #555;
+    color: #999;
+    border: none;
+    border-radius: 4px;
+    cursor: not-allowed;
+    transition: all 0.3s ease;
+}
+
+.footer-step.active .btn-save,
+.footer-step.active .btn-pdf {
+    background: #3a3a3a;
+    color: white;
+    cursor: pointer;
+    border: 1px solid #555;
+}
+
+.footer-step.active .btn-save:hover,
+.footer-step.active .btn-pdf:hover {
+    background: #4a4a4a;
+}
+
+/* ========================================
+   Right Panel (Höger sidopanel med steg)
+   ======================================== */
+
+.right-panel {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    background: #2a2a2a;
+    box-shadow: -4px 0 15px rgb(0 0 0 / 30%);
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+}
+
+.right-panel-header {
+    padding: 20px;
+    background: #1a1a1a;
+    border-bottom: 1px solid #444;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.right-panel-header h3 {
+    margin: 0;
+    color: #aaa;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.close-panel {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    line-height: 1;
+}
+
+.close-panel:hover {
+    background: #333;
+    color: #fff;
+}
+
+.close-panel:active {
+    background: #444;
+}
+
+.right-panel-steps {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow-y: auto;
+}
+
+.panel-step {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+    padding: 12px;
+    background: #3a3a3a;
+    border-radius: 8px;
+    border: 1px solid #555;
+}
+
+.panel-step.active {
+    opacity: 1;
+}
+
+.panel-step.completed {
+    opacity: 0.7;
+}
+
+.panel-step.step-gruppnamn.active {
+    background: #28a745;
+    border-color: #28a745;
+}
+
+.panel-step.step-gruppnamn.completed {
+    background: #000;
+    border-color: #000;
+}
+
+.panel-step:nth-child(2) {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+}
+
+.panel-step:nth-child(2).active {
+    background: #28a745;
+}
+
+.panel-step:nth-child(2).completed {
+    background: #000;
+}
+
+.panel-step:nth-child(2) .btn-pdf {
+    width: auto;
+    flex: 1;
+}
+
+.panel-step .step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    background: #666;
+    color: white;
+    border-radius: 50%;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.panel-step.active .step-number {
+    background: #28a745;
+}
+
+.panel-step.completed .step-number {
+    background: #000;
+}
+
+.panel-step label {
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.panel-step input[type="text"] {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.panel-step .btn-save,
+.panel-step .btn-pdf {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    background: #555;
+    color: #999;
+    border: none;
+    border-radius: 6px;
+    cursor: not-allowed;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.panel-step.active .btn-save,
+.panel-step.active .btn-pdf {
+    background: #28a745;
+    color: white;
+    cursor: pointer;
+    border: 1px solid #28a745;
+    font-weight: 600;
+}
+
+.panel-step.active .btn-save:hover,
+.panel-step.active .btn-pdf:hover {
+    background: #218838;
+    border-color: #218838;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgb(40 167 69 / 30%);
+}
+
+.panel-step.active .btn-save:active,
+.panel-step.active .btn-pdf:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgb(40 167 69 / 30%);
+}
+
+.panel-step.step-next-level {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.panel-step.step-next-level .step-text {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ========================================
+   Edit Mode (Redigeringsläge)
+   ======================================== */
+
+#editModeIndicator {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #28a745;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    z-index: 9999;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 30%);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+body.edit-mode .editable {
+    cursor: text;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+body.edit-mode .editable:hover {
+    background-color: rgb(40 167 69 / 10%);
+}
+
+body.edit-mode .editable:focus {
+    outline: 2px solid #28a745;
+    outline-offset: 2px;
+    background-color: rgb(40 167 69 / 5%);
+}
+
+body.edit-mode .slot.has-article {
+    cursor: default;
+}
+
+/* Hide edit indicator in print */
+@media print {
+    /* Dölj ALLA UI-element vid utskrift */
+    .sidebar,
+    .right-panel,
+    .finish-button-container,
+    #finishBtnContainer,
+    .btn-finish,
+    #editModeIndicator,
+    .slot-label,
+    .slot-helper-label,
+    .char-counter,
+    .modal,
+    .editor-modal,
+    .toast,
+    .newspaper-footer,
+    .slot-select,
+    .slot-select-mini,
+    .newspaper-description-box,
+    .newspaper-side-panel,
+    nav,
+    header:not(.newspaper-header),
+    footer,
+    aside {
+        display: none !important;
+        visibility: hidden !important;
+    }
+    
+    .editable {
+        outline: none !important;
+    }
+    
+    /* Reset scale transform for print */
+    .newspaper-scale-wrapper {
+        transform: none !important;
+        width: auto !important;
+        height: auto !important;
+    }
+    
+    /* Justera container för utskrift */
+    .newspaper-container {
+        padding: 0 !important;
+        margin: 0 !important;
+        display: block !important;
+    }
+    
+    /* Se till att framsidan fyller sidan */
+    .newspaper {
+        box-shadow: none !important;
+        border: none !important;
+        margin: 0 auto !important;
+        transform: none !important;
+    }
+    
+    .newspaper-page {
+        box-shadow: none !important;
+        margin: 0 !important;
+    }
+    
+    /* BEHÅLL ALLA FÄRGER - tvinga webbläsaren att skriva ut bakgrundsfärger */
+    *, *::before, *::after {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
+        background: white !important;
+    }
+    
+    @page {
+        size: a4 portrait;
+        margin: 5mm;
+    }
+}
+
+/* ========================================
+   Article Editor Modal (Skriv egen artikel)
+   ======================================== */
+
+.editor-modal {
+    position: fixed;
+    inset: 0;
+    background: rgb(0 0 0 / 60%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+}
+
+.editor-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.editor-content {
+    background: var(--white);
+    border-radius: 8px;
+    width: 90%;
+    max-width: 520px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgb(0 0 0 / 30%);
+}
+
+.editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid #ddd;
+    background: var(--blt-blue);
+    color: var(--white);
+    border-radius: 8px 8px 0 0;
+}
+
+.editor-header h2 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.editor-header .modal-close {
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    opacity: 0.8;
+}
+
+.editor-header .modal-close:hover {
+    opacity: 1;
+}
+
+.editor-body {
+    padding: 20px;
+}
+
+.editor-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.editor-field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.editor-field label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.editor-field input,
+.editor-field textarea,
+.editor-field select {
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+.editor-field input:focus,
+.editor-field textarea:focus,
+.editor-field select:focus {
+    outline: none;
+    border-color: var(--blt-blue);
+    box-shadow: 0 0 0 2px rgb(2 94 204 / 15%);
+}
+
+.editor-field textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+.char-count {
+    font-size: 0.75rem;
+    color: #888;
+    text-align: right;
+    margin-top: 2px;
+}
+
+.char-count.near-limit {
+    color: #e67e00;
+}
+
+.char-count.over-limit {
+    color: #dc3545;
+    font-weight: 600;
+}
+
+.field-feedback {
+    font-size: 0.75rem;
+    color: #dc3545;
+    min-height: 16px;
+}
+
+.field-feedback.warning {
+    color: #dc3545;
+}
+
+.fit-indicator {
+    background: #f5f5f5;
+    border-radius: 6px;
+    padding: 12px;
+    margin-top: 8px;
+}
+
+.fit-indicator span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #555;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.fit-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.fit-badge {
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    background: #ddd;
+    color: #666;
+    transition: all 0.2s;
+}
+
+.fit-badge.fits {
+    background: #28a745;
+    color: var(--white);
+}
+
+.fit-badge.no-fit {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.editor-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 16px 20px;
+    border-top: 1px solid #ddd;
+    background: #f9f9f9;
+    border-radius: 0 0 8px 8px;
+}
+
+.btn-cancel {
+    padding: 10px 20px;
+    background: #e0e0e0;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-cancel:hover {
+    background: #d0d0d0;
+}
+
+.btn-save-article {
+    padding: 10px 24px;
+    background: var(--blt-blue);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-save-article:hover {
+    background: #024eb3;
+}
+
+.btn-new-article {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px 16px;
+    background: #28a745;
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-bottom: 16px;
+}
+
+.btn-new-article:hover {
+    background: #218838;
+}
+
+.custom-article {
+    position: relative;
+    border-left: 3px solid #28a745;
+}
+
+.custom-badge {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    font-size: 0.65rem;
+    background: #e8f5e9;
+    color: #28a745;
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+/* ========================================
+   Toast
+   ======================================== */
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #333;
+    color: var(--white);
+    padding: 10px 18px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+.toast.success { background: #28a745; }
+.toast.error { background: #dc3545; }
+
+/* ========================================
+   Print Styles (1-sidig A4) - Combined
+   ======================================== */
+
+@media print {
+    /* Hide all UI elements - comprehensive list */
+    .sidebar,
+    .newspaper-footer,
+    .toast,
+    .slot-label,
+    .slot-helper-label,
+    .slot-select,
+    .slot-select-mini,
+    .char-counter,
+    .modal,
+    .editor-modal,
+    .finish-button-container,
+    .right-panel,
+    .btn-finish,
+    #finishBtnContainer,
+    #editModeIndicator,
+    nav,
+    aside:not(.newspaper *) {
+        display: none !important;
+        visibility: hidden !important;
+    }
+    
+    /* Remove margins/padding from html/body */
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+    }
+    
+    .app-container { 
+        display: block !important;
+        width: 100% !important;
+    }
+    
+    /* Reset scale transform for print */
+    .newspaper-scale-wrapper {
+        transform: none !important;
+        width: auto !important;
+        height: auto !important;
+    }
+    
+    .newspaper-container {
+        padding: 0 !important;
+        margin: 0 !important;
+        display: block !important;
+        width: 100% !important;
+    }
+    
+    .newspaper {
+        box-shadow: none !important;
+        border: none !important;
+        width: 100% !important;
+        max-width: 200mm !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 auto !important;
+        transform: none !important;
+    }
+    
+    @page {
+        size: a4 portrait;
+        margin: 5mm;
+    }
+    
+    /* TVINGA WEBBLÄSAREN ATT BEHÅLLA ALLA FÄRGER */
+    *, *::before, *::after {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    
+    /* Förhindra sidbrytning */
+    .newspaper, .newspaper * {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+
+@media (max-width: 800px) {
+    .app-container { flex-direction: column; }
+    .sidebar { width: 100%; max-height: 200px; }
+    .newspaper-container { padding: 10px; }
+}
+
+/* ========================================
+   Article Preview Modal
+   ======================================== */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0 0 0 / 60%);
+    backdrop-filter: blur(3px);
+}
+
+.modal.show { display: flex; align-items: center; justify-content: center; }
+
+.modal-content {
+    background: var(--white);
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgb(0 0 0 / 30%);
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+    z-index: 10;
+}
+.modal-close:hover { color: #000; }
+
+.modal-header {
+    background: var(--puff-yellow);
+    padding: 12px 16px;
+    border-radius: 8px 8px 0 0;
+}
+
+.modal-category {
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--text-black);
+}
+
+.modal-body { padding: 16px; }
+
+.modal-section {
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #eee;
+}
+.modal-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+.modal-label {
+    display: block;
+    font-size: 0.6rem;
+    font-weight: bold;
+    color: var(--blt-blue);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+.modal-headline {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-black);
+    line-height: 1.2;
+    margin: 0;
+}
+
+.modal-ingress {
+    font-size: 0.95rem;
+    color: var(--secondary-gray);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.modal-image {
+    width: 100%;
+    height: 200px;
+    background: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-quote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--text-black);
+    padding: 12px 16px;
+    margin: 0;
+    border-left: 4px solid var(--blt-blue);
+    background: #f8f9fa;
+}
+
+/* ========================================
+   Design Selector (Dropdown)
+   ======================================== */
+
+.design-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: #f5f5f5;
+    padding: 10px 12px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    border: 1px solid #ddd;
+}
+
+.design-selector label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.design-selector select {
+    padding: 6px 10px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    background: white;
+    cursor: pointer;
+}
+
+.design-selector select:focus {
+    outline: none;
+    border-color: var(--blt-blue);
+}
+
+/* ========================================
+   Reference Controls
+   ======================================== */
+
+.reference-controls {
+    padding: 12px;
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 12px;
+}
+
+.reference-controls label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    cursor: pointer;
+}
+
+
+
+.reference-controls input[type="range"] {
+    width: 100%;
+    margin: 6px 0;
+}
+
+.reference-controls #opacityValue {
+    font-size: 0.7rem;
+    color: #666;
+    display: block;
+    text-align: center;
+    margin-top: 4px;
+}
+
+/* ========================================
+   BLT ORIGINAL DESIGN (Exakt kopia från bild)
+   ======================================== */
+
+body.blt-original {
+    /* Exakta färger från BLT-bilden */
+    --blt-masthead-black: #1a1a1a;
+    --blt-puff-yellow: #E8D05E;
+    --blt-puff-text: #000;
+    --blt-page-red: #8B0000;
+    --blt-link-blue: #06C;
+    --blt-text-black: #000;
+    --blt-text-gray: #555;
+    --blt-bg-white: #FFF;
+    --blt-border-gray: #CCC;
+    
+    /* Samma bredd som standard för A4-passform */
+    --blt-page-width: var(--content-width);
+}
+
+body.blt-original .newspaper {
+    width: var(--blt-page-width);
+    height: auto; /* Dynamic height based on content */
+    min-height: auto; /* Override the base 900px min-height */
+    background: var(--blt-bg-white);
+    font-family: Georgia, "Times New Roman", serif;
+    border: 1px solid #ddd;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 12px; /* One row spacing below sidreferenser */
+}
+
+/* BLT Original Masthead - svart kursiv serif */
+body.blt-original .newspaper-header {
+    background: var(--blt-bg-white);
+    border-bottom: none;
+
+    /* remove bottom padding so masthead image touches the puffar directly */
+    padding: 14px 16px 0;
+}
+
+body.blt-original .masthead {
+    text-align: left;
+
+    /* remove bottom margin so masthead sits flush with puffar */
+    margin-bottom: 0;
+}
+
+body.blt-original .masthead-title {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    font-style: normal;
+    color: var(--blt-blue);
+    letter-spacing: -0.5px;
+    line-height: 1;
+    display: inline-block;
+    transform-origin: center;
+    transform: scaleY(1.12);
+}
+
+body.blt-original .masthead-sub {
+    font-family: Georgia, serif;
+    font-size: 0.6rem;
+    font-style: normal;
+    font-weight: 900;
+    color: #000;
+    margin-top: 12px;
+    margin-bottom: 10px;
+}
+
+body.blt-original .header-meta {
+    font-family: Arial, sans-serif;
+    font-size: 0.55rem;
+    font-weight: 400;
+    color: #333;
+    border-top: none;
+    padding-top: 5px;
+    text-align: right;
+    gap: 6px;
+    display: flex;
+    flex-direction: column;
+}
+body.blt-original .header-meta .meta-weekday { text-transform: uppercase; font-weight:700; }
+body.blt-original .header-meta .meta-site { font-weight:900; }
+
+/* BLT Original Puffar - gula remsor */
+
+/* BLT Original Puffar - harmonized to brunsvart + yellow labels */
+body.blt-original .puffar-section {
+    background: transparent; /* brunsvart inset via base rules */
+    border-bottom: none;
+    padding-left: var(--content-gutter);
+    padding-right: var(--content-gutter);
+}
+
+body.blt-original .puff-strip {
+    background: transparent; /* let section color show through */
+    /* remove the full-width light divider so only the inset divider shows */
+    border-bottom: none;
+    height: var(--puff-height);
+    padding: 5px 0; /* horizontal gutter handled by parent */
+}
+
+body.blt-original .puff-strip:last-child { border-bottom: 1px solid rgb(212 197 160 / 18%); }
+body.blt-original .puff-strip:hover { background: rgb(255 255 255 / 2%); }
+
+body.blt-original .puff-category {
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--puff-accent);
+    background: none;
+    padding: 0 6px 0 0;
+    border-radius: 0;
+}
+
+/* puff-headline styles are defined in the common block to avoid duplication */
+
+body.blt-original .puff-page {
+    font-family: var(--font-sans);
+    padding-left: 6px;
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: var(--puff-accent);
+    background: none;
+    padding-left: 8px;
+    border-radius: 0;
+}
+
+/* BLT Original Huvudnyhet - INGEN RAM */
+body.blt-original .huvudnyhet-section {
+    border-bottom: none;
+}
+
+body.blt-original .huvudnyhet {
+    padding: 12px 16px 0;
+}
+
+body.blt-original .huvudnyhet .slot-label {
+    display: none;
+}
+
+body.blt-original .huvudnyhet .article-display .headline-box {
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+}
+
+body.blt-original .huvudnyhet .article-display .headline-box h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--blt-text-black);
+    letter-spacing: -0.3px;
+    margin-bottom: 10px;
+}
+
+body.blt-original .huvudnyhet .article-display .headline-box .subheadline {
+    font-family: Georgia, serif;
+    font-size: 0.85rem;
+    color: var(--blt-text-gray);
+    line-height: 1.4;
+    margin-bottom: 6px;
+}
+
+/* Länk till sida */
+body.blt-original .huvudnyhet .article-display .headline-box .subheadline::after {
+    content: " Blekinge sidan 5";
+    color: var(--blt-link-blue);
+    font-weight: 400;
+}
+
+body.blt-original .huvudnyhet .article-display .hero-image {
+    height: var(--hero-height);
+    position: relative;
+}
+
+body.blt-original .huvudnyhet .image-placeholder {
+    height: var(--hero-height);
+}
+
+/* Bildtext-overlay på bilden */
+body.blt-original .huvudnyhet .article-display .hero-image::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(transparent, rgb(0 0 0 / 70%));
+}
+
+/* BLT Original Bottom Section - artiklar i rad */
+body.blt-original .bottom-section {
+    border-top: none;
+    background: var(--blt-bg-white);
+}
+
+/* Segmented blue top border on each slot */
+.bottom-section > .slot[data-slot="mellan1"]::before,
+.bottom-section > .slot[data-slot="citat"]::before,
+.bottom-section > .slot[data-slot="liten1"]::before,
+.bottom-section > .slot[data-slot="liten2"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 3px;
+    right: 3px;
+    height: 1px;
+    background: var(--blt-blue);
+    z-index: 20;
+}
+
+/* First slot: no left gap, align with content edge */
+.bottom-section > .slot[data-slot="mellan1"]::before {
+    left: 0;
+}
+
+/* Last slot: no right gap, align with content edge */
+.bottom-section > .slot[data-slot="liten2"]::before {
+    right: 0;
+}
+
+body.blt-original .slot {
+    border-right: 1px solid var(--blt-border-gray);
+}
+
+body.blt-original .slot:last-child {
+    border-right: none;
+}
+
+body.blt-original .slot-label {
+    display: none;
+}
+
+body.blt-original .mellan {
+    width: 50%;
+    min-height: 100px;
+    padding: 10px;
+}
+
+body.blt-original .liten {
+    width: 25%;
+    min-height: 90px;
+    padding: 8px;
+}
+
+body.blt-original .mellan .slot-content,
+body.blt-original .liten .slot-content {
+    padding: 0;
+}
+
+body.blt-original .mellan .slot-content .article-display h3,
+body.blt-original .liten .slot-content .article-display h3 {
+    font-family: Georgia, serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--blt-text-black);
+    margin-bottom: 5px;
+}
+
+body.blt-original .mellan .slot-content .article-display .subheadline,
+body.blt-original .liten .slot-content .article-display .subheadline {
+    font-family: Georgia, serif;
+    font-size: 0.65rem;
+    color: var(--blt-text-gray);
+    line-height: 1.3;
+    display: block;
+}
+
+/* Dölj extra sidnummer - använder redan .article-page */
+body.blt-original .mellan .slot-content .article-display::after,
+body.blt-original .liten .slot-content .article-display::after {
+    content: none;
+    display: none;
+}
+
+body.blt-original .mellan .slot-content .article-display .article-image {
+    height: 0;
+    display: none;
+}
+
+/* BLT Original Citat */
+body.blt-original .citat .slot-content .citat-text {
+    font-family: Georgia, serif;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--blt-text-black);
+}
+
+body.blt-original .citat .slot-content .citat-sender {
+    font-family: Arial, sans-serif;
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: var(--blt-text-gray);
+}
+
+/* BLT Original Footer */
+body.blt-original .newspaper-footer {
+    background: #f5f5f5;
+    border-top: 1px solid #ddd;
+}
+
+body.blt-original .btn-pdf {
+    background: #333;
+}
+
+/* BLT Original Article Cards */
+body.blt-original .article-category {
+    background: var(--blt-puff-yellow);
+    color: #000;
+    font-family: Arial, sans-serif;
+    font-size: 0.5rem;
+    font-weight: 700;
+}
+
+body.blt-original .article-card h3 {
+    font-family: Georgia, serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+body.blt-original .article-card p {
+    font-family: Georgia, serif;
+    font-size: 0.65rem;
+    color: #555;
+}
+
+/* BLT Original Modal */
+body.blt-original .modal-headline {
+    font-family: Georgia, serif;
+}
+
+body.blt-original .modal-ingress {
+    font-family: Georgia, serif;
+}
+
+body.blt-original .modal-quote {
+    font-family: Georgia, serif;
+    border-left-color: var(--blt-puff-yellow);
+}
+
+body.blt-original .modal-header {
+    background: var(--blt-puff-yellow);
+}
+
+body.blt-original .modal-label {
+    color: #333;
+}
+
+/* Print BLT Original - additional rules only */
+@media print {
+    body.blt-original .newspaper-scale-wrapper {
+        transform: none !important;
+    }
+    
+    body.blt-original .newspaper {
+        width: 100% !important;
+        max-width: 200mm !important;
+        height: auto !important;
+        transform: none !important;
+    }
+}
+
+/* ========================================
+   Bottom Section - Consolidated Rules (Override all previous)
+   ======================================== */
+
+/* All bottom section slots: FIXED height, position relative for absolute children */
+.bottom-section > .slot {
+    position: relative !important;
+    height: 160px !important;
+    min-height: 160px !important;
+    max-height: 160px !important;
+    display: block !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+}
+
+/* Thin gray dividers between bottom section slots */
+.bottom-section > .slot[data-slot="mellan1"],
+.bottom-section > .slot[data-slot="citat"] {
+    border-right: 1px solid #ccc !important;
+}
+
+/* liten1 has border to separate from liten2, liten2 has no border (rightmost) */
+.bottom-section > .slot[data-slot="liten1"] {
+    border-right: 1px solid #ccc !important;
+}
+
+.bottom-section > .slot[data-slot="liten2"] {
+    border-right: none !important;
+}
+
+/* Slot content: allow overflow for free-positioned page refs */
+.bottom-section > .slot > .slot-content {
+    display: block !important;
+    height: auto !important;
+    padding: 10px 8px 0 8px !important;
+    box-sizing: border-box !important;
+    position: static !important;
+    overflow: visible !important;
+}
+
+/* Article display: normal flow */
+.bottom-section > .slot .article-display {
+    display: block !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    position: static !important;
+}
+
+/* Page reference: ABSOLUTE position at bottom-left of SLOT (not article-display) */
+.bottom-section > .slot[data-slot="mellan1"] .article-page,
+.bottom-section > .slot[data-slot="liten1"] .article-page,
+.bottom-section > .slot[data-slot="liten2"] .article-page {
+    position: absolute !important;
+    left: 8px !important;
+    bottom: 6px !important;
+    top: auto !important;
+    right: auto !important;
+    margin: 0 !important;
+    font-family: var(--font-sans) !important;
+    font-size: 0.5rem !important;
+    font-weight: 600 !important;
+    color: var(--blt-blue) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.2px !important;
+    background: none !important;
+    border: none !important;
+    z-index: 100 !important;
+}
+
+/* Citat page reference: larger */
+.bottom-section > .slot[data-slot="citat"] .article-page {
+    position: absolute !important;
+    left: 8px !important;
+    bottom: 6px !important;
+    top: auto !important;
+    right: auto !important;
+    margin: 0 !important;
+    font-family: var(--font-sans) !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    color: var(--blt-blue) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.2px !important;
+    background: none !important;
+    border: none !important;
+    z-index: 100 !important;
+}
+
+/* Headlines: at top, no extra spacing */
+.bottom-section > .slot h3 {
+    margin: 0 0 4px 0 !important;
+    padding: 0 !important;
+}
+
+/* Subheadline/ingress: compact */
+.bottom-section > .slot .subheadline {
+    margin: 0 !important;
+    font-size: 0.7rem !important;
+    line-height: 1.3 !important;
+}
+
+/* Citat slot specific */
+.bottom-section > .slot[data-slot="citat"] .citat-text {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 0.85rem !important;
+    font-family: 'Sanomat', serif !important;
+    font-style: italic !important;
+}
+
+.bottom-section > .slot[data-slot="citat"] .citattecken {
+    font-family: 'Sahara Bodoni', serif !important;
+    font-size: 48px !important;
+    line-height: 1 !important;
+    margin: 4px 0 2px 0 !important;
+}
+
+.bottom-section > .slot[data-slot="citat"] .citat-sender {
+    margin: 0 !important;
+}
+
+/* ========================================
+   Group Footer (visible in print only)
+   ======================================== */
+
+.group-footer {
+    display: none; /* Hidden in normal view */
+}
+
+/* ========================================
+   Newspaper Description Box (Collapsible)
+   ======================================== */
+
+.newspaper-description-box {
+    width: 100%;
+    background: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
+}
+
+.newspaper-description-box .description-toggle {
+    width: 100%;
+    padding: 12px 40px;
+    background: linear-gradient(135deg, var(--blt-blue) 0%, #0077cc 100%);
+    border: none;
+    border-bottom: none;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 4px 15px rgb(2 94 204 / 40%);
+}
+
+.newspaper-description-box .description-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgb(2 94 204 / 50%);
+}
+
+.newspaper-description-box .description-toggle .toggle-icon {
+    font-size: 0.8rem;
+    transition: transform 0.2s;
+}
+
+.newspaper-description-box.expanded .description-toggle .toggle-icon {
+    transform: rotate(90deg);
+}
+
+.newspaper-description-box .description-content {
+    display: none;
+}
+
+.newspaper-description-box.expanded .description-content {
+    display: block;
+}
+
+.newspaper-description-box .description-section {
+    padding: 8px 14px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.newspaper-description-box .description-section:last-child {
+    border-bottom: none;
+}
+
+.newspaper-description-box .description-section h4 {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--blt-blue);
+    margin: 0 0 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.newspaper-description-box .description-section p {
+    font-family: var(--font-sans);
+    font-size: 0.6rem;
+    line-height: 1.3;
+    color: #444;
+    margin: 0;
+}
+
+/* Highlighta hjälpsektioner som pekar mot korresponderande */
+.newspaper-description-box .description-section {
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.newspaper-description-box .description-section:hover {
+    background: #e8f4ff;
+}
+
+/* Highlight-effekt för tidningsdelar vid hover på hjälptexter */
+.help-highlight {
+    outline: 3px solid var(--blt-blue) !important;
+    outline-offset: -3px !important;
+    box-shadow: inset 0 0 0 3px var(--blt-blue), 0 0 20px rgba(2, 94, 204, 0.4) !important;
+    transition: outline 0.2s, box-shadow 0.2s !important;
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+@media print {
+    .group-footer {
+        display: block !important;
+        text-align: center;
+        font-family: var(--font-sans), Arial, sans-serif;
+        font-size: 12pt;
+        font-weight: 600;
+        color: #333;
+        padding: 20px 0;
+        margin-top: auto;
+        background: white;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    
+    /* Ensure newspaper fills page with white background */
+    .newspaper {
+        background: white !important;
+        min-height: 100vh !important;
+    }
+}
+
+/* ============================================
+   PACKAGE FOLDERS STYLING
+   ============================================ */
+
+.package-divider {
+    display: flex;
+    align-items: center;
+    margin: 20px 0 12px 0;
+    padding: 0 4px;
+}
+
+.package-divider::before,
+.package-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #ddd;
+}
+
+.package-divider span {
+    padding: 0 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.package-folder {
+    background: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.package-folder:hover {
+    background: #fff;
+    border-color: var(--blt-blue, #003366);
+    box-shadow: 0 2px 8px rgba(0, 51, 102, 0.1);
+}
+
+.package-header {
+    display: flex;
+    align-items: center;
+    padding: 12px 14px;
+    gap: 10px;
+}
+
+.package-icon {
+    font-size: 1.4rem;
+    line-height: 1;
+}
+
+.package-name {
+    flex: 1;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.package-count {
+    font-size: 0.75rem;
+    color: #666;
+    background: #e8e8e8;
+    padding: 3px 8px;
+    border-radius: 10px;
+}
+
+.package-arrow {
+    font-size: 1.2rem;
+    color: #999;
+    transition: transform 0.2s ease;
+}
+
+.package-folder:hover .package-arrow {
+    color: var(--blt-blue, #003366);
+    transform: translateX(3px);
+}
+
+/* Package articles view */
+.package-articles-view {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.package-back-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 8px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.package-back-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: var(--blt-blue, #003366);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: background 0.2s ease;
+}
+
+.package-back-btn:hover {
+    background: #004488;
+}
+
+.back-arrow {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.package-title {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #333;
+}
+
+.package-articles-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.package-articles-list .article-card {
+    margin-bottom: 8px;
+}
+
+/* ========================================
+   Admin Panel - Hidden trigger & overlay
+   ======================================== */
+
+/* Invisible trigger area in bottom-right corner */
+#adminTrigger {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    cursor: default;
+    z-index: 9999;
+    opacity: 0;
+}
+
+#adminTrigger:hover {
+    cursor: pointer;
+}
+
+/* Fullscreen overlay */
+.admin-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #1a1a2e;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.admin-overlay.hidden {
+    display: none;
+}
+
+.admin-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: #0f0f1a;
+    color: white;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+
+.admin-header h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.admin-header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.admin-text-toggle {
+    padding: 8px 16px;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.admin-text-toggle:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.admin-text-toggle.active {
+    background: #e94560;
+    border-color: #e94560;
+}
+
+#adminCount {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.6);
+}
+
+.admin-back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: #e94560;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.admin-back-btn:hover {
+    background: #ff6b6b;
+    transform: translateX(-2px);
+}
+
+/* Grid container */
+.admin-grid-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+}
+
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* Card styles */
+.admin-card {
+    background: #16213e;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.admin-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(233, 69, 96, 0.3);
+}
+
+.admin-card-thumb {
+    background: #f5f4ef;
+    padding: 0;
+    min-height: 250px;
+    max-height: 380px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.admin-card-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+}
+
+.admin-card-info {
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.admin-card-name {
+    font-weight: 700;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.admin-card-date {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+}
+
+/* ====================================
+   Text View Mode (Admin Panel)
+   ==================================== */
+
+.admin-grid.text-mode {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+
+.admin-card-text {
+    background: #16213e;
+    border-radius: 12px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.admin-card-text:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(233, 69, 96, 0.3);
+}
+
+.admin-card-text-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.admin-card-text-header .admin-card-name {
+    font-size: 1.1rem;
+}
+
+.text-card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.text-slot {
+    display: flex;
+    gap: 8px;
+    padding: 6px 10px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+.text-slot.empty {
+    opacity: 0.4;
+}
+
+.text-slot .slot-label {
+    color: #e94560;
+    font-weight: 600;
+    min-width: 90px;
+    flex-shrink: 0;
+}
+
+.text-slot .slot-value {
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.text-slot.empty .slot-value {
+    font-style: italic;
+    color: rgba(255,255,255,0.4);
+}
+
+/* Placeholder for missing images */
+.mini-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    color: #999;
+    font-size: 14px;
+    background: #e0e0e0;
+}
+
+/* ====================================
+   Newspaper Replica (Admin Panel)
+   ==================================== */
+
+.newspaper-replica {
+    --replica-scale: 1;
+    width: calc(var(--content-width) * var(--replica-scale));
+    height: calc(var(--content-height) * var(--replica-scale));
+    pointer-events: none;
+}
+
+.newspaper-replica .newspaper {
+    width: var(--content-width);
+    min-height: var(--content-height);
+    transform: scale(var(--replica-scale));
+    transform-origin: top left;
+}
+
+.admin-card-thumb .newspaper-replica .newspaper {
+    box-shadow: none;
+}
+
+/* Override some styles for admin thumbnails */
+.admin-card-thumb .newspaper .newspaper-header {
+    padding: 8px 8px 0;
+}
+
+.admin-card-thumb .newspaper .masthead-image {
+    height: auto;
+    max-height: 80px;
+}
+
+.expanded-newspaper-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: auto;
+    padding: 20px;
+}
+
+.expanded-newspaper-container .newspaper-replica {
+    max-width: 95vw;
+}
+
+.expanded-newspaper-container .newspaper-replica .newspaper {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    border-radius: 4px;
+}
+
+.group-footer {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 8px;
+    font-size: 12px;
+    font-style: italic;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Expanded view */
+.admin-expanded {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    flex-direction: column;
+    z-index: 10001;
+}
+
+.admin-expanded.hidden {
+    display: none;
+}
+
+.admin-expanded-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background: #0f0f1a;
+}
+
+.admin-expanded-close {
+    width: 44px;
+    height: 44px;
+    background: #e94560;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.admin-expanded-close:hover {
+    background: #ff6b6b;
+    transform: scale(1.1);
+}
+
+.admin-expanded-nav {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.admin-expanded-nav button {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.admin-expanded-nav button:hover:not(:disabled) {
+    background: rgba(255,255,255,0.2);
+}
+
+.admin-expanded-nav button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+#adminExpandedCounter {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.95rem;
+    min-width: 60px;
+    text-align: center;
+}
+
+.admin-expanded-content {
+    flex: 1;
+    overflow: hidden;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.expanded-info {
+    text-align: center;
+    margin-bottom: 12px;
+    color: white;
+    flex-shrink: 0;
+}
+
+.expanded-info h3 {
+    margin: 0 0 4px 0;
+    font-size: 1.5rem;
+    color: #e94560;
+}
+
+.expanded-info p {
+    margin: 0;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.9rem;
+}
+
+/* Expanded image view */
+.expanded-image {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.expanded-image img {
+    max-width: 100%;
+    max-height: calc(100vh - 140px);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+.admin-loading,
+.admin-empty,
+.admin-error {
+    text-align: center;
+    padding: 60px 20px;
+    color: rgba(255,255,255,0.5);
+    font-size: 1.1rem;
+}
+
+.admin-error {
+    color: #e94560;
+}
+
+/* ====================================
+   Mini Newspaper Rendering (Admin)
+   ==================================== */
+
+.mini-newspaper {
+    background: #f5f4ef;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.mini-newspaper.thumb {
+    font-size: 5px;
+}
+
+.mini-newspaper.expanded {
+    font-size: 12px;
+    max-width: 500px;
+    max-height: 700px;
+    border-radius: 4px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+.mini-header {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: #fff;
+    text-align: center;
+    padding: 1em 0.5em;
+    border-bottom: 2px solid #e94560;
+}
+
+.mini-logo {
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    font-size: 3em;
+    letter-spacing: 0.1em;
+}
+
+.mini-puffs {
+    display: flex;
+    gap: 2px;
+    padding: 2px;
+    background: #fff;
+}
+
+.mini-puff {
+    flex: 1;
+    aspect-ratio: 4/3;
+    background-size: cover;
+    background-position: center;
+    background-color: #ddd;
+    border-radius: 2px;
+}
+
+.mini-puff.empty {
+    background: linear-gradient(135deg, #e0e0e0, #c5c5c5);
+}
+
+.mini-main {
+    padding: 4px;
+    background: #fff;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-height: 0;
+}
+
+.mini-main-img {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    background-color: #ddd;
+    border-radius: 2px;
+    min-height: 50%;
+}
+
+.mini-main-text {
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    font-size: 2em;
+    line-height: 1.2;
+    color: #1a1a2e;
+    padding: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mini-main-empty {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #e8e8e8, #d0d0d0);
+    color: #999;
+    font-size: 1.5em;
+    border-radius: 2px;
+}
+
+.mini-bottom {
+    display: flex;
+    gap: 2px;
+    padding: 2px;
+    background: #fff;
+}
+
+.mini-mellan {
+    flex: 2;
+    display: flex;
+    gap: 2px;
+}
+
+.mini-small {
+    flex: 1;
+    display: flex;
+    gap: 2px;
+}
+
+.mini-cell {
+    flex: 1;
+    aspect-ratio: 4/3;
+    background-size: cover;
+    background-position: center;
+    background-color: #ddd;
+    border-radius: 2px;
+}
+
+.mini-cell.empty {
+    background: linear-gradient(135deg, #e0e0e0, #c5c5c5);
+}
+
+.mini-cell.citat {
+    background: #f8e6a0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Georgia', serif;
+}
+
+.mini-cell.citat span {
+    font-size: 4em;
+    color: #1a1a2e;
+    opacity: 0.5;
+}
+
+/* Expanded newspaper container */
+.expanded-newspaper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}

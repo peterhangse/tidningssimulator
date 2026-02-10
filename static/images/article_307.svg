@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="host" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#9b59b6"/>
+      <stop offset="100%" style="stop-color:#e91e63"/>
+    </linearGradient>
+  </defs>
+  <rect fill="#1a1a2e" width="800" height="450"/>
+  <!-- Stage background -->
+  <rect x="50" y="100" width="700" height="300" fill="url(#host)" opacity="0.3"/>
+  <!-- Two hosts -->
+  <!-- Gina Dirawi -->
+  <g transform="translate(250, 0)">
+    <ellipse cx="0" cy="180" rx="35" ry="35" fill="#f5cba7"/>
+    <rect x="-30" y="215" width="60" height="120" fill="#e91e63"/>
+    <!-- Dress details -->
+    <path d="M-30,300 Q-50,350 -60,380" stroke="#e91e63" stroke-width="15" fill="none"/>
+    <path d="M30,300 Q50,350 60,380" stroke="#e91e63" stroke-width="15" fill="none"/>
+  </g>
+  <!-- Hampus Nessvold -->
+  <g transform="translate(550, 0)">
+    <ellipse cx="0" cy="180" rx="35" ry="35" fill="#f5cba7"/>
+    <rect x="-25" y="215" width="50" height="120" fill="#2c3e50"/>
+    <!-- Suit jacket -->
+    <polygon points="-25,215 0,250 25,215" fill="#34495e"/>
+  </g>
+  <!-- Microphones -->
+  <rect x="300" y="280" width="5" height="40" fill="#7f8c8d"/>
+  <ellipse cx="302" cy="275" rx="8" ry="12" fill="#2c3e50"/>
+  <rect x="495" y="280" width="5" height="40" fill="#7f8c8d"/>
+  <ellipse cx="497" cy="275" rx="8" ry="12" fill="#2c3e50"/>
+  <!-- Names -->
+  <rect x="150" y="350" width="200" height="40" fill="#e91e63" rx="8"/>
+  <text x="250" y="377" text-anchor="middle" fill="#fff" font-family="Arial" font-size="16" font-weight="bold">GINA DIRAWI</text>
+  <rect x="450" y="350" width="200" height="40" fill="#2c3e50" rx="8"/>
+  <text x="550" y="377" text-anchor="middle" fill="#fff" font-family="Arial" font-size="16" font-weight="bold">HAMPUS NESSVOLD</text>
+  <!-- Title -->
+  <text x="400" y="60" text-anchor="middle" fill="#f1c40f" font-family="Arial" font-size="28" font-weight="bold">PROGRAMLEDARE</text>
+  <text x="400" y="95" text-anchor="middle" fill="#fff" font-family="Arial" font-size="18">MELODIFESTIVALEN 2026</text>
+  <!-- Stars -->
+  <text x="100" y="150" fill="#f1c40f" font-size="20">★</text>
+  <text x="700" y="140" fill="#f1c40f" font-size="25">★</text>
+</svg>

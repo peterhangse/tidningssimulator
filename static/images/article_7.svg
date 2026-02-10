@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="dirt" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b4513"/>
+      <stop offset="100%" style="stop-color:#5d3a1a"/>
+    </linearGradient>
+  </defs>
+  <rect fill="#87ceeb" width="800" height="250"/>
+  <rect y="250" fill="url(#dirt)" width="800" height="200"/>
+  <!-- Sun -->
+  <circle cx="100" cy="80" r="50" fill="#f1c40f"/>
+  <!-- Coins in ground -->
+  <ellipse cx="350" cy="320" rx="25" ry="8" fill="#c0c0c0"/>
+  <ellipse cx="400" cy="340" rx="30" ry="10" fill="#c0c0c0"/>
+  <ellipse cx="450" cy="310" rx="22" ry="7" fill="#c0c0c0"/>
+  <ellipse cx="380" cy="360" rx="28" ry="9" fill="#c0c0c0"/>
+  <!-- Sparkles -->
+  <text x="320" y="300" fill="#f1c40f" font-size="20">✨</text>
+  <text x="420" y="290" fill="#f1c40f" font-size="24">✨</text>
+  <text x="470" y="350" fill="#f1c40f" font-size="18">✨</text>
+  <!-- Shovel -->
+  <rect x="550" y="200" width="15" height="150" fill="#8b4513"/>
+  <rect x="530" y="340" width="55" height="40" fill="#7f8c8d" rx="5"/>
+  <!-- Grass patches -->
+  <rect x="0" y="245" width="800" height="10" fill="#27ae60"/>
+  <text x="400" y="420" text-anchor="middle" fill="#fff" font-family="Arial" font-size="18" font-weight="bold">VIKINGASKATT HITTAD</text>
+</svg>

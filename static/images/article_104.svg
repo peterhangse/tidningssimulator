@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f4d03f"/>
+      <stop offset="100%" style="stop-color:#c9a227"/>
+    </linearGradient>
+  </defs>
+  <rect fill="#1a252f" width="800" height="450"/>
+  <!-- Confetti -->
+  <g>
+    <rect x="100" y="50" width="15" height="15" fill="#f1c40f" transform="rotate(30 107 57)"/>
+    <rect x="200" y="80" width="12" height="12" fill="#e74c3c" transform="rotate(45 206 86)"/>
+    <rect x="300" y="40" width="18" height="18" fill="#3498db" transform="rotate(15 309 49)"/>
+    <rect x="500" y="60" width="14" height="14" fill="#f1c40f" transform="rotate(60 507 67)"/>
+    <rect x="600" y="90" width="16" height="16" fill="#2ecc71" transform="rotate(25 608 98)"/>
+    <rect x="700" y="50" width="13" height="13" fill="#9b59b6" transform="rotate(40 706 56)"/>
+  </g>
+  <!-- Trophy -->
+  <path d="M350,150 L350,120 L450,120 L450,150 Q500,160 500,200 L480,200 L480,180 Q480,170 450,165 L450,250 L470,280 L470,300 L330,300 L330,280 L350,250 L350,165 Q320,170 320,180 L320,200 L300,200 Q300,160 350,150" fill="url(#gold)"/>
+  <rect x="330" y="300" width="140" height="20" fill="#7f8c8d"/>
+  <rect x="310" y="320" width="180" height="30" fill="#95a5a6"/>
+  <!-- SM-GULD text -->
+  <text x="400" y="380" text-anchor="middle" fill="#f1c40f" font-family="Arial" font-size="32" font-weight="bold">SM-GULD 2025!</text>
+  <text x="400" y="420" text-anchor="middle" fill="#fff" font-family="Arial" font-size="18">GOTT NYTT ÅR FRÅN MJÄLLBY AIF</text>
+</svg>

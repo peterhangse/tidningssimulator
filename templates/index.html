@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLT Framsidebyggare - Tidningssimulator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css', v=static_v) }}">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&family=Playfair+Display:wght@400;700;900&family=Merriweather:wght@400;700;900&family=Inter:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar with articles -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-header-box">
+                    <h2>Artiklar att välja</h2>
+                    <p class="sidebar-info">Klicka på en artikel för att förhandsgranska. Dra den sedan till en plats på framsidan.</p>
+                </div>
+            </div>
+            <div class="sidebar-content">
+                <div class="article-list" id="articleList">
+                    {% for article in articles %}
+                    <div class="article-card" draggable="true" data-id="{{ article.id }}">
+                        <span class="article-category">{{ article.category | lower | capitalize }}</span>
+                        <h3>{{ article.headline }}</h3>
+                        <p>{{ article.subheadline }}</p>
+                    </div>
+                    {% endfor %}
+                    
+                    <!-- Theme folders / packages -->
+                    {% if packages %}
+                    <div class="package-divider">
+                        <span>Temapaket</span>
+                    </div>
+                    {% for package in packages %}
+                    <div class="package-folder" data-package-id="{{ package.id }}">
+                        <div class="package-header">
+                            <span class="package-icon">{{ package.icon }}</span>
+                            <span class="package-name">{{ package.name }}</span>
+                            <span class="package-count">{{ package.articles | length }} artiklar</span>
+                            <span class="package-arrow">›</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+                
+                <!-- Package articles view (hidden by default) -->
+                <div class="package-articles-view" id="packageArticlesView" style="display: none;">
+                    <div class="package-back-header">
+                        <button class="package-back-btn" id="packageBackBtn">
+                            <span class="back-arrow">‹</span>
+                            <span>Tillbaka</span>
+                        </button>
+                        <span class="package-title" id="packageTitle"></span>
+                    </div>
+                    <div class="package-articles-list" id="packageArticlesList">
+                        <!-- Package articles will be inserted here by JavaScript -->
+                    </div>
+                </div>
+                
+                    <!-- Design selector moved here so it's after all selectable articles -->
+                    <div class="design-selector" style="display:none">
+                        <label for="designSelect">Designval:</label>
+                        <select id="designSelect">
+                            <option value="blt-original">BLT Original</option>
+                            <option value="sidref-inline">Sidreferens: Flöde (inline)</option>
+                            <option value="sidref-absbotten">Sidreferens: Absolut botten</option>
+                            <option value="sidref-flexbotten">Sidreferens: Flexbox botten</option>
+                            <option value="sidref-gridbotten">Sidreferens: Grid botten</option>
+                            <option value="sidref-offset">Sidreferens: Manuell offset</option>
+                            <option value="sidref-dold">Sidreferens: Dold</option>
+                        </select>
+                    </div>
+            </div>
+        </aside>
+        
+        <!-- Main newspaper preview -->
+        <main class="newspaper-container">
+            <div class="newspaper-scale-wrapper" id="newspaperScaleWrapper">
+                <div class="newspaper">
+                    <!-- Grafiska element -->
+
+                
+                    <!-- Header - BLT masthead with blue logo -->
+                    <header class="newspaper-header">
+                        <div class="masthead">
+                            <img class="masthead-image" src="{{ url_for('static', filename=header_image, v=static_v) }}" alt="Header image">
+                    </div>
+                    <!-- header-meta, streckkod och symbol borttagna som önskat -->
+                </header>
+                
+                <!-- Puffar (3 yellow news strips in a row) -->
+                <div class="puffar-section">
+                    <div class="slot puff-strip" data-slot="puff1">
+                        <div class="puff-content">
+                            <span class="puff-category"></span>
+                            <span class="puff-headline">Dra toppnotis 1 hit</span>
+                            <span class="puff-page"></span>
+                        </div>
+                    </div>
+                    <div class="slot puff-strip" data-slot="puff2">
+                        <div class="puff-content">
+                            <span class="puff-category"></span>
+                            <span class="puff-headline">Dra toppnotis 2 hit</span>
+                            <span class="puff-page"></span>
+                        </div>
+                    </div>
+                    <div class="slot puff-strip" data-slot="puff3">
+                        <div class="puff-content">
+                            <span class="puff-category"></span>
+                            <span class="puff-headline">Dra toppnotis 3 hit</span>
+                            <span class="puff-page"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Texttopp (framed headline above hero image) -->
+                <div class="texttopp-section">
+                    <div class="slot texttopp" data-slot="texttopp">
+                        <div class="slot-content">
+                            <p class="placeholder-text">Dra en texttopp hit</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Huvudnyhet (main story with frame, ingress, and hero image) -->
+                <div class="huvudnyhet-section">
+                    <div class="slot huvudnyhet" data-slot="huvudnyhet">
+                        <div class="slot-content">
+                            <div class="image-placeholder">
+                                <span>📷 Bildyta</span>
+                            </div>
+                            <div class="photo-credit">FOTO: LENA EHRING</div>
+                            <div class="article-placeholder">
+                                <p class="placeholder-text">Dra en huvudnyhet hit</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bottom section: 2 mellan + 2 små artiklar -->
+                <!-- Bottom Section: Artikel, Citat, Notis 1, Notis 2 -->
+                <div class="bottom-section">
+                    <div class="slot artikel-slot" data-slot="mellan1">
+                        <div class="slot-content">
+                            <p class="placeholder-text">Dra en artikel hit</p>
+                        </div>
+                    </div>
+                    <div class="slot citat-slot" data-slot="citat">
+                        <div class="slot-content">
+                            <p class="placeholder-text">Dra ett citat hit</p>
+                        </div>
+                    </div>
+                    <div class="slot notis-slot" data-slot="liten1">
+                        <div class="slot-content">
+                            <p class="placeholder-text">Dra en notis hit</p>
+                        </div>
+                    </div>
+                    <div class="slot notis-slot" data-slot="liten2">
+                        <div class="slot-content">
+                            <p class="placeholder-text">Dra en notis hit</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Grupp-footer (visas vid utskrift) -->
+                <div class="group-footer" id="groupFooter"></div>
+            </div>
+            </div><!-- Close newspaper-scale-wrapper -->
+
+            <!-- Sidopanel med knapp och beskrivningar -->
+            <div class="newspaper-side-panel">
+                <!-- Beskrivning av tidningens delar (collapsible) -->
+                <div class="newspaper-description-box" id="newspaperDescription">
+                    <button class="description-toggle" id="descriptionToggle">
+                        <span class="toggle-icon">▶</span> Hjälp: Så bygger du
+                    </button>
+                    <div class="description-content" id="descriptionContent">
+                        <div class="description-section" data-section="puffar">
+                            <h4>Toppnotiser</h4>
+                            <p>Korta hänvisningar till nyheter inne i tidningen. Fångar läsarens uppmärksamhet direkt.</p>
+                        </div>
+                        <div class="description-section" data-section="texttopp">
+                            <h4>Texttopp</h4>
+                            <p>En viktig nyhet utan bild som lyfts fram med stor rubrik. Passar för nyheter där texten är viktigare än bilden.</p>
+                        </div>
+                        <div class="description-section" data-section="huvudnyhet">
+                            <h4>Huvudnyhet</h4>
+                            <p>Dagens viktigaste nyhet med stor bild och rubrik. Den som syns mest och drar läsarens blick först.</p>
+                        </div>
+                        <div class="description-section" data-section="bottom">
+                            <h4>Artiklar & notiser</h4>
+                            <p>Längst ner finns plats för en mellannyhet, ett starkt citat och två kortare notiser. Ger balans och variation till framsidan.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Spara framsida-knapp (utanför tidningsramen) -->
+                <div class="finish-button-container" id="finishBtnContainer">
+                    <button class="btn-finish" id="finishBtn">Spara framsida</button>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Höger sidopanel med steg -->
+        <aside class="right-panel" id="rightPanel" style="display: none;">
+            <div class="right-panel-header">
+                <h3>När du är klar</h3>
+                <button class="close-panel" id="closePanelBtn" title="Stäng panel">✕</button>
+            </div>
+            <div class="right-panel-steps">
+                <div class="panel-step step-gruppnamn">
+                    <span class="step-number">1</span>
+                    <label for="groupName">Gruppnamn:</label>
+                    <input type="text" id="groupName" placeholder="T.ex. Grupp 1">
+                    <button id="saveBtn" class="btn btn-save">💾 Spara namn</button>
+                </div>
+                <div class="panel-step">
+                    <span class="step-number">2</span>
+                    <button id="pdfBtn" class="btn btn-pdf">📥 Spara som PDF</button>
+                </div>
+                <div class="panel-step step-next-level">
+                    <span class="step-number">3</span>
+                    <span class="step-text">🚀 Next level</span>
+                </div>
+            </div>
+        </aside>
+    </div>
+    
+    <!-- Article Preview Modal -->
+    <div id="articleModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-header">
+                <span class="modal-category"></span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <span class="modal-label">RUBRIK</span>
+                    <h2 class="modal-headline"></h2>
+                </div>
+                <div class="modal-section">
+                    <span class="modal-label">INGRESS</span>
+                    <p class="modal-ingress"></p>
+                </div>
+                <div class="modal-section">
+                    <span class="modal-label">BILD</span>
+                    <div class="modal-image"></div>
+                </div>
+                <div class="modal-section">
+                    <span class="modal-label">ETT UTVALT CITAT</span>
+                    <blockquote class="modal-quote"></blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Edit Mode Offer Modal (shown after PDF) -->
+    <div id="editModeModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-header">
+                <span class="modal-category">✨ Grattis!</span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h2 style="margin-bottom: 16px;">Framsidan är sparad!</h2>
+                    <p style="margin-bottom: 20px; color: #555;">Vill du nu skapa en helt egen version där du kan skriva vad du vill direkt i tidningen?</p>
+                    <div style="display: flex; gap: 12px; justify-content: center;">
+                        <button id="skipEditModeBtn" class="btn btn-cancel">Nej tack, jag är klar</button>
+                        <button id="enableEditModeBtn" class="btn btn-save-article">✏️ Ja, låt mig redigera!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast notification -->
+    <div id="toast" class="toast"></div>
+    
+    <!-- Data passed from server (avoids TypeScript errors on Jinja syntax) -->
+    <div id="app-data" 
+         data-articles='{{ articles | tojson | safe }}'
+         data-char-limits='{"puff":40,"headline":70,"ingress":120,"mellanRubrik":45,"mellanIngress":90,"litenRubrik":30,"litenIngress":60}'
+         data-zone-specs='{
+           "huvudnyhet": {"accepts": ["lead"], "maxChars": {"headline": 70, "ingress": 120}},
+           "mellan1": {"accepts": ["lead", "secondary"], "maxChars": {"headline": 45, "ingress": 90}},
+           "puff1": {"accepts": ["secondary", "feature"], "maxChars": {"headline": 40}},
+           "puff2": {"accepts": ["secondary", "feature"], "maxChars": {"headline": 40}},
+           "puff3": {"accepts": ["secondary", "feature"], "maxChars": {"headline": 40}},
+           "citat": {"accepts": ["lead", "secondary", "feature"], "maxChars": {"quote": 100}},
+           "liten1": {"accepts": ["feature", "secondary"], "maxChars": {"headline": 30, "ingress": 60}},
+           "liten2": {"accepts": ["feature", "secondary"], "maxChars": {"headline": 30, "ingress": 60}}
+         }'
+         style="display:none;"></div>
+    
+    <!-- Pass packages data to JavaScript -->
+    <script id="packages-data" type="application/json">{{ packages | tojson | safe }}</script>
+    <script id="articles-data" type="application/json">{{ articles | tojson | safe }}</script>
+    <script>
+        window.PACKAGES_DATA = JSON.parse(document.getElementById('packages-data').textContent);
+        window.ARTICLES_DATA = JSON.parse(document.getElementById('articles-data').textContent);
+    </script>
+    
+    <script src="{{ url_for('static', filename='script.js', v=static_v) }}"></script>
+    <script>
+    // Dynamisk skalning av tidningen för att passa skärmen
+    (function() {
+        const NEWSPAPER_WIDTH = 567;
+        const PADDING = 60; // Margin around newspaper
+        const BUTTON_WIDTH = 150; // Approximate button container width
+        const SIDEBAR_PADDING = 40;
+        
+        function scaleNewspaper() {
+            const container = document.querySelector('.newspaper-container');
+            const wrapper = document.getElementById('newspaperScaleWrapper');
+            const newspaper = document.querySelector('.newspaper');
+            
+            if (!container || !wrapper || !newspaper) return;
+            
+            // Get the actual newspaper height (dynamic based on content)
+            const newspaperHeight = newspaper.offsetHeight;
+            
+            const containerRect = container.getBoundingClientRect();
+            const availableHeight = containerRect.height - PADDING;
+            const availableWidth = containerRect.width - SIDEBAR_PADDING - BUTTON_WIDTH - PADDING;
+            
+            // Calculate scale to fit both width and height
+            const scaleX = availableWidth / NEWSPAPER_WIDTH;
+            const scaleY = availableHeight / newspaperHeight;
+            const scale = Math.min(scaleX, scaleY, 1.0); // Don't scale up beyond 100%
+            
+            wrapper.style.transform = `scale(${scale})`;
+            
+            // Adjust container layout based on scaled size
+            wrapper.style.width = NEWSPAPER_WIDTH + 'px';
+            wrapper.style.height = newspaperHeight + 'px';
+        }
+        
+        // Initial scale
+        window.addEventListener('load', scaleNewspaper);
+        
+        // Re-scale on resize
+        let resizeTimeout;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(scaleNewspaper, 100);
+        });
+        
+        // Re-scale when sidebar might toggle
+        const observer = new MutationObserver(function() {
+            setTimeout(scaleNewspaper, 100);
+        });
+        const rightPanel = document.getElementById('rightPanel');
+        if (rightPanel) {
+            observer.observe(rightPanel, { attributes: true, attributeFilter: ['style'] });
+        }
+    })();
+    </script>
+
+    <!-- Admin: Hidden trigger area (bottom-right corner) -->
+    <div id="adminTrigger" title=""></div>
+
+    <!-- Admin: Fullscreen overlay for viewing saved frontpages -->
+    <div id="adminOverlay" class="admin-overlay hidden">
+        <div class="admin-header">
+            <button id="adminBackBtn" class="admin-back-btn">&larr; Stäng</button>
+            <h2>Sparade framsidor</h2>
+            <div class="admin-header-right">
+                <button id="adminTextToggle" class="admin-text-toggle">Visa i text</button>
+                <span id="adminCount"></span>
+            </div>
+        </div>
+        <div class="admin-grid-container" id="adminGridContainer">
+            <div class="admin-grid" id="adminGrid">
+                <!-- Graphical thumbnails will be populated here -->
+            </div>
+        </div>
+        <!-- Expanded view modal -->
+        <div class="admin-expanded hidden" id="adminExpanded">
+            <div class="admin-expanded-header">
+                <button class="admin-expanded-close" id="adminExpandedClose">&times;</button>
+                <div class="admin-expanded-nav">
+                    <button id="adminExpandedPrev">&lt;</button>
+                    <span id="adminExpandedCounter">1 / 1</span>
+                    <button id="adminExpandedNext">&gt;</button>
+                </div>
+            </div>
+            <div class="admin-expanded-content" id="adminExpandedContent"></div>
+        </div>
+    </div>
+
+    <script>
+    // Admin panel - Renders EXACT replica of frontpages from saved slot config
+    (function() {
+        const trigger = document.getElementById('adminTrigger');
+        const overlay = document.getElementById('adminOverlay');
+        const backBtn = document.getElementById('adminBackBtn');
+        const grid = document.getElementById('adminGrid');
+        const countEl = document.getElementById('adminCount');
+        const expanded = document.getElementById('adminExpanded');
+        const expandedClose = document.getElementById('adminExpandedClose');
+        const expandedContent = document.getElementById('adminExpandedContent');
+        const expandedPrev = document.getElementById('adminExpandedPrev');
+        const expandedNext = document.getElementById('adminExpandedNext');
+        const expandedCounter = document.getElementById('adminExpandedCounter');
+        const textToggle = document.getElementById('adminTextToggle');
+        
+        let savedFiles = [];
+        let currentExpandedIndex = 0;
+        let allArticles = [];
+        let isTextView = false;
+        
+        function capitalize(str) { return str ? str.charAt(0).toUpperCase() + str.slice(1) : ''; }
+        
+        function initArticles() {
+            allArticles = [...(window.ARTICLES_DATA || [])];
+            (window.PACKAGES_DATA || []).forEach(pkg => {
+                allArticles = allArticles.concat(pkg.articles || []);
+            });
+        }
+        
+        function getArticleById(id) {
+            if (!id) return null;
+            return allArticles.find(a => a.id === parseInt(id));
+        }
+        
+        // Render puff slot - EXACT same structure as main app
+        function renderPuff(article, slotNum) {
+            if (!article) {
+                return `<div class="slot puff-strip">
+                    <div class="puff-content">
+                        <span class="puff-category"></span>
+                        <span class="puff-headline">Dra toppnotis ${slotNum} hit</span>
+                        <span class="puff-page"></span>
+                    </div>
+                </div>`;
+            }
+            const cat = (article.category || '').toLowerCase() + '.';
+            const page = 'Sidan ' + (article.page || Math.floor(Math.random()*10)+2);
+            return `<div class="slot puff-strip has-article">
+                <div class="puff-content">
+                    <span class="puff-category">${cat}</span>
+                    <span class="puff-headline">${article.headline}</span>
+                    <span class="puff-page">${page}</span>
+                </div>
+            </div>`;
+        }
+        
+        // Render texttopp slot
+        function renderTexttopp(article) {
+            if (!article) {
+                return `<div class="slot texttopp">
+                    <div class="slot-content">
+                        <p class="placeholder-text">Dra en texttopp hit</p>
+                    </div>
+                </div>`;
+            }
+            const cat = (article.category || '').toLowerCase();
+            const page = (cat ? cat + ' sidan ' : 'Sidan ') + (article.page || Math.floor(Math.random()*10)+2);
+            return `<div class="slot texttopp has-article">
+                <div class="slot-content">
+                    <div class="article-display">
+                        <h3>${article.headline}</h3>
+                        <p class="subheadline">${article.subheadline || ''} <span class="texttopp-page">${page}</span></p>
+                    </div>
+                </div>
+            </div>`;
+        }
+        
+        // Render huvudnyhet slot - EXACT structure
+        function renderHuvudnyhet(article) {
+            if (!article) {
+                return `<div class="slot huvudnyhet">
+                    <div class="slot-content">
+                        <div class="image-placeholder"><span>📷 Bildyta</span></div>
+                        <div class="article-placeholder">
+                            <p class="placeholder-text">Dra en huvudnyhet hit</p>
+                        </div>
+                    </div>
+                </div>`;
+            }
+            const cat = (article.category || '').toLowerCase();
+            const page = (cat ? cat + ' sidan ' : 'Sidan ') + (article.page || Math.floor(Math.random()*10)+2);
+            return `<div class="slot huvudnyhet has-article">
+                <div class="slot-content">
+                    <div class="article-display huvudnyhet-display">
+                        <div class="hero-image-container">
+                            <img class="hero-image" src="${article.image}" alt="${article.headline}">
+                            <div class="headline-overlay">
+                                <h3><span>${article.headline}</span></h3>
+                                <span class="huvudnyhet-page">${page}</span>
+                            </div>
+                        </div>
+                        <div class="huvudnyhet-ingress">
+                            <p>${article.subheadline || ''}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+        }
+        
+        // Render artikel/mellan slot
+        function renderArtikel(article) {
+            if (!article) {
+                return `<div class="slot artikel-slot">
+                    <div class="slot-content">
+                        <p class="placeholder-text">Dra en artikel hit</p>
+                    </div>
+                </div>`;
+            }
+            const cat = (article.category || '').toLowerCase();
+            const page = (cat ? cat + ' sidan ' : 'Sidan ') + (article.page || Math.floor(Math.random()*10)+2);
+            return `<div class="slot artikel-slot has-article">
+                <div class="slot-content">
+                    <div class="article-display artikel-large-headline">
+                        <h3>${article.headline}</h3>
+                        <p class="article-page">${page}</p>
+                    </div>
+                </div>
+            </div>`;
+        }
+        
+        // Render citat slot
+        function renderCitat(article) {
+            if (!article) {
+                return `<div class="slot citat-slot">
+                    <div class="slot-content">
+                        <p class="placeholder-text">Dra ett citat hit</p>
+                    </div>
+                </div>`;
+            }
+            const cat = (article.category || '').toLowerCase();
+            const page = (cat ? cat + ' sidan ' : 'Sidan ') + (article.page || Math.floor(Math.random()*10)+2);
+            return `<div class="slot citat-slot has-article">
+                <div class="slot-content">
+                    <div class="article-display citat-display">
+                        <blockquote class="citat-text">${article.quote || article.headline}</blockquote>
+                        <img class="citattecken" src="/static/images/citattecken.1.jpeg" alt="">
+                        <p class="citat-sender">${article.quoteSender || ''}</p>
+                        <p class="article-page">${page}</p>
+                    </div>
+                </div>
+            </div>`;
+        }
+        
+        // Render notis slot
+        function renderNotis(article, placeholder) {
+            if (!article) {
+                return `<div class="slot notis-slot">
+                    <div class="slot-content">
+                        <p class="placeholder-text">${placeholder}</p>
+                    </div>
+                </div>`;
+            }
+            const cat = (article.category || '').toLowerCase();
+            const page = (cat ? cat + ' sidan ' : 'Sidan ') + (article.page || Math.floor(Math.random()*10)+2);
+            return `<div class="slot notis-slot has-article">
+                <div class="slot-content">
+                    <div class="article-display notis-large-headline">
+                        <h3>${article.headline}</h3>
+                        <p class="article-page">${page}</p>
+                    </div>
+                </div>
+            </div>`;
+        }
+        
+        // Render COMPLETE newspaper - EXACT replica of the editor
+        function renderFullNewspaper(slots, groupName, scale = 1) {
+            const puff1 = getArticleById(slots.puff1);
+            const puff2 = getArticleById(slots.puff2);
+            const puff3 = getArticleById(slots.puff3);
+            const texttopp = getArticleById(slots.texttopp);
+            const huvudnyhet = getArticleById(slots.huvudnyhet);
+            const mellan1 = getArticleById(slots.mellan1);
+            const citat = getArticleById(slots.citat);
+            const liten1 = getArticleById(slots.liten1);
+            const liten2 = getArticleById(slots.liten2);
+            
+            return `
+            <div class="newspaper-replica" style="--replica-scale: ${scale};">
+                <div class="newspaper">
+                    <header class="newspaper-header">
+                        <div class="masthead">
+                            <img class="masthead-image" src="/static/images/header.png" alt="BLT Header">
+                        </div>
+                    </header>
+                    
+                    <div class="puffar-section">
+                        ${renderPuff(puff1, 1)}
+                        ${renderPuff(puff2, 2)}
+                        ${renderPuff(puff3, 3)}
+                    </div>
+                    
+                    <div class="texttopp-section">
+                        ${renderTexttopp(texttopp)}
+                    </div>
+                    
+                    <div class="huvudnyhet-section">
+                        ${renderHuvudnyhet(huvudnyhet)}
+                    </div>
+                    
+                    <div class="bottom-section">
+                        ${renderArtikel(mellan1)}
+                        ${renderCitat(citat)}
+                        ${renderNotis(liten1, 'Dra en notis hit')}
+                        ${renderNotis(liten2, 'Dra en notis hit')}
+                    </div>
+                    
+                    <div class="group-footer">${groupName ? 'Gjord av ' + groupName : ''}</div>
+                </div>
+            </div>`;
+        }
+        
+        // Open admin panel
+        trigger.addEventListener('click', async function() {
+            overlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            initArticles();
+            await loadAndRenderGrid();
+        });
+        
+        // Close admin panel
+        backBtn.addEventListener('click', function() {
+            overlay.classList.add('hidden');
+            expanded.classList.add('hidden');
+            document.body.style.overflow = '';
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (overlay.classList.contains('hidden')) return;
+            if (e.key === 'Escape') {
+                if (!expanded.classList.contains('hidden')) {
+                    expanded.classList.add('hidden');
+                } else {
+                    overlay.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }
+            } else if (!expanded.classList.contains('hidden')) {
+                if (e.key === 'ArrowLeft') expandedPrev.click();
+                if (e.key === 'ArrowRight') expandedNext.click();
+            }
+        });
+        
+        expandedClose.addEventListener('click', () => expanded.classList.add('hidden'));
+        expandedPrev.addEventListener('click', () => navigateExpanded(-1));
+        expandedNext.addEventListener('click', () => navigateExpanded(1));
+        
+        // Toggle text/graphic view
+        textToggle.addEventListener('click', function() {
+            isTextView = !isTextView;
+            this.textContent = isTextView ? 'Visa grafiskt' : 'Visa i text';
+            this.classList.toggle('active', isTextView);
+            if (savedFiles.length > 0) renderGrid();
+        });
+        
+        function navigateExpanded(dir) {
+            currentExpandedIndex += dir;
+            if (currentExpandedIndex < 0) currentExpandedIndex = savedFiles.length - 1;
+            if (currentExpandedIndex >= savedFiles.length) currentExpandedIndex = 0;
+            showExpanded(currentExpandedIndex);
+        }
+        
+        async function loadAndRenderGrid() {
+            grid.innerHTML = '<p class="admin-loading">Laddar...</p>';
+            try {
+                const res = await fetch('/list-saved');
+                savedFiles = await res.json();
+                countEl.textContent = savedFiles.length + ' st';
+                
+                if (savedFiles.length === 0) {
+                    grid.innerHTML = '<p class="admin-empty">Inga sparade framsidor</p>';
+                    return;
+                }
+                renderGrid();
+            } catch (e) {
+                grid.innerHTML = '<p class="admin-error">Kunde inte ladda sparade framsidor</p>';
+            }
+        }
+        
+        // Render text view card - shows slot names and article headlines
+        function renderTextCard(slots, groupName) {
+            const slotOrder = [
+                { key: 'puff1', label: 'Toppnotis 1' },
+                { key: 'puff2', label: 'Toppnotis 2' },
+                { key: 'puff3', label: 'Toppnotis 3' },
+                { key: 'texttopp', label: 'Texttopp' },
+                { key: 'huvudnyhet', label: 'Huvudnyhet' },
+                { key: 'mellan1', label: 'Artikel' },
+                { key: 'citat', label: 'Citat' },
+                { key: 'liten1', label: 'Notis 1' },
+                { key: 'liten2', label: 'Notis 2' }
+            ];
+            
+            return `<div class="text-card">
+                ${slotOrder.map(slot => {
+                    const article = getArticleById(slots[slot.key]);
+                    const isEmpty = !article;
+                    return `<div class="text-slot ${isEmpty ? 'empty' : ''}">
+                        <span class="slot-label">${slot.label}:</span>
+                        <span class="slot-value">${article ? article.headline : '(tom)'}</span>
+                    </div>`;
+                }).join('')}
+            </div>`;
+        }
+        
+        function renderGrid() {
+            grid.classList.toggle('text-mode', isTextView);
+            
+            grid.innerHTML = savedFiles.map((file, i) => {
+                const date = parseFilenameDate(file.filename);
+                const slots = file.slots || {};
+                
+                if (isTextView) {
+                    return `<div class="admin-card-text" data-index="${i}">
+                        <div class="admin-card-text-header">
+                            <span class="admin-card-name">${file.groupName}</span>
+                            <span class="admin-card-date">${date}</span>
+                        </div>
+                        ${renderTextCard(slots, file.groupName)}
+                    </div>`;
+                }
+                
+                return `<div class="admin-card" data-index="${i}">
+                    <div class="admin-card-thumb">
+                        ${renderFullNewspaper(slots, file.groupName, 0.5)}
+                    </div>
+                    <div class="admin-card-info">
+                        <span class="admin-card-name">${file.groupName}</span>
+                        <span class="admin-card-date">${date}</span>
+                    </div>
+                </div>`;
+            }).join('');
+            
+            grid.querySelectorAll('.admin-card, .admin-card-text').forEach(card => {
+                card.addEventListener('click', function() {
+                    currentExpandedIndex = parseInt(this.dataset.index);
+                    showExpanded(currentExpandedIndex);
+                });
+            });
+        }
+        
+        function showExpanded(index) {
+            const file = savedFiles[index];
+            const date = parseFilenameDate(file.filename);
+            const slots = file.slots || {};
+            
+            expandedCounter.textContent = `${index + 1} / ${savedFiles.length}`;
+            expandedPrev.disabled = savedFiles.length <= 1;
+            expandedNext.disabled = savedFiles.length <= 1;
+            
+            expandedContent.innerHTML = `
+                <div class="expanded-info">
+                    <h3>${file.groupName || 'Okänt'}</h3>
+                    <p>${date}</p>
+                </div>
+                <div class="expanded-newspaper-container">
+                    ${renderFullNewspaper(slots, file.groupName, 0.85)}
+                </div>
+            `;
+            
+            expanded.classList.remove('hidden');
+        }
+        
+        function parseFilenameDate(filename) {
+            const match = filename.match(/_(\d{4})(\d{2})(\d{2})_(\d{2})(\d{2})(\d{2})\.json$/);
+            if (match) return `${match[1]}-${match[2]}-${match[3]} ${match[4]}:${match[5]}`;
+            return filename;
+        }
+    })();
+    </script>
+</body>
+</html>

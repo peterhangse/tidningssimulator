@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <rect fill="#1a1a2e" width="800" height="450"/>
+  <!-- Graph/chart background -->
+  <rect x="100" y="100" width="600" height="280" fill="#2c3e50" rx="10"/>
+  <!-- Grid lines -->
+  <g stroke="#34495e" stroke-width="1">
+    <line x1="100" y1="150" x2="700" y2="150"/>
+    <line x1="100" y1="200" x2="700" y2="200"/>
+    <line x1="100" y1="250" x2="700" y2="250"/>
+    <line x1="100" y1="300" x2="700" y2="300"/>
+  </g>
+  <!-- Bar chart showing growth -->
+  <rect x="150" y="280" width="60" height="80" fill="#3498db"/>
+  <text x="180" y="300" text-anchor="middle" fill="#fff" font-family="Arial" font-size="12">2022</text>
+  <rect x="250" y="250" width="60" height="110" fill="#3498db"/>
+  <text x="280" y="300" text-anchor="middle" fill="#fff" font-family="Arial" font-size="12">2023</text>
+  <rect x="350" y="220" width="60" height="140" fill="#3498db"/>
+  <text x="380" y="300" text-anchor="middle" fill="#fff" font-family="Arial" font-size="12">2024</text>
+  <rect x="450" y="190" width="60" height="170" fill="#3498db"/>
+  <text x="480" y="280" text-anchor="middle" fill="#fff" font-family="Arial" font-size="12">2025</text>
+  <rect x="550" y="130" width="60" height="230" fill="#e91e63"/>
+  <text x="580" y="280" text-anchor="middle" fill="#fff" font-family="Arial" font-size="12" font-weight="bold">2026</text>
+  <!-- Record indicator -->
+  <polygon points="580,120 560,100 600,100" fill="#f1c40f"/>
+  <text x="580" y="90" text-anchor="middle" fill="#f1c40f" font-family="Arial" font-size="14" font-weight="bold">REKORD!</text>
+  <!-- Title -->
+  <text x="400" y="50" text-anchor="middle" fill="#fff" font-family="Arial" font-size="28" font-weight="bold">REKORDHÖGT SÖKTRYCK</text>
+  <text x="400" y="80" text-anchor="middle" fill="#f1c40f" font-family="Arial" font-size="18">3 500+ ANSÖKNINGAR</text>
+  <!-- Numbers on bars -->
+  <text x="180" y="275" text-anchor="middle" fill="#fff" font-family="Arial" font-size="10">1800</text>
+  <text x="280" y="245" text-anchor="middle" fill="#fff" font-family="Arial" font-size="10">2200</text>
+  <text x="380" y="215" text-anchor="middle" fill="#fff" font-family="Arial" font-size="10">2600</text>
+  <text x="480" y="185" text-anchor="middle" fill="#fff" font-family="Arial" font-size="10">3100</text>
+  <text x="580" y="155" text-anchor="middle" fill="#fff" font-family="Arial" font-size="12" font-weight="bold">3500</text>
+  <!-- Footer -->
+  <text x="400" y="420" text-anchor="middle" fill="#7f8c8d" font-family="Arial" font-size="14">MELODIFESTIVALEN 2026</text>
+</svg>

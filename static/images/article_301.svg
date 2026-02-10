@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="mello1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9b59b6"/>
+      <stop offset="50%" style="stop-color:#e91e63"/>
+      <stop offset="100%" style="stop-color:#f1c40f"/>
+    </linearGradient>
+  </defs>
+  <rect fill="#1a1a2e" width="800" height="450"/>
+  <!-- Stage spotlights -->
+  <ellipse cx="200" cy="0" rx="200" ry="400" fill="url(#mello1)" opacity="0.15"/>
+  <ellipse cx="600" cy="0" rx="200" ry="400" fill="url(#mello1)" opacity="0.15"/>
+  <!-- A*Teens - 4 people on stage -->
+  <g>
+    <!-- Person 1 -->
+    <ellipse cx="200" cy="250" rx="25" ry="25" fill="#f5cba7"/>
+    <rect x="180" y="275" width="40" height="80" fill="#e91e63"/>
+    <!-- Person 2 -->
+    <ellipse cx="320" cy="240" rx="25" ry="25" fill="#f5cba7"/>
+    <rect x="300" y="265" width="40" height="80" fill="#3498db"/>
+    <!-- Person 3 -->
+    <ellipse cx="480" cy="240" rx="25" ry="25" fill="#f5cba7"/>
+    <rect x="460" y="265" width="40" height="80" fill="#27ae60"/>
+    <!-- Person 4 -->
+    <ellipse cx="600" cy="250" rx="25" ry="25" fill="#f5cba7"/>
+    <rect x="580" y="275" width="40" height="80" fill="#f1c40f"/>
+  </g>
+  <!-- Microphones -->
+  <line x1="200" y1="280" x2="200" y2="360" stroke="#7f8c8d" stroke-width="3"/>
+  <ellipse cx="200" cy="275" rx="8" ry="12" fill="#2c3e50"/>
+  <line x1="600" y1="280" x2="600" y2="360" stroke="#7f8c8d" stroke-width="3"/>
+  <ellipse cx="600" cy="275" rx="8" ry="12" fill="#2c3e50"/>
+  <!-- Stage floor -->
+  <rect x="100" y="370" width="600" height="30" fill="#2c3e50"/>
+  <!-- A*TEENS logo -->
+  <text x="400" y="80" text-anchor="middle" fill="#f1c40f" font-family="Arial" font-size="50" font-weight="bold">A*TEENS</text>
+  <text x="400" y="120" text-anchor="middle" fill="#fff" font-family="Arial" font-size="20">TILLBAKA I MELODIFESTIVALEN</text>
+  <!-- Stars -->
+  <text x="100" y="150" fill="#f1c40f" font-size="25">★</text>
+  <text x="700" y="130" fill="#f1c40f" font-size="30">★</text>
+  <text x="350" y="180" fill="#f1c40f" font-size="18">★</text>
+  <text x="450" y="170" fill="#f1c40f" font-size="22">★</text>
+  <!-- Text -->
+  <text x="400" y="420" text-anchor="middle" fill="#fff" font-family="Arial" font-size="16">COMEBACK EFTER 25 ÅR</text>
+</svg>

@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "headline": "Stormen Ingrid slog till mot Blekinge",
+    "subheadline": "Tusentals hushåll utan el efter nattens oväder. Räddningstjänsten har haft fullt upp med att hantera larm.",
+    "body": "Stormen Ingrid drog in över Blekinge under natten och orsakade stora skador. Tusentals hushåll blev utan el och flera träd föll över vägar. Räddningstjänsten har haft fullt upp med att hantera larm om stormskador.",
+    "quote": "Det var den värsta stormen jag upplevt på 30 år",
+    "quoteSender": "Bengt Larsson, boende i Ronneby",
+    "image": "/static/images/article_1.svg",
+    "category": "Nyheter",
+    "byline": "Anna Svensson",
+    "page": 4
+  },
+  {
+    "id": 2,
+    "headline": "Karlskrona HK vann stort i derbyt",
+    "subheadline": "5-1 mot Ronneby - fansen jublade. Tre mål av stjärnforwarden Erik Lindqvist avgjorde redan i första perioden.",
+    "body": "Det blev en festkväll för Karlskrona HK:s supportrar när laget krossade lokalrivalen Ronneby med hela 5-1. Tre mål av stjärnforwarden Erik Lindqvist avgjorde matchen redan i första perioden.",
+    "quote": "Det här är det bästa jag varit med om i karriären",
+    "quoteSender": "Erik Lindqvist, forward",
+    "image": "/static/images/article_2.svg",
+    "category": "Sport",
+    "byline": "Johan Berg",
+    "page": 18
+  },
+  {
+    "id": 3,
+    "headline": "Ny lekplats invigs i Ronneby",
+    "subheadline": "Barnen fick vara med och designa. Efter månader av planering invigs den nya lekplatsen i Brunnsparken.",
+    "body": "Efter månader av planering invigs äntligen den nya lekplatsen i Brunnsparken. Det unika med projektet är att barnen själva fick vara med och bestämma hur lekplatsen skulle se ut.",
+    "quote": "Jag ville ha en rutschkana som går hela vägen ner i vattnet",
+    "quoteSender": "Maja, 7 år",
+    "image": "/static/images/article_3.svg",
+    "category": "Lokalt",
+    "byline": "Maria Karlsson",
+    "page": 6
+  },
+  {
+    "id": 4,
+    "headline": "Skolmaten blir klimatsmart",
+    "subheadline": "Kommunen satsar på vegetariskt. Alla skolor kommer servera vegetarisk mat tre dagar i veckan från nästa termin.",
+    "body": "Från och med nästa termin kommer alla skolor i kommunen att servera vegetarisk mat tre dagar i veckan. Satsningen är en del av kommunens klimatarbete.",
+    "quote": "Eleverna har faktiskt tagit emot förändringen väldigt positivt",
+    "quoteSender": "Lena Andersson, skolchef",
+    "image": "/static/images/article_4.svg",
+    "category": "Skola",
+    "byline": "Erik Johansson",
+    "page": 8
+  },
+  {
+    "id": 5,
+    "headline": "Konsert lockade tusentals till Hog...",
+    "subheadline": "Håkan Hellström fick publiken att dansa. Uppskattat 15 000 personer samlades för att se artisten framföra sina största...",
+    "body": "Det var fullpackat i Hoglands park när Håkan Hellström intog scenen i lördags kväll. Uppskattningsvis 15 000 personer hade samlats för att se artisten framföra sina största hits.",
+    "quote": "Blekinge har alltid en speciell plats i mitt hjärta",
+    "quoteSender": "Håkan Hellström, artist",
+    "image": "/static/images/article_5.svg",
+    "category": "Kultur",
+    "byline": "Sara Lindgren",
+    "page": 22
+  },
+  {
+    "id": 6,
+    "headline": "Bostadspriser stiger i Karlshamn",
+    "subheadline": "Upp 8 procent jämfört med förra året. Stort inflöde av unga familjer som vill bo nära havet visar statistiken.",
+    "body": "Bostadsmarknaden i Karlshamn visar starka siffror. Priserna har stigit med hela 8 procent jämfört med samma period förra året, visar nya siffror från Svensk Mäklarstatistik.",
+    "quote": "Vi ser ett stort inflöde av unga familjer som vill bo nära havet",
+    "quoteSender": "Anna Bergström, mäklare",
+    "image": "/static/images/article_6.svg",
+    "category": "Ekonomi",
+    "byline": "Per Nilsson",
+    "page": 12
+  },
+  {
+    "id": 7,
+    "headline": "Pensionär hittade skatt i trädgården",
+    "subheadline": "Vikingatida mynt värt miljoner. Arne Petersson, 78, gruvde i sin trädgård i Sölvesborg och gjorde sitt livs fynd.",
+    "body": "När Arne Petersson, 78, grävde i sin trädgård i Sölvesborg gjorde han sitt livs fynd. Under jorden låg en samling vikingatida silvermynt som experter värderar till flera miljoner kronor.",
+    "quote": "Jag trodde först det var gamla kapsyler",
+    "quoteSender": "Arne Petersson, 78",
+    "image": "/static/images/article_7.svg",
+    "category": "Nyheter",
+    "byline": "Lisa Ekström",
+    "page": 5
+  },
+  {
+    "id": 8,
+    "headline": "Ungdomar startar eget företag",
+    "subheadline": "Säljer hemmagjord glass från cykel. Tre gymnasieelever har sålt slut varje dag - succen är total.",
+    "body": "Tre gymnasieelever från Karlskrona har startat sommarens hetaste företag. Med en ombyggd cykel säljer de hemmagjord glass på stadens gator och torg. Succén är total.",
+    "quote": "Vi har sålt slut varje dag den här veckan",
+    "quoteSender": "Emma, 17, företagare",
+    "image": "/static/images/article_8.svg",
+    "category": "Lokalt",
+    "byline": "Karin Holm",
+    "page": 7
+  },
+  {
+    "id": 9,
+    "headline": "Ny cykelled invigs längs kusten",
+    "subheadline": "30 mil genom hela Blekinge. Den nya leden går längs kusten från Sölvesborg till Karlskrona.",
+    "body": "Nu kan cyklister ta sig genom hela Blekinge på en sammanhängande cykelled. Den nya leden är 30 mil lång och går längs kusten från Sölvesborg till Karlskrona.",
+    "quote": "Det här blir en turistattraktion i världsklass",
+    "quoteSender": "Maria Holm, turistchef",
+    "image": "/static/images/article_9.svg",
+    "category": "Fritid",
+    "byline": "Anders Ek",
+    "page": 24
+  },
+  {
+    "id": 10,
+    "headline": "Blekinge Tekniska Högskola firar 3...",
+    "subheadline": "Jubileumsvecka med öppet hus. Allmänheten välkommen att se studenter och forskare visa upp sina projekt.",
+    "body": "BTH fyller 35 år och firar med en hel vecka av aktiviteter. Allmänheten är välkommen på öppet hus där studenter och forskare visar upp sina projekt.",
+    "quote": "BTH har satt Blekinge på världskartan inom teknik",
+    "quoteSender": "Rektorn vid BTH",
+    "image": "/static/images/article_10.svg",
+    "category": "Utbildning",
+    "byline": "Emma Strand",
+    "page": 10
+  }
+]

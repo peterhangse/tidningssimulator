@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="sky209" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3498DB"/>
+      <stop offset="100%" style="stop-color:#85C1E9"/>
+    </linearGradient>
+  </defs>
+  <rect fill="url(#sky209)" width="800" height="300"/>
+  <rect fill="#228B22" y="300" width="800" height="150"/>
+  <rect x="380" y="200" width="40" height="120" fill="#808080"/>
+  <ellipse cx="400" cy="200" rx="55" ry="18" fill="#C0C0C0"/>
+  <ellipse cx="400" cy="222" rx="45" ry="14" fill="#A9A9A9"/>
+  <line x1="355" y1="200" x2="365" y2="222" stroke="#808080" stroke-width="3"/>
+  <line x1="380" y1="200" x2="385" y2="222" stroke="#808080" stroke-width="3"/>
+  <line x1="400" y1="200" x2="400" y2="222" stroke="#808080" stroke-width="3"/>
+  <line x1="420" y1="200" x2="415" y2="222" stroke="#808080" stroke-width="3"/>
+  <line x1="445" y1="200" x2="435" y2="222" stroke="#808080" stroke-width="3"/>
+  <ellipse cx="250" cy="175" rx="38" ry="12" fill="#E74C3C"/>
+  <rect x="550" y="280" width="85" height="12" fill="#2C3E50"/>
+  <rect x="550" y="248" width="12" height="75" fill="#2C3E50"/>
+  <rect x="623" y="248" width="12" height="75" fill="#2C3E50"/>
+  <circle cx="592" cy="302" r="18" fill="#DEB887"/>
+  <rect x="580" y="320" width="24" height="45" fill="#3498DB"/>
+  <circle cx="150" cy="342" r="20" fill="#DEB887"/>
+  <rect x="137" y="362" width="26" height="52" fill="#9B59B6"/>
+  <rect x="200" y="50" width="400" height="75" fill="#27AE60" rx="12"/>
+  <text x="400" y="88" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="22" font-weight="bold">FRISBEEGOLF OCH UTEGYM</text>
+  <text x="400" y="115" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="15">Vid Stenbackaskolan</text>
+  <text x="400" y="430" text-anchor="middle" fill="#2F4F4F" font-family="Arial, sans-serif" font-size="18" font-weight="bold">GRATIS FOR ALLA ASARUMSBOR</text>
+</svg>

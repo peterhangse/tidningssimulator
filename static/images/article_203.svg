@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="sky203" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87ceeb"/>
+      <stop offset="100%" style="stop-color:#b0e0e6"/>
+    </linearGradient>
+  </defs>
+  <rect fill="url(#sky203)" width="800" height="300"/>
+  <rect fill="#228B22" y="300" width="800" height="150"/>
+  <rect x="250" y="180" width="300" height="170" fill="#B22222"/>
+  <polygon points="250,180 400,100 550,180" fill="#8B0000"/>
+  <rect x="250" y="180" width="20" height="170" fill="#FFFFFF"/>
+  <rect x="530" y="180" width="20" height="170" fill="#FFFFFF"/>
+  <rect x="290" y="220" width="60" height="60" fill="#FFFFFF"/>
+  <line x1="320" y1="220" x2="320" y2="280" stroke="#8B0000" stroke-width="3"/>
+  <line x1="290" y1="250" x2="350" y2="250" stroke="#8B0000" stroke-width="3"/>
+  <rect x="450" y="220" width="60" height="60" fill="#FFFFFF"/>
+  <line x1="480" y1="220" x2="480" y2="280" stroke="#8B0000" stroke-width="3"/>
+  <line x1="450" y1="250" x2="510" y2="250" stroke="#8B0000" stroke-width="3"/>
+  <rect x="370" y="270" width="60" height="80" fill="#5D4037"/>
+  <rect x="600" y="150" width="6" height="150" fill="#8B4513"/>
+  <rect x="606" y="150" width="80" height="50" fill="#005BAC"/>
+  <rect x="606" y="170" width="80" height="10" fill="#FECC00"/>
+  <rect x="626" y="150" width="10" height="50" fill="#FECC00"/>
+  <circle cx="150" cy="370" r="18" fill="#DEB887"/>
+  <circle cx="200" cy="380" r="15" fill="#DEB887"/>
+  <circle cx="650" cy="375" r="17" fill="#DEB887"/>
+  <text x="400" y="60" text-anchor="middle" fill="#B22222" font-family="Arial, sans-serif" font-size="24" font-weight="bold">ASARUMS HEMBYGDSFORENING</text>
+  <text x="400" y="420" text-anchor="middle" fill="#2F4F4F" font-family="Arial, sans-serif" font-size="18">SOMMARPROGRAM MED MUSIK OCH FIKA</text>
+</svg>

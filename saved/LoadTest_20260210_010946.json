@@ -1,0 +1,14 @@
+{
+  "groupName": "LoadTest",
+  "slots": {
+    "puff1": "1",
+    "puff2": "2",
+    "puff3": "3",
+    "texttopp": "4",
+    "huvudnyhet": "5",
+    "mellan1": "6",
+    "citat": "7",
+    "liten1": "8",
+    "liten2": "9"
+  }
+}

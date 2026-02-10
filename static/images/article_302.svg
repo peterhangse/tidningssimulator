@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="mello2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#2c3e50"/>
+    </linearGradient>
+  </defs>
+  <rect fill="url(#mello2)" width="800" height="450"/>
+  <!-- Spotlight on singer -->
+  <ellipse cx="400" cy="300" rx="200" ry="250" fill="#f1c40f" opacity="0.15"/>
+  <!-- Greczula singing -->
+  <ellipse cx="400" cy="200" rx="40" ry="40" fill="#f5cba7"/>
+  <rect x="365" y="240" width="70" height="120" fill="#e91e63"/>
+  <!-- Flowing dress details -->
+  <path d="M365,320 Q350,380 320,400" stroke="#e91e63" stroke-width="20" fill="none"/>
+  <path d="M435,320 Q450,380 480,400" stroke="#e91e63" stroke-width="20" fill="none"/>
+  <!-- Microphone -->
+  <line x1="450" y1="250" x2="470" y2="220" stroke="#7f8c8d" stroke-width="4"/>
+  <ellipse cx="475" cy="215" rx="12" ry="8" fill="#2c3e50" transform="rotate(-30 475 215)"/>
+  <!-- FINAL banner -->
+  <rect x="250" y="50" width="300" height="60" fill="#e91e63" rx="10"/>
+  <text x="400" y="90" text-anchor="middle" fill="#fff" font-family="Arial" font-size="28" font-weight="bold">TILL FINAL!</text>
+  <!-- Audience silhouette -->
+  <g fill="#1a1a2e" opacity="0.8">
+    <ellipse cx="100" cy="420" rx="40" ry="30"/>
+    <ellipse cx="180" cy="430" rx="35" ry="25"/>
+    <ellipse cx="260" cy="420" rx="40" ry="30"/>
+    <ellipse cx="540" cy="420" rx="40" ry="30"/>
+    <ellipse cx="620" cy="430" rx="35" ry="25"/>
+    <ellipse cx="700" cy="420" rx="40" ry="30"/>
+  </g>
+  <!-- Confetti -->
+  <rect x="150" y="150" width="8" height="15" fill="#f1c40f" transform="rotate(30)"/>
+  <rect x="600" y="180" width="8" height="15" fill="#3498db" transform="rotate(-20)"/>
+  <rect x="250" y="120" width="6" height="12" fill="#e74c3c" transform="rotate(45)"/>
+  <rect x="550" y="130" width="6" height="12" fill="#27ae60" transform="rotate(-35)"/>
+  <!-- Name -->
+  <text x="400" y="430" text-anchor="middle" fill="#fff" font-family="Arial" font-size="22" font-weight="bold">AMANDA GRECZULA</text>
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <rect fill="#ecf0f1" width="800" height="450"/>
+  <!-- House -->
+  <rect x="250" y="180" width="300" height="200" fill="#e74c3c"/>
+  <polygon points="250,180 400,80 550,180" fill="#c0392b"/>
+  <!-- Windows -->
+  <rect x="290" y="220" width="60" height="60" fill="#3498db"/>
+  <rect x="450" y="220" width="60" height="60" fill="#3498db"/>
+  <line x1="320" y1="220" x2="320" y2="280" stroke="#fff" stroke-width="2"/>
+  <line x1="290" y1="250" x2="350" y2="250" stroke="#fff" stroke-width="2"/>
+  <line x1="480" y1="220" x2="480" y2="280" stroke="#fff" stroke-width="2"/>
+  <line x1="450" y1="250" x2="510" y2="250" stroke="#fff" stroke-width="2"/>
+  <!-- Door -->
+  <rect x="370" y="300" width="60" height="80" fill="#8b4513"/>
+  <circle cx="415" cy="345" r="5" fill="#f1c40f"/>
+  <!-- Price arrow going up -->
+  <polygon points="650,350 650,150 700,200 650,150 600,200" fill="#27ae60" stroke="#27ae60" stroke-width="3"/>
+  <text x="650" y="380" text-anchor="middle" fill="#27ae60" font-family="Arial" font-size="24" font-weight="bold">+8%</text>
+  <!-- Ground -->
+  <rect x="0" y="380" width="800" height="70" fill="#27ae60"/>
+  <text x="400" y="420" text-anchor="middle" fill="#fff" font-family="Arial" font-size="18" font-weight="bold">BOSTADSPRISER STIGER</text>
+</svg>

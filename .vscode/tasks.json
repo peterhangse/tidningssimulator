@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Starta localhost (gunicorn)",
+			"type": "shell",
+			"command": "lsof -ti :5000 | xargs kill -9 2>/dev/null; cd /Users/gmpethan/Documents/deploy/Tidningssimulator && ip=$(ipconfig getifaddr en0 2>/dev/null || ipconfig getifaddr en1 2>/dev/null); echo \"Internlank: http://$ip:5000\"; /Users/gmpethan/Documents/deploy/kommunkoll-app/.venv/bin/python -m gunicorn app:app -w 2 -b 0.0.0.0:5000 --threads 2 --timeout 60",
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "build"
+		}
+	]
+}

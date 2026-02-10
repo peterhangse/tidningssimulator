@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <rect fill="#004b93" width="800" height="450"/>
+  <!-- Scandinavium arena silhouette -->
+  <rect x="100" y="150" width="600" height="250" fill="#2c3e50"/>
+  <!-- Arena roof curve -->
+  <path d="M100,150 Q400,50 700,150" fill="#34495e"/>
+  <!-- Arena windows/lights -->
+  <g fill="#f1c40f" opacity="0.8">
+    <rect x="150" y="180" width="30" height="20" rx="3"/>
+    <rect x="200" y="180" width="30" height="20" rx="3"/>
+    <rect x="250" y="180" width="30" height="20" rx="3"/>
+    <rect x="520" y="180" width="30" height="20" rx="3"/>
+    <rect x="570" y="180" width="30" height="20" rx="3"/>
+    <rect x="620" y="180" width="30" height="20" rx="3"/>
+  </g>
+  <!-- SCANDINAVIUM text -->
+  <text x="400" y="300" text-anchor="middle" fill="#fff" font-family="Arial" font-size="36" font-weight="bold">SCANDINAVIUM</text>
+  <!-- Göteborg text -->
+  <text x="400" y="340" text-anchor="middle" fill="#f1c40f" font-family="Arial" font-size="20">GÖTEBORG</text>
+  <!-- Mello logo -->
+  <circle cx="400" cy="100" r="40" fill="#e91e63"/>
+  <text x="400" y="108" text-anchor="middle" fill="#fff" font-family="Arial" font-size="16" font-weight="bold">MELLO</text>
+  <!-- Deltävling 2 banner -->
+  <rect x="250" y="380" width="300" height="50" fill="#f1c40f" rx="10"/>
+  <text x="400" y="412" text-anchor="middle" fill="#1a1a2e" font-family="Arial" font-size="20" font-weight="bold">DELTÄVLING 2</text>
+  <!-- Crowd -->
+  <g fill="#1a1a2e" opacity="0.6">
+    <ellipse cx="150" cy="420" rx="30" ry="25"/>
+    <ellipse cx="220" cy="430" rx="35" ry="20"/>
+    <ellipse cx="300" cy="425" rx="30" ry="22"/>
+    <ellipse cx="500" cy="425" rx="30" ry="22"/>
+    <ellipse cx="580" cy="430" rx="35" ry="20"/>
+    <ellipse cx="650" cy="420" rx="30" ry="25"/>
+  </g>
+</svg>

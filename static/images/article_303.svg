@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f1c40f"/>
+      <stop offset="50%" style="stop-color:#f39c12"/>
+      <stop offset="100%" style="stop-color:#e67e22"/>
+    </linearGradient>
+    <linearGradient id="stage3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9b59b6"/>
+      <stop offset="100%" style="stop-color:#e91e63"/>
+    </linearGradient>
+  </defs>
+  <rect fill="#1a1a2e" width="800" height="450"/>
+  <!-- Golden spotlight -->
+  <ellipse cx="400" cy="250" rx="300" ry="350" fill="url(#gold)" opacity="0.2"/>
+  <!-- Winner on stage -->
+  <ellipse cx="400" cy="180" rx="35" ry="35" fill="#f5cba7"/>
+  <rect x="370" y="215" width="60" height="100" fill="url(#stage3)"/>
+  <!-- Arms raised in victory -->
+  <line x1="370" y1="230" x2="320" y2="180" stroke="#f5cba7" stroke-width="12" stroke-linecap="round"/>
+  <line x1="430" y1="230" x2="480" y2="180" stroke="#f5cba7" stroke-width="12" stroke-linecap="round"/>
+  <!-- Trophy -->
+  <path d="M380,120 L380,100 L420,100 L420,120 Q440,125 440,145 L432,145 L432,135 Q432,130 420,127 L420,155 L425,165 L425,175 L375,175 L375,165 L380,155 L380,127 Q368,130 368,135 L368,145 L360,145 Q360,125 380,120" fill="url(#gold)"/>
+  <!-- Crown -->
+  <path d="M370,150 L380,175 L400,155 L420,175 L430,150 L420,180 L380,180 Z" fill="url(#gold)" transform="translate(0,-30)"/>
+  <!-- Confetti explosion -->
+  <g>
+    <rect x="200" y="100" width="10" height="20" fill="#f1c40f" transform="rotate(45 205 110)"/>
+    <rect x="600" y="80" width="10" height="20" fill="#e91e63" transform="rotate(-30 605 90)"/>
+    <rect x="150" y="200" width="8" height="16" fill="#3498db" transform="rotate(60 154 208)"/>
+    <rect x="650" y="180" width="8" height="16" fill="#27ae60" transform="rotate(-45 654 188)"/>
+    <rect x="300" y="50" width="6" height="14" fill="#e74c3c" transform="rotate(20 303 57)"/>
+    <rect x="500" y="60" width="6" height="14" fill="#9b59b6" transform="rotate(-15 503 67)"/>
+  </g>
+  <!-- VINNARE banner -->
+  <rect x="250" y="340" width="300" height="60" fill="url(#gold)" rx="10"/>
+  <text x="400" y="380" text-anchor="middle" fill="#1a1a2e" font-family="Arial" font-size="28" font-weight="bold">VINNARE 2026</text>
+  <!-- Name -->
+  <text x="400" y="430" text-anchor="middle" fill="#fff" font-family="Arial" font-size="24" font-weight="bold">FELICIA SJÖHOLM</text>
+</svg>
