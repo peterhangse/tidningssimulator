@@ -248,13 +248,14 @@ def get_saved(filename):
 if __name__ == "__main__":
     import os
     debug_mode = os.environ.get("FLASK_DEBUG", "false").lower() == "true"
+    port = int(os.environ.get("PORT", 5000))
     
     print("=" * 50)
     print("🗞️  Tidningssimulator - BLT Framsidebyggare")
     print("=" * 50)
-    print("Öppna i webbläsaren: http://localhost:5000")
+    print(f"Öppna i webbläsaren: http://localhost:{port}")
     print("Dela denna länk med eleverna (om de är på samma nätverk)")
     if debug_mode:
         print("⚠️  Debug-läge aktiverat (FLASK_DEBUG=true)")
     print("=" * 50)
-    app.run(debug=debug_mode, host="0.0.0.0", port=5000, threaded=True)
+    app.run(debug=debug_mode, host="0.0.0.0", port=port, threaded=True)
