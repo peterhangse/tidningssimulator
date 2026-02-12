@@ -236,9 +236,7 @@ function generatePdf() {
 
 function initButtons() {
   const saveButton = document.getElementById('saveBtn');
-  const pdfButton = document.getElementById('pdfBtn');
   saveButton?.addEventListener('click', saveFrontpage);
-  pdfButton?.addEventListener('click', generatePdf);
 }
 
 function initDesignToggle() {
@@ -298,7 +296,17 @@ function initFinishButton() {
 function initStepProgression() {
   const groupNameInput = document.getElementById('groupName');
   const saveButton = document.getElementById('saveBtn');
-  saveButton?.addEventListener('click', () => { if (groupNameInput?.value.trim().length>0) setTimeout(()=>setActiveStep(2),100); });
+  saveButton?.addEventListener('click', () => { 
+    if (groupNameInput?.value.trim().length>0) {
+      setTimeout(() => {
+        setActiveStep(2);
+        // Show edit mode offer after saving group name
+        if (!document.body.classList.contains('edit-mode')) {
+          showEditModeOffer();
+        }
+      }, 100);
+    }
+  });
 }
 
 function initEditMode() {
