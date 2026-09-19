@@ -13,8 +13,9 @@ tidningslärar-versionen, **inte** BLT:s riktiga system.
 - Frontend är en enda beskriven page; JS byggs med **esbuild +
   `tools/bundle.py`** men den resulterande `static/script.js` (934 r) är
   INCHECKAD i repot — en copy av källan.
-- **En server behövs** (Flask) — `.fabrik`-raden säger `python3 -m http.server
-  8000` är FEL för den här (statisk server ger inga /save-route:er).
+- **En server behövs** (Flask) — `.fabrik`-server-raden är nu `python3 app.py`
+  (korrigerad; tidigare stod det `python3 -m http.server 8000` vilket inte ger
+  några /save-route:er).
 
 ## Struktur
 
