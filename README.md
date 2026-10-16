@@ -1,6 +1,6 @@
 # Tidningssimulator
 
-Interactive newspaper front-page builder designed for school workshops. Originally built for Swedish newspaper BLT. Students drag and drop articles into layout slots to compose a newspaper front page, then export it as a PDF.
+Interactive newspaper front-page builder designed for school workshops. Originally built for Swedish newspaper BLT. Students drag and drop articles into layout slots to compose a newspaper front page, then print it or save it as a PDF.
 
 ## Live Demo
 [→ Open Tidningssimulator](https://tidningssimulator-558290029493.europe-west1.run.app/)
@@ -8,13 +8,13 @@ Interactive newspaper front-page builder designed for school workshops. Original
 ## Features
 - Drag-and-drop article placement on a newspaper grid
 - Articles loaded from JSON data
-- PDF export via WeasyPrint
+- Print or save as PDF from the browser
 - Saved layouts stored as JSON
 - Rate limiting for classroom use
 
 ## Tech Stack
 - Python 3.10+ / Flask
-- WeasyPrint (PDF generation)
+
 - Jinja2 templates / vanilla JavaScript
 - Docker / Google Cloud Run
 

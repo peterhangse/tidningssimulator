@@ -7,9 +7,9 @@ tidningslärar-versionen, **inte** BLT:s riktiga system.
 
 ## Teknik (verifierat)
 
-- **Flask 3.0.2 + Jinja2**, `flask-limiter` (rate limiting) och **WeasyPrint
-  INDEKLARERAD i requirements men OANVÄND i `app.py`** (svaret genereras
-  klientsidan och skrivs ut via webbläsarens print).
+- **Flask 3.0.2 + Jinja2** och `flask-limiter` (rate limiting). WeasyPrint togs
+  bort i okt 2026: det användes inte, och dess systempaket gjorde att
+  Docker-bygget föll på nyare Debian. Utskrift sker i webbläsaren.
 - Frontend är en enda beskriven page; JS byggs med **esbuild +
   `tools/bundle.py`** men den resulterande `static/script.js` (934 r) är
   INCHECKAD i repot — en copy av källan.
@@ -49,9 +49,12 @@ pip install -r requirements.txt
 python app.py        # sommart. (dev-server, lokalt)
 ```
 
-Deploy tänkt: Docker (python:3.11-slim) → Cloud Run port 8080. READMEs live-
-URL `https://tidningssimulator-558290029493.europe-west1.run.app/` verkar nere
-(HTTP 500).
+Deploy: Docker (python:3.11-slim) → Cloud Run, tjänst `tidningssimulator`,
+region `europe-west1`, port 8080. Ingen CI: push till main deployar INTE. Deploy
+görs manuellt, t.ex. från Cloud Shell:
+`gcloud run deploy tidningssimulator --source . --region europe-west1 --allow-unauthenticated`.
+Live-URL `https://tidningssimulator-558290029493.europe-west1.run.app/` gav 503
+i okt 2026.
 
 ## Gotchas (verifierat mot kod)
 
@@ -59,7 +62,6 @@ URL `https://tidningssimulator-558290029493.europe-west1.run.app/` verkar nere
   medan `src/js/*` finns som separat källkod. Att bara köra `esbuild` på nytt
   från src skulle skriva över de CHECKADE bra bitar som faktiskt kör (src är
   stubbar). Bygg inte om "naivt".
-- WeasyPrint i requirements men ingen kod använder det — onödigt krav.
 - README-demo-länken är död (service nere).
 - `data/articles.json`-formatet är en dict; byt inte till lista utan att
   uppdatera `app.py`.
