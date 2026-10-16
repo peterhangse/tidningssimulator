@@ -1,0 +1,31 @@
+rules_version = '2';
+
+// Sparade förstasidor från Tidningssimulatorn (static/firebase-lagring.js).
+// Alla får läsa listan och spara nya, som med Flask-servern. Ingen kan ändra
+// eller ta bort något från webben.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /sparade/{id} {
+      allow read: if true;
+      allow create: if
+        request.resource.data.keys().hasOnly(['filnamn', 'mtime', 'innehall'])
+        && request.resource.data.filnamn is string
+        && request.resource.data.filnamn.size() <= 80
+        && request.resource.data.mtime is number
+        && request.resource.data.innehall is map
+        && request.resource.data.innehall.keys().hasOnly(['groupName', 'slots', 'timestamp'])
+        && (!('groupName' in request.resource.data.innehall)
+            || (request.resource.data.innehall.groupName is string
+                && request.resource.data.innehall.groupName.size() <= 500))
+        && request.resource.data.innehall.slots is map
+        && request.resource.data.innehall.slots.keys().hasOnly(
+             ['puff1', 'puff2', 'puff3', 'texttopp', 'huvudnyhet',
+              'mellan1', 'citat', 'liten1', 'liten2']);
+      allow update, delete: if false;
+    }
+
+    match /{dokument=**} {
+      allow read, write: if false;
+    }
+  }
+}

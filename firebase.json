@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "public": "public",
+    "predeploy": "python3 tools/bygg_firebase.py",
+    "ignore": ["firebase.json", "**/.*"],
+    "cleanUrls": false
+  },
+  "firestore": {
+    "rules": "firestore.rules"
+  }
+}
