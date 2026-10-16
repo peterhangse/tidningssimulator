@@ -5149,3 +5149,99 @@ body.blt-original .modal-label {
     width: 100%;
     min-width: 0;
 }
+
+/* ======= Sidopanelen: Nyheter som utfällbar grupp med underteman (okt 2026) ======= */
+.artikelgrupp {
+    cursor: default;
+}
+.artikelgrupp .artikelgrupp-rubrik {
+    width: 100%;
+    background: none;
+    border: none;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+.artikelgrupp.oppen .package-arrow,
+.artikelgrupp.oppen:hover .package-arrow {
+    transform: rotate(90deg);
+}
+.artikelgrupp.oppen {
+    background: #fff;
+}
+.artikelgrupp-lista {
+    padding: 0 10px 10px;
+}
+.artikelgrupp-tema {
+    margin: 12px 2px 6px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #666;
+}
+.artikelgrupp-tema:first-child {
+    margin-top: 2px;
+}
+.artikelgrupp-lista .article-card {
+    margin-bottom: 8px;
+    cursor: grab;
+}
+
+/* ======= Platshållartexter: samma storlek och stil som texten som hamnar där (okt 2026) =======
+   Som toppnotiserna: "Dra en … hit" ser ut som rubriken blir, bara i grått. */
+.newspaper .texttopp .placeholder-text {
+    font-family: Sanomat, sans-serif !important;
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+    font-style: normal !important;
+    line-height: 1.4 !important;
+    letter-spacing: -0.8px !important;
+    color: #8a8a8a !important;
+}
+.newspaper .artikel-slot .placeholder-text {
+    font-family: Sanomat, sans-serif !important;
+    font-size: 1.6rem !important;
+    font-weight: 700 !important;
+    font-style: normal !important;
+    line-height: 1.08 !important;
+    letter-spacing: normal !important;
+    color: #8a8a8a !important;
+}
+.newspaper .citat-slot .placeholder-text {
+    font-family: Sanomat, serif !important;
+    font-size: 0.85rem !important;
+    font-weight: 400 !important;
+    font-style: italic !important;
+    line-height: 1.4 !important;
+    letter-spacing: normal !important;
+    color: #8a8a8a !important;
+}
+.newspaper .notis-slot .placeholder-text {
+    font-family: Sanomat, sans-serif !important;
+    font-size: 0.7rem !important;
+    font-weight: 700 !important;
+    font-style: normal !important;
+    line-height: 1.12 !important;
+    letter-spacing: normal !important;
+    color: #8a8a8a !important;
+}
+/* Huvudnyheten: som rubriken på bilden, svart platta nere till vänster */
+.newspaper .huvudnyhet .image-placeholder {
+    position: relative;
+}
+.newspaper .huvudnyhet .image-placeholder .placeholder-text {
+    position: absolute !important;
+    left: 0;
+    bottom: 71px;
+    margin: 0 !important;
+    padding: 1px 8px !important;
+    background: #111 !important;
+    color: #fff !important;
+    font-family: Sanomat, sans-serif !important;
+    font-size: 21.3333px !important;
+    font-weight: 700 !important;
+    font-style: normal !important;
+    line-height: 32px !important;
+    letter-spacing: -0.5px !important;
+}

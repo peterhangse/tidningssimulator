@@ -19,13 +19,29 @@
             </div>
             <div class="sidebar-content">
                 <div class="article-list" id="articleList">
-                    {% for article in articles %}
-                    <div class="article-card" draggable="true" data-id="{{ article.id }}">
-                        <span class="article-category">{{ article.category | lower | capitalize }}</span>
-                        <h3>{{ article.headline }}</h3>
-                        <p>{{ article.subheadline }}</p>
+                    <!-- Nyheter: fäll ut/in, uppdelat i underteman (artiklarnas område) -->
+                    {% set ns = namespace(teman=[]) %}
+                    {% for article in articles %}{% if article.category not in ns.teman %}{% set ns.teman = ns.teman + [article.category] %}{% endif %}{% endfor %}
+                    <div class="artikelgrupp package-folder" id="nyhetsgrupp">
+                        <button type="button" class="package-header artikelgrupp-rubrik" id="nyhetsgruppKnapp" aria-expanded="false" aria-controls="nyhetsgruppLista">
+                            <span class="package-icon">📰</span>
+                            <span class="package-name">Nyheter</span>
+                            <span class="package-count">{{ articles | length }} artiklar</span>
+                            <span class="package-arrow">›</span>
+                        </button>
+                        <div class="artikelgrupp-lista" id="nyhetsgruppLista" hidden>
+                            {% for tema in ns.teman %}
+                            <div class="artikelgrupp-tema">{{ tema | lower | capitalize }}</div>
+                            {% for article in articles if article.category == tema %}
+                            <div class="article-card" draggable="true" data-id="{{ article.id }}">
+                                <span class="article-category">{{ article.category | lower | capitalize }}</span>
+                                <h3>{{ article.headline }}</h3>
+                                <p>{{ article.subheadline }}</p>
+                            </div>
+                            {% endfor %}
+                            {% endfor %}
+                        </div>
                     </div>
-                    {% endfor %}
                     
                     <!-- Theme folders / packages -->
                     {% if packages %}
@@ -298,6 +314,7 @@
         window.ARTICLES_DATA = JSON.parse(document.getElementById('articles-data').textContent);
     </script>
     
+    <script src="{{ url_for('static', filename='sidopanel.js', v=static_v) }}"></script>
     <script src="{{ url_for('static', filename='tidningar.js', v=static_v) }}"></script>
     <script src="{{ url_for('static', filename='tidningshuvud.js', v=static_v) }}"></script>
     <script src="{{ url_for('static', filename='vendor/hyphen-sv.min.js', v=static_v) }}"></script>

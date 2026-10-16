@@ -77,6 +77,15 @@ Docker (python:3.11-slim) → Cloud Run, tjänst `tidningssimulator`, region
 betalkonto). Tjänsten finns kvar i projektet men svarar 503. `Dockerfile` finns
 kvar för den som vill köra i Docker.
 
+## Sidopanelen och platshållarna
+
+- Artiklarna i `articles` ligger i gruppen "Nyheter" som fälls ut på plats
+  (`static/sidopanel.js`), uppdelad i underteman efter område (category).
+  Temapaketen under strecket öppnas i egen vy som förut.
+- Platshållartexterna ("Dra en … hit") har samma typsnitt, storlek och stil som
+  texten som hamnar där, i grått (sist i style.css). Huvudnyhetens platshållare
+  ligger som rubrikplattan på bilden.
+
 ## Tidningsväljaren och sidhuvudet
 
 - `static/tidningar.js`: listan över tidningar (Gota Medias dagstidningar enligt
