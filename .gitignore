@@ -12,3 +12,4 @@ node_modules/
 # Firebase-bygget (skapas av tools/bygg_firebase.py)
 public/
 .firebase/
+firebase-debug.log
