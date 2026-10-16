@@ -13,3 +13,6 @@ node_modules/
 public/
 .firebase/
 firebase-debug.log
+
+# Sparade framsidor innehåller elevers gruppnamn och ska inte ligga i det publika repot
+saved/
