@@ -64,8 +64,11 @@ Live-adress: **https://tidningssimulator.web.app** (Firebase-projekt
   mallen är oförändrade. Filnamnen får svensk tid.
 - `firestore.rules`: alla får läsa och skapa, ingen kan ändra eller ta bort.
   Samma platsnycklar som `ALLOWED_SLOTS` i app.py.
-- Deploy: `firebase deploy` (bygget körs automatiskt som predeploy och kräver
-  att Flask finns installerat, `pip install -r requirements.txt`).
+- Deploy: sker automatiskt vid push till main (`.github/workflows/firebase.yml`).
+  GitHub loggar in utan nyckel via Workload Identity Federation (pool `github`,
+  konto `github-deploy@tidningssimulator.iam.gserviceaccount.com`, bara för det här
+  repot). För hand går det också: `firebase deploy` (bygget körs som predeploy och
+  kräver Flask, `pip install -r requirements.txt`).
 - Ändrar du `app.py` (`/save`, `/list-saved`) eller `ALLOWED_SLOTS`: ändra
   `static/firebase-lagring.js` och `firestore.rules` på samma sätt.
 - `public/` är byggresultat och ligger i .gitignore.
