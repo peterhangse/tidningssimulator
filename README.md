@@ -14,7 +14,6 @@ Interactive newspaper front-page builder designed for school workshops. Original
 
 ## Tech Stack
 - Python 3.10+ / Flask
-
 - Jinja2 templates / vanilla JavaScript
 - Docker / Google Cloud Run
 
