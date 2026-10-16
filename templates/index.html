@@ -298,6 +298,7 @@
         window.ARTICLES_DATA = JSON.parse(document.getElementById('articles-data').textContent);
     </script>
     
+    <script src="{{ url_for('static', filename='vendor/hyphen-sv.min.js', v=static_v) }}"></script>
     <script src="{{ url_for('static', filename='script.js', v=static_v) }}"></script>
     <script>
     // Dynamisk skalning av tidningen för att passa skärmen

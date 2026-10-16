@@ -77,6 +77,21 @@ Docker (python:3.11-slim) → Cloud Run, tjänst `tidningssimulator`, region
 betalkonto). Tjänsten finns kvar i projektet men svarar 503. `Dockerfile` finns
 kvar för den som vill köra i Docker.
 
+## Rubriker i nedre raden (artikel och notiser)
+
+`anpassaNedreRubriker()` i `static/script.js` (ui.js-delen) sätter storlek och
+avstavning för rubrikerna i `mellan1`, `liten1` och `liten2`, även i
+adminvyns miniatyrer:
+
+- Ord bryts aldrig utan bindestreck (CSS: `hyphens: manual`, `overflow-wrap: normal`).
+- Största storlek upp till grundstorleken i style.css. Krymper först (artikel till
+  80 %, notis till 90 %), avstavar sedan i sammansättningsfogar, sist mellan stavelser.
+- Avstavningen står i `AVSTAVNING` för orden i artiklarna. Andra ord (t.ex. i
+  redigeringsläget) avstavas med `static/vendor/hyphen-sv.min.js` (hyphen, ISC).
+  Lägg till nya långa ord i `AVSTAVNING` när artiklarna ändras.
+- Siffror med streck (15-18) bryts aldrig. De två notiserna får samma storlek.
+- Resultatet sparas per rubrik så att MutationObservern inte hamnar i en slinga.
+
 ## Gotchas (verifierat mot kod)
 
 - **Motsägande build-system**: `static/script.js` är en incheckad esbuild-bundle

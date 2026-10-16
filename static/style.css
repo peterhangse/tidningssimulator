@@ -5025,3 +5025,21 @@ body.blt-original .modal-label {
     align-items: center;
     padding: 20px;
 }
+/* ======= Nedre raden: rubriker som i en riktig tidning (okt 2026) =======
+   Storlek och avstavning sköts av anpassaNedreRubriker() i script.js.
+   - Ord bryts aldrig utan bindestreck (bara vid mjuka bindestreck som skriptet lägger in).
+   - Rubrikerna linjerar med sidhänvisningen och citatet (ingen extra indragning).
+*/
+.newspaper .bottom-section .artikel-slot .article-display,
+.newspaper .bottom-section .notis-slot .article-display {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.newspaper .bottom-section .artikel-slot .article-display h3,
+.newspaper .bottom-section .notis-slot .article-display h3 {
+    -webkit-hyphens: manual !important;
+    hyphens: manual !important;
+    overflow-wrap: normal !important;
+    word-wrap: normal !important;
+    word-break: normal !important;
+}

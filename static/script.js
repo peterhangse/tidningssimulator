@@ -800,9 +800,16 @@ function initUI() {
 }
 
 function adjustTextFit() {
+  adjustTextFitInner();
+  anpassaNedreRubriker();
+}
+
+function adjustTextFitInner() {
   const elements = document.querySelectorAll('.slot .slot-content h3, .slot .slot-content .subheadline, .slot .slot-content .citat-text, .slot .slot-content .citat-sender, .slot .slot-content .article-page, .slot .slot-content .huvudnyhet-page, .slot .slot-content .texttopp-page, .puff-headline, .puff-page, .puff-category');
 
   for (const element of elements) {
+    // Rubrikerna i nedre raden sköts av anpassaNedreRubriker()
+    if (element.matches(NEDRE_RUBRIKER)) continue;
     // Do not auto-fit elements that the user has explicitly resized
     if (element.dataset && element.dataset.userSize === 'true') continue;
     element.style.whiteSpace = 'normal';
@@ -829,6 +836,261 @@ function adjustTextFit() {
   }
 }
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   Rubriker i nedre raden (artikeln och de två notiserna)
+
+   Reglerna, som i en riktig tidning:
+   1. Ett ord bryts aldrig mitt i utan bindestreck.
+   2. Rubriken är så stor som rutan tillåter, upp till grundstorleken i style.css.
+   3. Hellre lite mindre rubrik än avstavning. Räcker inte det avstavas långa ord,
+      i första hand i sammansättningsfogen (Hembygds-föreningen), annars mellan
+      stavelser. Minst två bokstäver före och tre efter bindestrecket.
+   4. De två notiserna får samma rubrikstorlek.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+const NEDRE_RUBRIKER = '.bottom-section .artikel-slot .article-display h3, .bottom-section .notis-slot .article-display h3';
+
+// Hur långt rubriken får krympa innan den hellre avstavas, och minsta storlek
+const RUBRIKREGLER = {
+  artikel: { utanAvstavning: 0.8, minstaPx: 14 },
+  notis: { utanAvstavning: 0.9, minstaPx: 9 },
+};
+// Hur långt rubriken får krympa för att avstavas i en fog i stället för mellan stavelser
+const BARA_FOGAR = 0.85;
+
+// Avstavning för orden i artiklarna. | = sammansättningsfog (bäst), · = stavelse.
+// Ord som inte finns här avstavas med svenska avstavningsmönster (static/vendor).
+const AVSTAVNING = {
+  'allsvenska': 'all|sven·ska', 'atlantic': 'at·lan·tic', 'bengtsson': 'bengts|son',
+  'besökare': 'be·sö·ka·re', 'bibliotek': 'bib·lio·tek', 'biblioteket': 'bib·lio·te·ket',
+  'biljetter': 'bil·jet·ter', 'blekinge': 'ble·kin·ge', 'bostadspriser': 'bo·stads|pri·ser',
+  'bygdemuseet': 'byg·de|mu·se·et', 'cupmatchen': 'cup|mat·chen', 'cykelled': 'cy·kel|led',
+  'deltävlingen': 'del|täv·ling·en', 'digilabb': 'di·gi|labb', 'februari': 'feb·ru·a·ri',
+  'finalen': 'fi·na·len', 'frisbeegolf': 'fris·bee|golf', 'företag': 'fö·re|tag',
+  'författarbesök': 'för·fat·tar|be·sök', 'göteborg': 'gö·te|borg',
+  'hembygdsföreningen': 'hem|bygds|fö·re·ning·en', 'hittade': 'hit·ta·de', 'hoglands': 'hog|lands',
+  'huvudtränare': 'hu·vud|trä·na·re', 'inskickade': 'in|skic·ka·de', 'inspirerar': 'in·spi·re·rar',
+  'invigda': 'in|vig·da', 'karlshamn': 'karls|hamn', 'karlskrona': 'karls|kro·na',
+  'klimatsmart': 'kli·mat|smart', 'konfirmation': 'kon·fir·ma·tion', 'konsert': 'kon·sert',
+  'lanserat': 'lan·se·rat', 'lekplats': 'lek|plats', 'medlemskap': 'med·lem|skap',
+  'medlemskväll': 'med·lems|kväll', 'meröppet': 'mer|öp·pet', 'mjällby': 'mjäll|by',
+  'pensionär': 'pen·sio·när', 'portugal': 'por·tu·gal', 'presenterad': 'pre·sen·te·rad',
+  'publikomröstningen': 'pu·blik|om·röst·ning·en', 'regionträning': 're·gion|trä·ning',
+  'revolutionerande': 're·vo·lu·tio·ne·ran·de', 'ronneby': 'ron·ne|by', 'scendesign': 'scen|de·sign',
+  'skolmaten': 'skol|ma·ten', 'slutsålda': 'slut|sål·da', 'slöjdworkshop': 'slöjd|work|shop',
+  'sommaren': 'som·ma·ren', 'spelordningen': 'spel|ord·ning·en', 'startar': 'star·tar',
+  'stenbacka': 'sten|back·a', 'stockholm': 'stock|holm', 'talanger': 'ta·lang·er',
+  'tillbaka': 'till|ba·ka', 'trädgården': 'träd|går·den', 'ungdomar': 'ung|do·mar',
+  'årskort': 'års|kort', 'årskortsdesignen': 'års|korts|de·sig·nen', 'åttonde': 'åt·ton·de',
+  'östersjöfestivalen': 'ös·ter|sjö|fes·ti·va·len', 'galan': 'ga·lan',
+};
+
+const MJUKT = '\u00AD';
+const ORDFOG = '\u2060'; // hindrar radbrytning, t.ex. efter strecket i 15-18
+let matCanvas = null;
+
+function ordBredd(ord, stil, storlek) {
+  if (!matCanvas) matCanvas = document.createElement('canvas').getContext('2d');
+  matCanvas.font = `${stil.fontStyle} ${stil.fontWeight} ${storlek}px ${stil.fontFamily}`;
+  const ls = Number.parseFloat(stil.letterSpacing);
+  const extra = Number.isFinite(ls) ? ls * (storlek / stil.basStorlek) * ord.length : 0;
+  return matCanvas.measureText(ord).width + extra;
+}
+
+// Möjliga brytpunkter i ett ord: [{pos, niva}] där niva 1 = fog, 2 = stavelse
+function brytpunkter(ord) {
+  const nyckel = ord.toLowerCase();
+  let markerat = AVSTAVNING[nyckel];
+  if (!markerat && typeof window.svAvstavning === 'function' && /^[a-zåäöéü]+$/i.test(ord)) {
+    markerat = window.svAvstavning(nyckel, { hyphenChar: '·' });
+  }
+  if (!markerat) return [];
+  const punkter = [];
+  let pos = 0;
+  for (const tecken of markerat) {
+    if (tecken === '|' || tecken === '·') punkter.push({ pos, niva: tecken === '|' ? 1 : 2 });
+    else pos++;
+  }
+  if (pos !== ord.length) return [];
+  // minst två bokstäver före och tre efter bindestrecket
+  return punkter.filter((p) => p.pos >= 2 && ord.length - p.pos >= 3);
+}
+
+// Lägger in mjuka bindestreck i ett ord så att varje del ryms på en rad
+// niva 1 = bara i sammansättningsfogar, 2 = även mellan stavelser
+function avstavaOrd(ord, bredd, stil, storlek, niva) {
+  if (ordBredd(ord, stil, storlek) <= bredd) return ord;
+  const punkter = brytpunkter(ord);
+  const delarRyms = (valda) => {
+    const pos = [0, ...valda, ord.length];
+    for (let i = 1; i < pos.length; i++) {
+      const del = ord.slice(pos[i - 1], pos[i]) + (i < pos.length - 1 ? '-' : '');
+      if (ordBredd(del, stil, storlek) > bredd) return false;
+    }
+    return true;
+  };
+  const fogar = punkter.filter((p) => p.niva === 1).map((p) => p.pos);
+  const alla = punkter.map((p) => p.pos);
+  let valda = null;
+  if (fogar.length && delarRyms(fogar)) valda = fogar;
+  else if (niva >= 2 && alla.length && delarRyms(alla)) valda = alla;
+  if (!valda) return null;
+  let ut = '';
+  let forra = 0;
+  for (const p of valda) { ut += ord.slice(forra, p) + MJUKT; forra = p; }
+  return ut + ord.slice(forra);
+}
+
+// Bygger rubriktexten för en viss storlek. avstavning: 0 = ingen, 1 = fogar, 2 = fogar och stavelser.
+// null = går inte på den nivån.
+function rubrikText(original, bredd, stil, storlek, avstavning) {
+  let ok = true;
+  const ut = original.split(/(\s+)/).map((bit) => {
+    if (!bit || /^\s+$/.test(bit)) return bit;
+    // Siffror med streck (15-18, 2025-2026) bryts aldrig
+    if (/\d-\d/.test(bit)) {
+      if (ordBredd(bit, stil, storlek) > bredd) ok = false;
+      return bit.replace(/(\d)-(\d)/g, `$1-${ORDFOG}$2`);
+    }
+    // ord med bindestreck kan redan brytas efter strecket
+    return bit.split(/(-)/).map((del) => {
+      if (!del || del === '-') return del;
+      const medStreck = bit.includes('-') ? del + '-' : del;
+      if (ordBredd(medStreck, stil, storlek) <= bredd) return del;
+      if (!avstavning) { ok = false; return del; }
+      const avstavat = avstavaOrd(del, bredd, stil, storlek, avstavning);
+      if (avstavat === null) { ok = false; return del; }
+      return avstavat;
+    }).join('');
+  }).join('');
+  return ok ? ut : null;
+}
+
+function rubrikRyms(h3) {
+  // Sidhänvisningen ligger absolut i rutans nederkant, så gränsen är rutan (.slot)
+  const ruta = h3.closest('.slot') || h3.closest('.slot-content');
+  if (!ruta) return true;
+  const ram = ruta.getBoundingClientRect();
+  const r = h3.getBoundingClientRect();
+  const sida = ruta.querySelector('.article-page');
+  if (h3.scrollWidth > h3.clientWidth + 1) return false;
+  if (r.bottom > ram.bottom + 0.5) return false;
+  if (sida) {
+    const s = sida.getBoundingClientRect();
+    if (s.height && r.bottom > s.top - 2) return false;
+    if (s.height && s.bottom > ram.bottom + 0.5) return false;
+  }
+  return true;
+}
+
+function sattStorlek(h3, storlek) {
+  h3.style.setProperty('font-size', storlek + 'px', 'important');
+}
+
+function sattText(h3, text) {
+  if (h3.textContent !== text) h3.textContent = text;
+}
+
+// Största storlek i [min, max] där provet går igenom, eller null
+function storstaStorlek(min, max, prov) {
+  if (min > max) return null;
+  if (prov(max)) return max;
+  if (!prov(min)) return null;
+  let lag = min, hog = max;
+  while (hog - lag > 0.25) {
+    const mitt = (lag + hog) / 2;
+    if (prov(mitt)) lag = mitt; else hog = mitt;
+  }
+  return Math.floor(lag * 4) / 4;
+}
+
+// Resultaten sparas per rubrik. Då ändrar en ny körning ingenting när inget har
+// ändrats, och MutationObservern i app.js (som anropar adjustTextFit vid varje
+// ändring i sidan) hamnar inte i en slinga.
+const rubrikMinne = new WeakMap();
+
+function rubrikNyckel(h3, original, fastStorlek) {
+  const ruta = h3.closest('.slot');
+  return [original, h3.clientWidth, ruta ? ruta.clientHeight : 0, h3.dataset.userSize === 'true' ? h3.dataset.userSizePx : '', fastStorlek || ''].join('|');
+}
+
+// Räknar ut storlek och text. Ändrar rubriken medan den provar, men sätter inte slutresultatet.
+function beraknaRubrik(h3, fastStorlek) {
+  const typ = h3.closest('.notis-slot') ? 'notis' : 'artikel';
+  const regel = RUBRIKREGLER[typ];
+  const original = h3.textContent.replaceAll(MJUKT, '').replaceAll(ORDFOG, '');
+  const nyckel = rubrikNyckel(h3, original, fastStorlek);
+  let minne = rubrikMinne.get(h3);
+  if (!minne) { minne = new Map(); rubrikMinne.set(h3, minne); }
+  if (minne.has(nyckel)) return minne.get(nyckel);
+
+  const iFokus = document.activeElement === h3;
+  const fore = { text: h3.textContent, storlek: h3.style.getPropertyValue('font-size'), prio: h3.style.getPropertyPriority('font-size') };
+
+  // Grundstorleken från style.css
+  h3.style.removeProperty('font-size');
+  h3.style.removeProperty('line-height');
+  const cs = window.getComputedStyle(h3);
+  const bas = Number.parseFloat(cs.fontSize) || 16;
+  const stil = { fontStyle: cs.fontStyle, fontWeight: cs.fontWeight, fontFamily: cs.fontFamily, letterSpacing: cs.letterSpacing, basStorlek: bas };
+  const bredd = h3.clientWidth - 0.5;
+
+  const prov = (storlek, avstava) => {
+    const text = rubrikText(original, bredd, stil, storlek, avstava);
+    if (text === null) return false;
+    if (!iFokus) sattText(h3, text);
+    sattStorlek(h3, storlek);
+    return rubrikRyms(h3);
+  };
+
+  let storlek;
+  if (bredd <= 0) {
+    storlek = bas;
+  } else if (fastStorlek) {
+    storlek = fastStorlek;
+  } else if (h3.dataset.userSize === 'true') {
+    storlek = Number.parseFloat(h3.dataset.userSizePx) || bas;
+  } else {
+    storlek = storstaStorlek(bas * regel.utanAvstavning, bas, (st) => prov(st, 0));
+    if (storlek === null) storlek = storstaStorlek(Math.max(bas * BARA_FOGAR, Math.min(regel.minstaPx, bas)), bas, (st) => prov(st, 1));
+    if (storlek === null) storlek = storstaStorlek(Math.min(regel.minstaPx, bas), bas, (st) => prov(st, 2));
+    if (storlek === null) storlek = Math.min(regel.minstaPx, bas);
+  }
+
+  // Avstava bara om det behövs vid den valda storleken
+  let text = bredd > 0 ? rubrikText(original, bredd, stil, storlek, 0) : original;
+  if (text === null) text = rubrikText(original, bredd, stil, storlek, 1);
+  if (text === null) text = rubrikText(original, bredd, stil, storlek, 2);
+  if (text === null) text = original;
+
+  // Återställ, så att bara tillampaRubrik ändrar det som syns
+  if (!iFokus) sattText(h3, fore.text);
+  if (fore.storlek) h3.style.setProperty('font-size', fore.storlek, fore.prio); else h3.style.removeProperty('font-size');
+
+  const res = { typ, storlek, text: iFokus ? null : text };
+  if (!iFokus) minne.set(nyckel, res);
+  return res;
+}
+
+function tillampaRubrik(h3, res) {
+  if (res.text !== null) sattText(h3, res.text);
+  if (h3.style.getPropertyValue('font-size') !== res.storlek + 'px' || h3.style.getPropertyPriority('font-size') !== 'important') sattStorlek(h3, res.storlek);
+}
+
+function anpassaNedreRubriker() {
+  for (const tidning of document.querySelectorAll('.newspaper')) {
+    const rubriker = [...tidning.querySelectorAll(NEDRE_RUBRIKER)];
+    const resultat = rubriker.map((h3) => ({ h3, res: beraknaRubrik(h3) }));
+    // Notiserna får samma storlek, den minsta av de två
+    const notiser = resultat.filter((r) => r.res.typ === 'notis' && r.h3.dataset.userSize !== 'true');
+    if (notiser.length > 1) {
+      const gemensam = Math.min(...notiser.map((n) => n.res.storlek));
+      for (const n of notiser) if (n.res.storlek !== gemensam) n.res = beraknaRubrik(n.h3, gemensam);
+    }
+    for (const r of resultat) tillampaRubrik(r.h3, r.res);
+  }
+}
+
 function addFontSizeControls(container) {
   const increaseButton = container.querySelector('.font-size-btn.increase');
   const decreaseButton = container.querySelector('.font-size-btn.decrease');
@@ -848,22 +1110,28 @@ function addFontSizeControls(container) {
   if (increaseButton) {
     increaseButton.addEventListener('click', (ev) => {
       ev.stopPropagation();
+      currentSize = Number.parseFloat(window.getComputedStyle(headline).fontSize) || currentSize;
       const max = isNotis ? NOTIS_MAX : (isCitat ? CITAT_MAX : 999);
       if (currentSize < max) {
         currentSize += 1;
         headline.style.fontSize = currentSize + 'px';
         headline.dataset.userSize = 'true';
+        headline.dataset.userSizePx = String(currentSize);
+        if (typeof adjustTextFit === 'function') adjustTextFit();
       }
     });
   }
   if (decreaseButton) {
     decreaseButton.addEventListener('click', (ev) => {
       ev.stopPropagation();
+      currentSize = Number.parseFloat(window.getComputedStyle(headline).fontSize) || currentSize;
       const min = isNotis ? NOTIS_MIN : (isCitat ? CITAT_MIN : 10);
       if (currentSize > min) {
         currentSize -= 1;
         headline.style.fontSize = currentSize + 'px';
         headline.dataset.userSize = 'true';
+        headline.dataset.userSizePx = String(currentSize);
+        if (typeof adjustTextFit === 'function') adjustTextFit();
       }
     });
   }
