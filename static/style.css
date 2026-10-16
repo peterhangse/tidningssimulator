@@ -5043,3 +5043,16 @@ body.blt-original .modal-label {
     word-wrap: normal !important;
     word-break: normal !important;
 }
+
+/* ======= Toppnotiserna: sidhänvisningen alltid i högerkanten (okt 2026) =======
+   "Sidan 18" ska sluta i samma kant som "Sidan 8", oavsett hur lång rubriken är. */
+.puff-strip .puff-content .puff-headline {
+    min-width: 0;
+}
+.puff-strip .puff-content .puff-page {
+    flex: 0 0 auto !important;
+    margin-left: auto !important;
+    padding-right: 0 !important;
+    white-space: nowrap !important;
+    text-align: right !important;
+}

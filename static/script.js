@@ -809,7 +809,7 @@ function adjustTextFitInner() {
 
   for (const element of elements) {
     // Rubrikerna i nedre raden sköts av anpassaNedreRubriker()
-    if (element.matches(NEDRE_RUBRIKER)) continue;
+    if (element.matches(NEDRE_RUBRIKER) || element.matches(NEDRE_SIDHANVISNINGAR)) continue;
     // Do not auto-fit elements that the user has explicitly resized
     if (element.dataset && element.dataset.userSize === 'true') continue;
     element.style.whiteSpace = 'normal';
@@ -1077,8 +1077,40 @@ function tillampaRubrik(h3, res) {
   if (h3.style.getPropertyValue('font-size') !== res.storlek + 'px' || h3.style.getPropertyPriority('font-size') !== 'important') sattStorlek(h3, res.storlek);
 }
 
+// Sidhänvisningarna (KARLSHAMN SIDAN 12) i nedre raden: håller sig inom sin spalt,
+// bryts bara mellan ord och har samma storlek i alla fyra spalterna.
+const NEDRE_SIDHANVISNINGAR = '.bottom-section .slot .article-page';
+
+function anpassaSidhanvisningar(tidning) {
+  const etiketter = [...tidning.querySelectorAll(NEDRE_SIDHANVISNINGAR)].filter((e) => e.textContent.trim());
+  if (!etiketter.length) return;
+  const passar = (e) => e.scrollWidth <= e.clientWidth + 0.5;
+  let gemensam = Infinity;
+  for (const e of etiketter) {
+    e.style.removeProperty('font-size');
+    // Absolut placerad: ge den en högerkant så att den inte kan växa ut ur spalten
+    if (window.getComputedStyle(e).position === 'absolute') {
+      const vanster = Number.parseFloat(window.getComputedStyle(e).left) || 0;
+      const ruta = e.offsetParent || e.parentElement;
+      e.style.setProperty('box-sizing', 'border-box', 'important');
+      e.style.setProperty('min-width', '0', 'important');
+      e.style.setProperty('max-width', 'none', 'important');
+      e.style.setProperty('width', Math.max(0, ruta.clientWidth - 2 * vanster) + 'px', 'important');
+    }
+    e.style.setProperty('white-space', 'normal', 'important');
+    e.style.setProperty('overflow-wrap', 'normal', 'important');
+    e.style.setProperty('word-break', 'normal', 'important');
+    const bas = Number.parseFloat(window.getComputedStyle(e).fontSize) || 12;
+    const prov = (st) => { e.style.setProperty('font-size', st + 'px', 'important'); return passar(e); };
+    const st = storstaStorlek(Math.min(7, bas), bas, prov);
+    gemensam = Math.min(gemensam, st === null ? Math.min(7, bas) : st);
+  }
+  for (const e of etiketter) e.style.setProperty('font-size', gemensam + 'px', 'important');
+}
+
 function anpassaNedreRubriker() {
   for (const tidning of document.querySelectorAll('.newspaper')) {
+    anpassaSidhanvisningar(tidning);
     const rubriker = [...tidning.querySelectorAll(NEDRE_RUBRIKER)];
     const resultat = rubriker.map((h3) => ({ h3, res: beraknaRubrik(h3) }));
     // Notiserna får samma storlek, den minsta av de två
