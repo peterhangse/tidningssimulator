@@ -1,0 +1,38 @@
+# Publicerar sajten på Firebase (https://tidningssimulator.web.app) vid varje
+# ändring på main. Inloggningen mot Google sker utan nyckel: Google Cloud litar
+# på GitHub för just det här repot (Workload Identity Federation).
+name: Publicera på Firebase
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: firebase
+  cancel-in-progress: false
+
+jobs:
+  publicera:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # Bygget (tools/bygg_firebase.py) renderar startsidan med Flask
+      - run: pip install -r requirements.txt
+
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: projects/558290029493/locations/global/workloadIdentityPools/github/providers/github
+          service_account: github-deploy@tidningssimulator.iam.gserviceaccount.com
+
+      - name: Publicera
+        run: npx --yes firebase-tools@13.29.1 deploy --only hosting,firestore:rules --project tidningssimulator --non-interactive
