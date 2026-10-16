@@ -214,11 +214,13 @@ def list_saved():
                     data = json.load(fp)
                     group_name = data.get("groupName", "Okänd")
                     slots = data.get("slots", {})
+                    tidning = data.get("tidning", "blt")
                 files.append({
                     "filename": f,
                     "groupName": group_name,
                     "mtime": mtime,
-                    "slots": slots
+                    "slots": slots,
+                    "tidning": tidning
                 })
             except (json.JSONDecodeError, IOError):
                 files.append({"filename": f, "groupName": "Okänd", "mtime": 0, "slots": {}})

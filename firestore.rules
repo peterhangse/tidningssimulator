@@ -13,7 +13,10 @@ service cloud.firestore {
         && request.resource.data.filnamn.size() <= 80
         && request.resource.data.mtime is number
         && request.resource.data.innehall is map
-        && request.resource.data.innehall.keys().hasOnly(['groupName', 'slots', 'timestamp'])
+        && request.resource.data.innehall.keys().hasOnly(['groupName', 'slots', 'timestamp', 'tidning'])
+        && (!('tidning' in request.resource.data.innehall)
+            || (request.resource.data.innehall.tidning is string
+                && request.resource.data.innehall.tidning.size() <= 40))
         && (!('groupName' in request.resource.data.innehall)
             || (request.resource.data.innehall.groupName is string
                 && request.resource.data.innehall.groupName.size() <= 500))

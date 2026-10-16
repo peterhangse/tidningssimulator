@@ -197,7 +197,8 @@ async function saveFrontpage() {
     const data = { 
       groupName, 
       slots: getSlotConfig(), 
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+      tidning: window.valdTidning || 'blt'
     };
     
     const response = await fetch('/save', { 
@@ -1098,6 +1099,9 @@ function anpassaSidhanvisningar(tidning) {
       e.style.setProperty('width', Math.max(0, ruta.clientWidth - 2 * vanster) + 'px', 'important');
     }
     e.style.setProperty('white-space', 'normal', 'important');
+    // Ingen avklippning med … (då går det inte heller att mäta om texten ryms)
+    e.style.setProperty('overflow', 'visible', 'important');
+    e.style.setProperty('text-overflow', 'clip', 'important');
     e.style.setProperty('overflow-wrap', 'normal', 'important');
     e.style.setProperty('word-break', 'normal', 'important');
     const bas = Number.parseFloat(window.getComputedStyle(e).fontSize) || 12;

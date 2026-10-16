@@ -5056,3 +5056,96 @@ body.blt-original .modal-label {
     white-space: nowrap !important;
     text-align: right !important;
 }
+
+/* ======= Tidningsväljare och övningshuvud (okt 2026) =======
+   static/tidningshuvud.js ritar huvudet. Måtten är tagna från BLT-huvudet
+   (2715 x 513 px) och anges i cqw, procent av huvudets bredd. */
+@font-face {
+    font-family: "Anton";
+    src: url("/static/fonts/anton/anton-latin-400-normal.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+.tidningshuvud {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2715 / 513;
+    container-type: inline-size;
+    background: #fff;
+    overflow: hidden;
+    text-align: left;
+}
+.tidningshuvud .th-titel {
+    position: absolute;
+    left: 3.1cqw;
+    line-height: 1;
+    font-family: "Anton", "Arial Narrow", sans-serif;
+    font-weight: 400;
+    color: var(--huvudfarg, #2b2b2b);
+    white-space: nowrap;
+    letter-spacing: -0.02em;
+    transform-origin: left top;
+}
+.tidningshuvud .th-undertitel {
+    position: absolute;
+    left: 3.1cqw;
+    top: 15.95cqw;
+    font-family: "Anton", "Arial Narrow", sans-serif;
+    font-size: 1.95cqw;
+    line-height: 1;
+    color: #111;
+    white-space: nowrap;
+}
+.tidningshuvud .th-datum {
+    position: absolute;
+    right: 1.66cqw;
+    top: 7.2cqw;
+    text-align: right;
+    color: #111;
+    line-height: 1.1;
+}
+.tidningshuvud .th-veckodag,
+.tidningshuvud .th-dag,
+.tidningshuvud .th-vecka {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.32cqw;
+    letter-spacing: -0.01em;
+}
+.tidningshuvud .th-webb {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 1.18cqw;
+    margin-top: 0.1cqw;
+}
+.tidningshuvud .th-pris {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.12cqw;
+}
+
+.tidning-valjare {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 12px;
+    font-family: var(--font-sans, Arial, sans-serif);
+}
+.tidning-valjare label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #333;
+}
+.tidning-valjare select {
+    font-size: 0.9rem;
+    padding: 6px 8px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    background: #fff;
+}
+/* Huvudet mäts i sin egen bredd och kan inte få bredd av innehållet */
+.newspaper-header .masthead:has(.tidningshuvud) {
+    flex: 1 1 100%;
+    width: 100%;
+    min-width: 0;
+}

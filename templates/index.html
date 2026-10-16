@@ -298,6 +298,8 @@
         window.ARTICLES_DATA = JSON.parse(document.getElementById('articles-data').textContent);
     </script>
     
+    <script src="{{ url_for('static', filename='tidningar.js', v=static_v) }}"></script>
+    <script src="{{ url_for('static', filename='tidningshuvud.js', v=static_v) }}"></script>
     <script src="{{ url_for('static', filename='vendor/hyphen-sv.min.js', v=static_v) }}"></script>
     <script src="{{ url_for('static', filename='script.js', v=static_v) }}"></script>
     <script>
@@ -563,7 +565,7 @@
         }
         
         // Render COMPLETE newspaper - EXACT replica of the editor
-        function renderFullNewspaper(slots, groupName, scale = 1) {
+        function renderFullNewspaper(slots, groupName, scale = 1, tidning = 'blt') {
             const puff1 = getArticleById(slots.puff1);
             const puff2 = getArticleById(slots.puff2);
             const puff3 = getArticleById(slots.puff3);
@@ -579,7 +581,7 @@
                 <div class="newspaper">
                     <header class="newspaper-header">
                         <div class="masthead">
-                            <img class="masthead-image" src="/static/images/header.png" alt="BLT Header">
+                            ${window.Tidningshuvud ? window.Tidningshuvud.html(tidning) : '<img class="masthead-image" src="/static/images/header.png" alt="BLT Header">'}
                         </div>
                     </header>
                     
@@ -721,7 +723,7 @@
                 
                 return `<div class="admin-card" data-index="${i}">
                     <div class="admin-card-thumb">
-                        ${renderFullNewspaper(slots, file.groupName, 0.5)}
+                        ${renderFullNewspaper(slots, file.groupName, 0.5, file.tidning)}
                     </div>
                     <div class="admin-card-info">
                         <span class="admin-card-name">${file.groupName}</span>
@@ -753,7 +755,7 @@
                     <p>${date}</p>
                 </div>
                 <div class="expanded-newspaper-container">
-                    ${renderFullNewspaper(slots, file.groupName, 0.85)}
+                    ${renderFullNewspaper(slots, file.groupName, 0.85, file.tidning)}
                 </div>
             `;
             

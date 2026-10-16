@@ -77,6 +77,19 @@ Docker (python:3.11-slim) → Cloud Run, tjänst `tidningssimulator`, region
 betalkonto). Tjänsten finns kvar i projektet men svarar 503. `Dockerfile` finns
 kvar för den som vill köra i Docker.
 
+## Tidningsväljaren och sidhuvudet
+
+- `static/tidningar.js`: listan över tidningar (Gota Medias dagstidningar enligt
+  Mediestudier). Fält: namn, undertitel, farg, webb, pris, bild.
+- `static/tidningshuvud.js`: väljaren (överst i sidopanelen) och sidhuvudet. Med
+  `bild` visas bilden (BLT). Annars ritas ett övningshuvud: namnet i Anton
+  (`static/fonts/anton/`, OFL) i tidningens färg, uppställt som BLT-huvudet med
+  dagens datum och vecka. Mått i cqw, så det skalar i miniatyrerna och vid utskrift.
+- Valet sparas i webbläsaren (localStorage) och följer med när framsidan sparas
+  (`tidning` i JSON/Firestore). Adminvyn ritar huvudet för den sparade tidningen.
+- Färger: bara BLT har färg (#37519a, tagen ur header.png). Övriga är mörkgrå tills
+  färgen fylls i.
+
 ## Rubriker i nedre raden (artikel och notiser)
 
 `anpassaNedreRubriker()` i `static/script.js` (ui.js-delen) sätter storlek och

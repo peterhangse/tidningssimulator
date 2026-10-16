@@ -143,6 +143,7 @@
           groupName: 'groupName' in innehall ? innehall.groupName : 'Okänd',
           mtime: franFirestore(f.mtime) || 0,
           slots: 'slots' in innehall ? innehall.slots : {},
+          tidning: innehall.tidning || 'blt',
         };
       });
     return jsonSvar(filer);
